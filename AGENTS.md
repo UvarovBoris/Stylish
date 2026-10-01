@@ -70,3 +70,25 @@ Split every screen into two composables:
 - **Theming:** Use `StylishTheme.colors` for app styling and custom components. Use `MaterialTheme` for base framework setup and `MaterialTheme.typography`. Never hardcode raw hex colors in composables.
 - **Imports:** Never use wildcard imports (`import foo.bar.*`).
 - **Testing:** MockK + JUnit, **Turbine** for testing Flows, and Compose UI testing rules.
+
+---
+
+## 7. Modularization & Use Case Structure
+See detailed specification in `docs/ARCHITECTURE.md`.
+- **Pattern:** Feature-first + shared core modules (`:app`, `:feature:*`, `:core:*`).
+- **Feature Isolation:** Feature modules (`:feature:*`) must NEVER depend on each other.
+- **Use Case Placement:**
+  - **`:core:domain`**: Shared cross-feature business logic (e.g. `AddToCartUseCase`, `ToggleWishlistUseCase`, `GetCartBadgeCountUseCase`).
+  - **`:feature:<name>`**: Feature-private business logic (e.g. `ValidateShippingAddressUseCase`, `ApplyProductFilterUseCase`).
+  - **Direct Repository**: ViewModels can inject repositories directly from `:core:data` when no business logic or multi-repo coordination is needed (no redundant pass-through use cases).
+- **Core Modules:**
+  - `:core:designsystem` (Figma tokens, `StylishColors`, atomic UI)
+  - `:core:ui` (shared composables like `ProductCard`)
+  - `:core:model` (pure Kotlin domain models)
+  - `:core:domain` (shared cross-feature use cases)
+  - `:core:data` (repositories & sync)
+  - `:core:network` (API client & DTOs)
+  - `:core:database` (Room DB, DAOs)
+  - `:core:datastore` (preferences & session tokens)
+  - `:core:common` (dispatchers, Result wrappers)
+
