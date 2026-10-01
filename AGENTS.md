@@ -16,7 +16,7 @@ Project guidelines and standards for AI coding assistants working on the **Styli
   - **File Key:** `QLfS37a0puFWZ15N1hpyOK`
   - **Starting Node ID:** `1:16990`
 - **Figma MCP Integration:** Always use **Framelink MCP for Figma** (`get_figma_data`, `download_figma_images`) to inspect component dimensions, paddings, color codes, and typography, and to download required vector assets/icons before implementing UI.
-- **Theming:** Translate Figma design tokens into Material 3 `ui/theme/` (Color, Typography, Shape). Never hardcode ad-hoc colors or font styles in composables.
+- **Theming:** Translate Figma design tokens into custom app theming in `ui/theme/` (`StylishColors`, `Color`, `Typography`, `Shape`). Use `StylishTheme.colors` for app styling and component colors across all app screens. Use `MaterialTheme` for base setup and scaffolding where it makes sense (e.g., `Scaffold`, basic surface/content color defaults, ripple effects). Never hardcode ad-hoc colors or font styles in composables.
 
 ---
 
@@ -67,6 +67,6 @@ Split every screen into two composables:
 ## 6. Code Quality & Conventions
 - **Dependencies:** All dependencies and versions MUST go into `gradle/libs.versions.toml`. Never hardcode library versions in `build.gradle.kts`.
 - **Strings & Assets:** Never hardcode user-facing strings; use `res/values/strings.xml` and `stringResource(...)`.
-- **Theming:** Use `MaterialTheme.colorScheme` and `MaterialTheme.typography` exclusively.
+- **Theming:** Use `StylishTheme.colors` for app styling and custom components. Use `MaterialTheme` for base framework setup and `MaterialTheme.typography`. Never hardcode raw hex colors in composables.
 - **Imports:** Never use wildcard imports (`import foo.bar.*`).
 - **Testing:** MockK + JUnit, **Turbine** for testing Flows, and Compose UI testing rules.
