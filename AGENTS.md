@@ -4,7 +4,23 @@ Project guidelines and standards for AI coding assistants working on the **Styli
 
 ---
 
-## 1. Tech Stack
+## 1. Product Overview
+- **App Name:** Stylish
+- **Domain:** Fashion E-Commerce Mobile App.
+- **Core Features:** Product catalog, categories, search & filtering, product details, shopping cart, checkout flow, wishlist, and user account management.
+
+---
+
+## 2. Design System & Figma Reference
+- **Design Source:** [Figma: eCommerce App UI Kit](https://www.figma.com/design/QLfS37a0puFWZ15N1hpyOK/eCommerce-App-UI-Kit---Case-Study-Ecommerce-Mobile-App-UI-kit--Community-?node-id=1-16990&p=f&t=e81cBV6fUcQgQo1R-0)
+  - **File Key:** `QLfS37a0puFWZ15N1hpyOK`
+  - **Starting Node ID:** `1:16990`
+- **Figma MCP Integration:** Always use **Framelink MCP for Figma** (`get_figma_data`, `download_figma_images`) to inspect component dimensions, paddings, color codes, and typography, and to download required vector assets/icons before implementing UI.
+- **Theming:** Translate Figma design tokens into Material 3 `ui/theme/` (Color, Typography, Shape). Never hardcode ad-hoc colors or font styles in composables.
+
+---
+
+## 3. Tech Stack
 - **Language:** Kotlin 2.x
 - **UI:** 100% Jetpack Compose + Material Design 3 (no XML, ViewBinding, or Fragments)
 - **Architecture:** Clean Architecture + Unidirectional Data Flow (UDF)
@@ -15,7 +31,7 @@ Project guidelines and standards for AI coding assistants working on the **Styli
 
 ---
 
-## 2. Architecture & State Management (UDF)
+## 4. Architecture & State Management (UDF)
 - **Single Source of Truth:** ViewModels expose a single immutable `StateFlow<UiState>`.
 - **Atomic State Updates:** Always update state via `_uiState.update { it.copy(...) }`.
 - **Collection in UI:** Collect state strictly with `collectAsStateWithLifecycle()`.
@@ -26,7 +42,7 @@ Project guidelines and standards for AI coding assistants working on the **Styli
 
 ---
 
-## 3. Jetpack Compose Standards
+## 5. Jetpack Compose Standards
 
 ### Stateful Screen vs. Stateless Content
 Split every screen into two composables:
@@ -48,7 +64,7 @@ Split every screen into two composables:
 
 ---
 
-## 4. Code Quality & Conventions
+## 6. Code Quality & Conventions
 - **Dependencies:** All dependencies and versions MUST go into `gradle/libs.versions.toml`. Never hardcode library versions in `build.gradle.kts`.
 - **Strings & Assets:** Never hardcode user-facing strings; use `res/values/strings.xml` and `stringResource(...)`.
 - **Theming:** Use `MaterialTheme.colorScheme` and `MaterialTheme.typography` exclusively.
