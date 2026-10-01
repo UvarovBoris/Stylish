@@ -77,6 +77,7 @@ Split every screen into two composables:
 See detailed specification in `docs/ARCHITECTURE.md`.
 - **Pattern:** Feature-first + shared core modules (`:app`, `:feature:*`, `:core:*`).
 - **Feature Isolation:** Feature modules (`:feature:*`) must NEVER depend on each other.
+- **Module `.gitignore`:** Every module (including all new `:feature:*` and `:core:*` modules) MUST contain its own `.gitignore` ignoring `/build`.
 - **Use Case Placement:**
   - **`:core:domain`**: Shared cross-feature business logic (e.g. `AddToCartUseCase`, `ToggleWishlistUseCase`, `GetCartBadgeCountUseCase`).
   - **`:feature:<name>`**: Feature-private business logic (e.g. `ValidateShippingAddressUseCase`, `ApplyProductFilterUseCase`).

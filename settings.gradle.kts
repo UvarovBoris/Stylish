@@ -24,4 +24,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Stylish"
 include(":app")
+include(":feature:onboarding")
  
