@@ -36,6 +36,21 @@ data class StylishTypography(
         fontWeight = FontWeight.SemiBold,
         fontSize = 18.sp
     ),
+
+    val bottomNavigationTab: TextStyle = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp
+    ),
+    val bottomNavigationTabSelected: TextStyle = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp
+    ),
 )
 
 val LocalStylishTypography = staticCompositionLocalOf { StylishTypography() }

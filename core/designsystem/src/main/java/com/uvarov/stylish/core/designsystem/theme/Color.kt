@@ -30,3 +30,5 @@ val NavyDarkAlpha = Color(0x3317223B)
 // Status
 val SuccessGreen = Color(0xFF34A853)
 val ErrorRed = Color(0xFFEB3030)
+
+val BottomNavigationTabSelected = Color(0xFFEB3030)

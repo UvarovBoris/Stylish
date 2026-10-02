@@ -29,9 +29,10 @@ data class StylishColors(
     val success: Color = SuccessGreen,
     val error: Color = ErrorRed,
 
-    // Indicators & Navigation
     val indicatorActive: Color = NavyDark,
     val indicatorInactive: Color = NavyDarkAlpha,
+
+    val bottomNavigationTabSelected: Color = BottomNavigationTabSelected,
 )
 
 val LocalStylishColors = staticCompositionLocalOf { StylishColors() }

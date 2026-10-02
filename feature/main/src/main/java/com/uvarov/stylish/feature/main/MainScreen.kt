@@ -36,14 +36,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.uvarov.stylish.core.designsystem.theme.Montserrat
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 
 @Composable
@@ -94,18 +91,22 @@ fun MainContent(
                         titleRes = R.string.home_placeholder_title,
                         iconRes = R.drawable.ic_nav_home
                     )
+
                     MainTab.WISHLIST -> TabPlaceholderContent(
                         titleRes = R.string.wishlist_placeholder_title,
                         iconRes = R.drawable.ic_nav_wishlist
                     )
+
                     MainTab.CART -> TabPlaceholderContent(
                         titleRes = R.string.cart_placeholder_title,
                         iconRes = R.drawable.ic_nav_cart
                     )
+
                     MainTab.SEARCH -> TabPlaceholderContent(
                         titleRes = R.string.search_placeholder_title,
                         iconRes = R.drawable.ic_nav_search
                     )
+
                     MainTab.SETTINGS -> TabPlaceholderContent(
                         titleRes = R.string.settings_placeholder_title,
                         iconRes = R.drawable.ic_nav_settings
@@ -142,11 +143,10 @@ fun StylishBottomBar(
         ) {
             MainTab.entries.forEach { tab ->
                 val isSelected = tab == selectedTab
-                val itemColor = if (isSelected) {
-                    StylishTheme.colors.brandPrimary
-                } else {
+                val itemColor = if (isSelected)
+                    StylishTheme.colors.bottomNavigationTabSelected
+                else
                     StylishTheme.colors.textPrimary
-                }
 
                 BottomNavigationTabItem(
                     tab = tab,
@@ -190,17 +190,15 @@ private fun BottomNavigationTabItem(
             painter = painterResource(id = tab.iconRes),
             contentDescription = tabLabel,
             tint = itemColor,
-            modifier = Modifier.size(22.dp)
+            modifier = Modifier.size(24.dp)
         )
 
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(3.dp))
 
         Text(
             text = tabLabel,
             color = itemColor,
-            fontFamily = Montserrat,
-            fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
-            fontSize = 11.sp,
+            style = if (isSelected) StylishTheme.typography.bottomNavigationTabSelected else StylishTheme.typography.bottomNavigationTab,
             textAlign = TextAlign.Center
         )
     }
