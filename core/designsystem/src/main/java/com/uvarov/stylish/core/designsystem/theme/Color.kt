@@ -18,11 +18,14 @@ val DeepPurple = Color(0xFF21003D)
 // Grays & Surfaces
 val GrayBody = Color(0xFF575757)
 val GraySecondary = Color(0xFF626262)
+val GrayIndicator = Color(0xFFA0A0A1)
 val GrayPlaceholder = Color(0xFFA8A8A9)
 val GrayBorder = Color(0xFFC4C4C4)
 val GrayDivider = Color(0xFFD9D9D9)
 val GraySurface = Color(0xFFF3F3F3)
 val OffWhite = Color(0xFFFDFDFD)
+val NavyDark = Color(0xFF17223B)
+val NavyDarkAlpha = Color(0x3317223B)
 
 // Status
 val SuccessGreen = Color(0xFF34A853)

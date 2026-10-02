@@ -16,20 +16,22 @@ data class StylishColors(
     val background: Color = OffWhite,
     val surface: Color = White,
     val surfaceCard: Color = GraySurface,
-    val border: Color = GrayBorder,
-    val divider: Color = GrayDivider,
 
     // Text & Content
     val textPrimary: Color = Black,
-    val textSecondary: Color = GrayBody,
-    val textMuted: Color = GrayPlaceholder,
+    val textSecondary: Color = GrayPlaceholder,
+    val textMuted: Color = GrayIndicator,
     val onBrand: Color = White,
 
     // Status & Highlights
     val ratingStar: Color = AmberRating,
     val saleBadge: Color = CoralRed,
     val success: Color = SuccessGreen,
-    val error: Color = ErrorRed
+    val error: Color = ErrorRed,
+
+    // Indicators & Navigation
+    val indicatorActive: Color = NavyDark,
+    val indicatorInactive: Color = NavyDarkAlpha,
 )
 
 val LocalStylishColors = staticCompositionLocalOf { StylishColors() }

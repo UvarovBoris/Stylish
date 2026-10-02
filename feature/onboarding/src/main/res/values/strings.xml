@@ -4,6 +4,9 @@
     <string name="onboarding_next">Next</string>
     <string name="onboarding_start">Start</string>
 
+    <string name="onboarding_page_counter_current">%1$d</string>
+    <string name="onboarding_page_counter_total">/%1$d</string>
+
     <string name="onboarding_title_1">Choose Products</string>
     <string name="onboarding_description_1">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</string>
 

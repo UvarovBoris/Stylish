@@ -19,6 +19,18 @@ val Montserrat = FontFamily(
 
 @Immutable
 data class StylishTypography(
+    val onboardingTitle: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 24.sp
+    ),
+    val onboardingDescription: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 14.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.25.sp
+    ),
     val onboardingText: TextStyle = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.SemiBold,
