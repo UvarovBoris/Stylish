@@ -7,6 +7,8 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
+import com.uvarov.stylish.feature.main.MainScreen
+import com.uvarov.stylish.feature.main.navigation.MainRoute
 import com.uvarov.stylish.feature.onboarding.OnboardingScreen
 import com.uvarov.stylish.feature.onboarding.navigation.OnboardingRoute
 
@@ -28,9 +30,13 @@ fun AppNavigation(
             entry<OnboardingRoute> {
                 OnboardingScreen(
                     onComplete = {
-                        // Navigation to next destination (e.g. Auth / Home) will be routed here
+                        backStack.clear()
+                        backStack.add(MainRoute)
                     }
                 )
+            }
+            entry<MainRoute> {
+                MainScreen()
             }
         }
     )

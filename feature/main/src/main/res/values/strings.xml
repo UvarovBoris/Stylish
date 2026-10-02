@@ -1,0 +1,14 @@
+<resources>
+    <string name="main_tab_home">Home</string>
+    <string name="main_tab_wishlist">Wishlist</string>
+    <string name="main_tab_cart">Cart</string>
+    <string name="main_tab_search">Search</string>
+    <string name="main_tab_settings">Setting</string>
+
+    <string name="home_placeholder_title">Home Screen</string>
+    <string name="wishlist_placeholder_title">Wishlist Screen</string>
+    <string name="cart_placeholder_title">Cart Screen</string>
+    <string name="search_placeholder_title">Search Screen</string>
+    <string name="settings_placeholder_title">Setting Screen</string>
+    <string name="placeholder_subtitle">Feature coming soon</string>
+</resources>
