@@ -13,17 +13,17 @@ data class OnboardingPage(
 
 val defaultOnboardingPages = listOf(
     OnboardingPage(
-        imageRes = R.drawable.ic_onboarding_choose_products,
+        imageRes = R.drawable.onboarding_choose_products,
         titleRes = R.string.onboarding_title_1,
         descriptionRes = R.string.onboarding_description_1
     ),
     OnboardingPage(
-        imageRes = R.drawable.ic_onboarding_make_payment,
+        imageRes = R.drawable.onboarding_make_payment,
         titleRes = R.string.onboarding_title_2,
         descriptionRes = R.string.onboarding_description_2
     ),
     OnboardingPage(
-        imageRes = R.drawable.ic_onboarding_get_order,
+        imageRes = R.drawable.onboarding_get_your_order,
         titleRes = R.string.onboarding_title_3,
         descriptionRes = R.string.onboarding_description_3
     )

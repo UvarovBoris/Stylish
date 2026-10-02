@@ -36,6 +36,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
@@ -209,16 +210,21 @@ private fun OnboardingPageContent(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Image(
-            painter = painterResource(id = page.imageRes),
-            contentDescription = stringResource(id = page.titleRes),
+        Box(
             modifier = Modifier
-                .fillMaxWidth(0.85f)
-                .heightIn(max = 280.dp)
-                .aspectRatio(1f)
-        )
+                .fillMaxWidth()
+                .aspectRatio(1f),
+            contentAlignment = Alignment.Center
+        ) {
+            Image(
+                painter = painterResource(id = page.imageRes),
+                contentDescription = stringResource(id = page.titleRes),
+                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.Fit
+            )
+        }
 
-        Spacer(modifier = Modifier.height(36.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         Text(
             text = stringResource(id = page.titleRes),
