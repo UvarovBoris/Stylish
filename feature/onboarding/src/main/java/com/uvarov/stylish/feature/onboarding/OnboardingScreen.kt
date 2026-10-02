@@ -141,8 +141,6 @@ private fun OnboardingTopBar(
     onSkipClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val interactionSource = remember { MutableInteractionSource() }
-
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -182,8 +180,6 @@ private fun OnboardingTopBar(
             style = StylishTheme.typography.onboardingText,
             color = StylishTheme.colors.textPrimary,
             modifier = Modifier.clickable(
-                interactionSource = interactionSource,
-                indication = null,
                 onClick = onSkipClick
             )
         )
@@ -258,8 +254,6 @@ private fun OnboardingBottomBar(
     onGetStartedClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val interactionSource = remember { MutableInteractionSource() }
-
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -278,8 +272,6 @@ private fun OnboardingBottomBar(
                     style = StylishTheme.typography.onboardingText,
                     color = Color(0xFFC4C4C4),
                     modifier = Modifier.clickable(
-                        interactionSource = interactionSource,
-                        indication = null,
                         onClick = onPrevClick
                     )
                 )
@@ -302,9 +294,8 @@ private fun OnboardingBottomBar(
 
                 Box(
                     modifier = Modifier
-                        .height(10.dp)
                         .size(width = width, height = 10.dp)
-                        .clip(if (isSelected) RoundedCornerShape(50) else CircleShape)
+                        .clip(RoundedCornerShape(50))
                         .background(
                             if (isSelected) {
                                 Color(0xFF17223B)
@@ -327,8 +318,6 @@ private fun OnboardingBottomBar(
                     style = StylishTheme.typography.onboardingText,
                     color = StylishTheme.colors.brandPrimary,
                     modifier = Modifier.clickable(
-                        interactionSource = interactionSource,
-                        indication = null,
                         onClick = onGetStartedClick
                     )
                 )
@@ -338,8 +327,6 @@ private fun OnboardingBottomBar(
                     style = StylishTheme.typography.onboardingText,
                     color = StylishTheme.colors.brandPrimary,
                     modifier = Modifier.clickable(
-                        interactionSource = interactionSource,
-                        indication = null,
                         onClick = onNextClick
                     )
                 )
