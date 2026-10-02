@@ -1,6 +1,9 @@
 package com.uvarov.stylish.feature.onboarding
 
 import app.cash.turbine.test
+import com.uvarov.stylish.core.data.repository.UserDataRepository
+import io.mockk.coVerify
+import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -17,12 +20,13 @@ import org.junit.Test
 class OnboardingViewModelTest {
 
     private val testDispatcher = StandardTestDispatcher()
+    private val userDataRepository = mockk<UserDataRepository>(relaxed = true)
     private lateinit var viewModel: OnboardingViewModel
 
     @Before
     fun setUp() {
         Dispatchers.setMain(testDispatcher)
-        viewModel = OnboardingViewModel()
+        viewModel = OnboardingViewModel(userDataRepository)
     }
 
     @After
@@ -40,20 +44,22 @@ class OnboardingViewModelTest {
     }
 
     @Test
-    fun skipClickedIntent_emitsNavigateToAuthSideEffect() = runTest(testDispatcher) {
+    fun skipClickedIntent_emitsNavigateToAuthSideEffectAndSavesCompletion() = runTest(testDispatcher) {
         viewModel.sideEffect.test {
             viewModel.onIntent(OnboardingIntent.SkipClicked)
             testScheduler.advanceUntilIdle()
             assertEquals(OnboardingSideEffect.NavigateToAuth, awaitItem())
+            coVerify(exactly = 1) { userDataRepository.setOnboardingCompleted(true) }
         }
     }
 
     @Test
-    fun getStartedClickedIntent_emitsNavigateToAuthSideEffect() = runTest(testDispatcher) {
+    fun getStartedClickedIntent_emitsNavigateToAuthSideEffectAndSavesCompletion() = runTest(testDispatcher) {
         viewModel.sideEffect.test {
             viewModel.onIntent(OnboardingIntent.StartClicked)
             testScheduler.advanceUntilIdle()
             assertEquals(OnboardingSideEffect.NavigateToAuth, awaitItem())
+            coVerify(exactly = 1) { userDataRepository.setOnboardingCompleted(true) }
         }
     }
 }

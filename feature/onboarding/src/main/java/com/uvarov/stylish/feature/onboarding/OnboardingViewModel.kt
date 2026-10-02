@@ -3,6 +3,7 @@ package com.uvarov.stylish.feature.onboarding
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.uvarov.stylish.core.data.repository.UserDataRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.channels.Channel
@@ -30,7 +31,9 @@ data class OnboardingUiState(
 }
 
 @HiltViewModel
-class OnboardingViewModel @Inject constructor() : ViewModel() {
+class OnboardingViewModel @Inject constructor(
+    private val userDataRepository: UserDataRepository,
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow(OnboardingUiState())
     val uiState: StateFlow<OnboardingUiState> = _uiState.asStateFlow()
@@ -47,6 +50,7 @@ class OnboardingViewModel @Inject constructor() : ViewModel() {
 
     private fun completeOnboarding() {
         viewModelScope.launch {
+            userDataRepository.setOnboardingCompleted(true)
             _sideEffect.send(OnboardingSideEffect.NavigateToAuth)
         }
     }
