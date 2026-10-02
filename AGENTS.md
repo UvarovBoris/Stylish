@@ -31,12 +31,14 @@ Project guidelines and standards for AI coding assistants working on the **Styli
 
 ---
 
-## 4. Architecture & State Management (UDF)
+## 4. Architecture & State Management (MVI / UDF)
 - **Single Source of Truth:** ViewModels expose a single immutable `StateFlow<UiState>`.
 - **Atomic State Updates:** Always update state via `_uiState.update { it.copy(...) }`.
+- **Single Intent Entry Point:** ViewModels expose a single entry point method `fun onIntent(intent: FeatureIntent)` taking a `sealed interface FeatureIntent` for UI actions/events, rather than multiple loose `on...` methods.
+- **One-Time Side Effects:** Transitory events (navigation, toast, snackbar) must NOT be stored in `UiState`. Instead, emit them via a buffered `Channel<FeatureSideEffect>` exposed as `Flow<FeatureSideEffect> = _sideEffect.receiveAsFlow()`. Collect side effects in the UI within `LaunchedEffect(viewModel)` or `LaunchedEffect(Unit)`.
 - **Collection in UI:** Collect state strictly with `collectAsStateWithLifecycle()`.
 - **Layers:**
-  - **UI Layer:** Composable screens + ViewModels + UiState.
+  - **UI Layer:** Composable screens + ViewModels + UiState + Intents + Side Effects.
   - **Domain Layer:** Pure Kotlin models and single-responsibility Use Cases (`operator fun invoke(...)`).
   - **Data Layer:** Repositories and DataSources (Room, Retrofit/Ktor), returning `Flow<T>` or `Result<T>`.
 
@@ -69,7 +71,7 @@ Split every screen into two composables:
 - **Strings & Assets:** Never hardcode user-facing strings; use `res/values/strings.xml` and `stringResource(...)`.
 - **Theming:** Use `StylishTheme.colors` for app styling and custom components. Use `MaterialTheme` for base framework setup and `MaterialTheme.typography`. Never hardcode raw hex colors in composables.
 - **Imports:** Never use wildcard imports (`import foo.bar.*`).
-- **Testing:** MockK + JUnit, **Turbine** for testing Flows, and Compose UI testing rules.
+- **Testing:** MockK + JUnit, **Turbine** for testing Flows and Channels, `StandardTestDispatcher` for Coroutine tests (`Dispatchers.setMain(testDispatcher)` / `Dispatchers.resetMain()`, advancing virtual time with `testScheduler.advanceUntilIdle()`), and Compose UI testing rules.
 
 ---
 

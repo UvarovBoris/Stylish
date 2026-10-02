@@ -58,20 +58,18 @@ fun OnboardingScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    LaunchedEffect(uiState.isCompleted) {
-        if (uiState.isCompleted) {
-            onComplete()
+    LaunchedEffect(viewModel) {
+        viewModel.sideEffect.collect { effect ->
+            when (effect) {
+                OnboardingSideEffect.NavigateToAuth -> onComplete()
+            }
         }
     }
 
     OnboardingContent(
         uiState = uiState,
         modifier = modifier,
-        onNextClick = viewModel::onNextClicked,
-        onPrevClick = viewModel::onPrevClicked,
-        onSkipClick = viewModel::onSkipClicked,
-        onGetStartedClick = viewModel::onGetStartedClicked,
-        onPageChange = viewModel::onPageChanged
+        onIntent = viewModel::onIntent
     )
 }
 
@@ -79,11 +77,7 @@ fun OnboardingScreen(
 fun OnboardingContent(
     uiState: OnboardingUiState,
     modifier: Modifier = Modifier,
-    onNextClick: () -> Unit,
-    onPrevClick: () -> Unit,
-    onSkipClick: () -> Unit,
-    onGetStartedClick: () -> Unit,
-    onPageChange: (Int) -> Unit,
+    onIntent: (OnboardingIntent) -> Unit,
 ) {
     val pagerState = rememberPagerState(
         initialPage = uiState.currentPage,
@@ -93,7 +87,7 @@ fun OnboardingContent(
     // Sync Pager swipes with ViewModel state
     LaunchedEffect(pagerState) {
         snapshotFlow { pagerState.currentPage }.collect { page ->
-            onPageChange(page)
+            onIntent(OnboardingIntent.PageChanged(page))
         }
     }
 
@@ -114,7 +108,7 @@ fun OnboardingContent(
         OnboardingTopBar(
             currentPage = uiState.currentPage,
             totalPages = uiState.totalPages,
-            onSkipClick = onSkipClick
+            onSkipClick = { onIntent(OnboardingIntent.SkipClicked) }
         )
 
         HorizontalPager(
@@ -133,9 +127,9 @@ fun OnboardingContent(
             isLastPage = uiState.isLastPage,
             currentPage = uiState.currentPage,
             totalPages = uiState.totalPages,
-            onPrevClick = onPrevClick,
-            onNextClick = onNextClick,
-            onGetStartedClick = onGetStartedClick
+            onPrevClick = { onIntent(OnboardingIntent.PrevClicked) },
+            onNextClick = { onIntent(OnboardingIntent.NextClicked) },
+            onGetStartedClick = { onIntent(OnboardingIntent.GetStartedClicked) }
         )
     }
 }
@@ -360,11 +354,7 @@ private fun OnboardingContentPage1Preview() {
     StylishTheme {
         OnboardingContent(
             uiState = OnboardingUiState(currentPage = 0),
-            onNextClick = {},
-            onPrevClick = {},
-            onSkipClick = {},
-            onGetStartedClick = {},
-            onPageChange = {}
+            onIntent = {}
         )
     }
 }
@@ -375,11 +365,7 @@ private fun OnboardingContentPage2Preview() {
     StylishTheme {
         OnboardingContent(
             uiState = OnboardingUiState(currentPage = 1),
-            onNextClick = {},
-            onPrevClick = {},
-            onSkipClick = {},
-            onGetStartedClick = {},
-            onPageChange = {}
+            onIntent = {}
         )
     }
 }
@@ -390,11 +376,7 @@ private fun OnboardingContentPage3Preview() {
     StylishTheme {
         OnboardingContent(
             uiState = OnboardingUiState(currentPage = 2),
-            onNextClick = {},
-            onPrevClick = {},
-            onSkipClick = {},
-            onGetStartedClick = {},
-            onPageChange = {}
+            onIntent = {}
         )
     }
 }
