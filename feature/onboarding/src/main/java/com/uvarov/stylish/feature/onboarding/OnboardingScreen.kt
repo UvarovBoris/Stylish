@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -24,7 +23,6 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -33,13 +31,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -49,13 +47,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.uvarov.stylish.core.designsystem.theme.Montserrat
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 
 @Composable
 fun OnboardingScreen(
     modifier: Modifier = Modifier,
     viewModel: OnboardingViewModel = hiltViewModel(),
-    onComplete: () -> Unit = {}
+    onComplete: () -> Unit = {},
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -84,7 +83,7 @@ fun OnboardingContent(
     onPrevClick: () -> Unit,
     onSkipClick: () -> Unit,
     onGetStartedClick: () -> Unit,
-    onPageChange: (Int) -> Unit
+    onPageChange: (Int) -> Unit,
 ) {
     val pagerState = rememberPagerState(
         initialPage = uiState.currentPage,
@@ -146,7 +145,7 @@ private fun OnboardingTopBar(
     currentPage: Int,
     totalPages: Int,
     onSkipClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
 
@@ -160,7 +159,8 @@ private fun OnboardingTopBar(
         val indicatorText = buildAnnotatedString {
             withStyle(
                 style = SpanStyle(
-                    fontWeight = FontWeight.Bold,
+                    fontFamily = Montserrat,
+                    fontWeight = FontWeight.SemiBold,
                     fontSize = 18.sp,
                     color = StylishTheme.colors.textPrimary
                 )
@@ -169,9 +169,10 @@ private fun OnboardingTopBar(
             }
             withStyle(
                 style = SpanStyle(
+                    fontFamily = Montserrat,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 18.sp,
-                    color = StylishTheme.colors.textMuted
+                    color = Color(0xFFA0A0A1)
                 )
             ) {
                 append("/$totalPages")
@@ -184,11 +185,8 @@ private fun OnboardingTopBar(
 
         Text(
             text = stringResource(R.string.onboarding_skip),
-            style = MaterialTheme.typography.titleMedium.copy(
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 18.sp,
-                color = StylishTheme.colors.textPrimary
-            ),
+            style = StylishTheme.typography.onboardingText,
+            color = StylishTheme.colors.textPrimary,
             modifier = Modifier.clickable(
                 interactionSource = interactionSource,
                 indication = null,
@@ -201,7 +199,7 @@ private fun OnboardingTopBar(
 @Composable
 private fun OnboardingPageContent(
     page: OnboardingPage,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier
@@ -228,11 +226,12 @@ private fun OnboardingPageContent(
 
         Text(
             text = stringResource(id = page.titleRes),
-            style = MaterialTheme.typography.headlineMedium.copy(
+            style = TextStyle(
+                fontFamily = Montserrat,
                 fontWeight = FontWeight.ExtraBold,
-                fontSize = 24.sp,
-                color = StylishTheme.colors.textPrimary
+                fontSize = 24.sp
             ),
+            color = StylishTheme.colors.textPrimary,
             textAlign = TextAlign.Center
         )
 
@@ -240,11 +239,14 @@ private fun OnboardingPageContent(
 
         Text(
             text = stringResource(id = page.descriptionRes),
-            style = MaterialTheme.typography.bodyMedium.copy(
+            style = TextStyle(
+                fontFamily = Montserrat,
+                fontWeight = FontWeight.SemiBold,
                 fontSize = 14.sp,
-                lineHeight = 20.sp,
-                color = StylishTheme.colors.textMuted
+                lineHeight = 24.sp,
+                letterSpacing = 0.25.sp
             ),
+            color = Color(0xFFA8A8A9),
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
@@ -260,7 +262,7 @@ private fun OnboardingBottomBar(
     onPrevClick: () -> Unit,
     onNextClick: () -> Unit,
     onGetStartedClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
 
@@ -279,11 +281,8 @@ private fun OnboardingBottomBar(
             if (!isFirstPage) {
                 Text(
                     text = stringResource(R.string.onboarding_prev),
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        fontWeight = FontWeight.SemiBold,
-                        fontSize = 18.sp,
-                        color = StylishTheme.colors.border
-                    ),
+                    style = StylishTheme.typography.onboardingText,
+                    color = Color(0xFFC4C4C4),
                     modifier = Modifier.clickable(
                         interactionSource = interactionSource,
                         indication = null,
@@ -316,7 +315,7 @@ private fun OnboardingBottomBar(
                             if (isSelected) {
                                 Color(0xFF17223B)
                             } else {
-                                Color(0xFFDEDBDE)
+                                Color(0x3317223B)
                             }
                         )
                 )
@@ -330,12 +329,9 @@ private fun OnboardingBottomBar(
         ) {
             if (isLastPage) {
                 Text(
-                    text = stringResource(R.string.onboarding_get_started),
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        fontWeight = FontWeight.SemiBold,
-                        fontSize = 18.sp,
-                        color = StylishTheme.colors.brandPrimary
-                    ),
+                    text = stringResource(R.string.onboarding_start),
+                    style = StylishTheme.typography.onboardingText,
+                    color = StylishTheme.colors.brandPrimary,
                     modifier = Modifier.clickable(
                         interactionSource = interactionSource,
                         indication = null,
@@ -345,11 +341,8 @@ private fun OnboardingBottomBar(
             } else {
                 Text(
                     text = stringResource(R.string.onboarding_next),
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        fontWeight = FontWeight.SemiBold,
-                        fontSize = 18.sp,
-                        color = StylishTheme.colors.brandPrimary
-                    ),
+                    style = StylishTheme.typography.onboardingText,
+                    color = StylishTheme.colors.brandPrimary,
                     modifier = Modifier.clickable(
                         interactionSource = interactionSource,
                         indication = null,

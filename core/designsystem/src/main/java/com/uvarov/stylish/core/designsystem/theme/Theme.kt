@@ -11,6 +11,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 val defaultStylishColors = StylishColors()
+val defaultStylishTypography = StylishTypography()
 
 private val BaseMaterialColorScheme = lightColorScheme(
     primary = defaultStylishColors.brandPrimary,
@@ -26,6 +27,7 @@ private val BaseMaterialColorScheme = lightColorScheme(
 @Composable
 fun StylishTheme(
     colors: StylishColors = defaultStylishColors,
+    typography: StylishTypography = defaultStylishTypography,
     content: @Composable () -> Unit
 ) {
     val view = LocalView.current
@@ -41,11 +43,11 @@ fun StylishTheme(
     }
 
     CompositionLocalProvider(
-        LocalStylishColors provides colors
+        LocalStylishColors provides colors,
+        LocalStylishTypography provides typography
     ) {
         MaterialTheme(
             colorScheme = BaseMaterialColorScheme,
-            typography = Typography,
             content = content
         )
     }
@@ -56,4 +58,9 @@ object StylishTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalStylishColors.current
+
+    val typography: StylishTypography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalStylishTypography.current
 }
