@@ -1,7 +1,6 @@
 package com.uvarov.stylish.feature.main
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -19,9 +18,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
@@ -123,38 +122,38 @@ fun StylishBottomBar(
     onTabSelected: (MainTab) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(StylishTheme.colors.surface)
-            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal))
+    Surface(
+        modifier = modifier.fillMaxWidth(),
+        color = StylishTheme.colors.surface,
+        shadowElevation = 4.dp,
     ) {
-        HorizontalDivider(
-            thickness = 0.5.dp,
-            color = StylishTheme.colors.surfaceCard
-        )
-
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(64.dp),
-            horizontalArrangement = Arrangement.SpaceAround,
-            verticalAlignment = Alignment.CenterVertically
+                .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal))
         ) {
-            MainTab.entries.forEach { tab ->
-                val isSelected = tab == selectedTab
-                val itemColor = if (isSelected)
-                    StylishTheme.colors.bottomNavigationTabSelected
-                else
-                    StylishTheme.colors.textPrimary
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(64.dp),
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                MainTab.entries.forEach { tab ->
+                    val isSelected = tab == selectedTab
+                    val itemColor = if (isSelected)
+                        StylishTheme.colors.bottomNavigationTabSelected
+                    else
+                        StylishTheme.colors.textPrimary
 
-                BottomNavigationTabItem(
-                    tab = tab,
-                    isSelected = isSelected,
-                    itemColor = itemColor,
-                    onClick = { onTabSelected(tab) },
-                    modifier = Modifier.weight(1f)
-                )
+                    BottomNavigationTabItem(
+                        tab = tab,
+                        isSelected = isSelected,
+                        itemColor = itemColor,
+                        onClick = { onTabSelected(tab) },
+                        modifier = Modifier.weight(1f)
+                    )
+                }
             }
         }
     }
