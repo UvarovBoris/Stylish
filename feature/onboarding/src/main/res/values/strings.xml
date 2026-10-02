@@ -1,3 +1,15 @@
 <resources>
-    <string name="onboarding_title">Welcome to Stylish</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_prev">Prev</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_get_started">Get Started</string>
+
+    <string name="onboarding_title_1">Choose Products</string>
+    <string name="onboarding_description_1">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</string>
+
+    <string name="onboarding_title_2">Make Payment</string>
+    <string name="onboarding_description_2">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</string>
+
+    <string name="onboarding_title_3">Get Your Order</string>
+    <string name="onboarding_description_3">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</string>
 </resources>

@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="300dp"
+    android:viewportWidth="300"
+    android:viewportHeight="300">
+    <!-- Background Circle -->
+    <path
+        android:fillColor="#FCF3F6"
+        android:pathData="M150,150m-130,0a130,130 0,1 1,260 0a130,130 0,1 1,-260 0" />
+    <!-- Shop Hanger / Rack Accent -->
+    <path
+        android:fillColor="#F83758"
+        android:pathData="M150,75 L180,120 L120,120 Z" />
+    <path
+        android:strokeColor="#F83758"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M150,60 C150,50 160,50 160,60 C160,70 150,75 150,75" />
+    <!-- Dress / Product Outline -->
+    <path
+        android:fillColor="#FA7189"
+        android:pathData="M130,120 L170,120 L195,225 L105,225 Z" />
+    <!-- Bottom Shelf/Stand -->
+    <path
+        android:fillColor="#222222"
+        android:pathData="M80,235 L220,235 A6,6 0 0 1 220,247 L80,247 A6,6 0 0 1 80,235 Z" />
+    <!-- Shopping Bag Accent -->
+    <path
+        android:fillColor="#F83758"
+        android:pathData="M190,170 h40 v45 h-40 z" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M200,170 C200,160 220,160 220,170" />
+</vector>

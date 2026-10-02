@@ -1,4 +1,4 @@
-package com.uvarov.stylish.ui.theme
+package com.uvarov.stylish.core.designsystem.theme
 
 import android.app.Activity
 import androidx.compose.material3.MaterialTheme

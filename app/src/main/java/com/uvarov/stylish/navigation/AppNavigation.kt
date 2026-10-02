@@ -26,7 +26,11 @@ fun AppNavigation(
         ),
         entryProvider = entryProvider {
             entry<OnboardingRoute> {
-                OnboardingScreen()
+                OnboardingScreen(
+                    onComplete = {
+                        // Navigation to next destination (e.g. Auth / Home) will be routed here
+                    }
+                )
             }
         }
     )

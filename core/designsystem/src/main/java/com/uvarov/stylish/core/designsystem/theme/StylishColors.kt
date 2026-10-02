@@ -1,4 +1,4 @@
-package com.uvarov.stylish.ui.theme
+package com.uvarov.stylish.core.designsystem.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf

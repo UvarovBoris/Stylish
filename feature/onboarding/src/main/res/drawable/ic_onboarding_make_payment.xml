@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="300dp"
+    android:viewportWidth="300"
+    android:viewportHeight="300">
+    <!-- Background Circle -->
+    <path
+        android:fillColor="#FCF3F6"
+        android:pathData="M150,150m-130,0a130,130 0,1 1,260 0a130,130 0,1 1,-260 0" />
+    <!-- Mobile Device Body -->
+    <path
+        android:fillColor="#222222"
+        android:pathData="M100,50 L200,50 A16,16 0 0 1 216,66 L216,234 A16,16 0 0 1 200,250 L100,250 A16,16 0 0 1 84,234 L84,66 A16,16 0 0 1 100,50 Z" />
+    <!-- Screen Glass -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M92,68 L208,68 L208,232 L92,232 Z" />
+    <!-- Payment Card / Chip Graphic -->
+    <path
+        android:fillColor="#F83758"
+        android:pathData="M110,95 L190,95 A8,8 0 0 1 198,103 L198,147 A8,8 0 0 1 190,155 L110,155 A8,8 0 0 1 102,147 L102,103 A8,8 0 0 1 110,95 Z" />
+    <path
+        android:fillColor="#FA7189"
+        android:pathData="M102,112 L198,112 L198,122 L102,122 Z" />
+    <!-- Pay Button on Screen -->
+    <path
+        android:fillColor="#F83758"
+        android:pathData="M115,185 L185,185 A10,10 0 0 1 195,195 L195,205 A10,10 0 0 1 185,215 L115,215 A10,10 0 0 1 105,205 L105,195 A10,10 0 0 1 115,185 Z" />
+    <!-- Checkmark inside Button -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M142,200 L148,206 L158,194" />
+</vector>

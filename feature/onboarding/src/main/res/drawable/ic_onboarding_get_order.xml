@@ -1,0 +1,34 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="300dp"
+    android:viewportWidth="300"
+    android:viewportHeight="300">
+    <!-- Background Circle -->
+    <path
+        android:fillColor="#FCF3F6"
+        android:pathData="M150,150m-130,0a130,130 0,1 1,260 0a130,130 0,1 1,-260 0" />
+    <!-- Delivery Box Isometric Body -->
+    <path
+        android:fillColor="#F83758"
+        android:pathData="M150,90 L220,130 L150,170 L80,130 Z" />
+    <path
+        android:fillColor="#D82545"
+        android:pathData="M80,130 L150,170 L150,240 L80,200 Z" />
+    <path
+        android:fillColor="#FA7189"
+        android:pathData="M150,170 L220,130 L220,200 L150,240 Z" />
+    <!-- Box Ribbon / Tape -->
+    <path
+        android:fillColor="#FCF3F6"
+        android:pathData="M115,110 L185,150 L185,158 L115,118 Z" />
+    <!-- Success Badge / Checkmark Circle -->
+    <path
+        android:fillColor="#34A853"
+        android:pathData="M210,90m-24,0a24,24 0,1 1,48 0a24,24 0,1 1,-48 0" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M200,90 L207,97 L220,83" />
+</vector>
