@@ -46,13 +46,20 @@ import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 fun MainScreen(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = hiltViewModel(),
+    homeContent: @Composable () -> Unit = {
+        TabPlaceholderContent(
+            titleRes = R.string.home_placeholder_title,
+            iconRes = R.drawable.ic_nav_home
+        )
+    },
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     MainContent(
         uiState = uiState,
         modifier = modifier,
-        onIntent = viewModel::onIntent
+        onIntent = viewModel::onIntent,
+        homeContent = homeContent,
     )
 }
 
@@ -61,6 +68,12 @@ fun MainContent(
     uiState: MainUiState,
     modifier: Modifier = Modifier,
     onIntent: (MainIntent) -> Unit,
+    homeContent: @Composable () -> Unit = {
+        TabPlaceholderContent(
+            titleRes = R.string.home_placeholder_title,
+            iconRes = R.drawable.ic_nav_home
+        )
+    },
 ) {
     // When not on the Home tab, pressing system back returns to the Home tab
     BackHandler(enabled = uiState.currentTab != MainTab.HOME) {
@@ -86,10 +99,8 @@ fun MainContent(
         ) {
             saveableStateHolder.SaveableStateProvider(key = uiState.currentTab) {
                 when (uiState.currentTab) {
-                    MainTab.HOME -> TabPlaceholderContent(
-                        titleRes = R.string.home_placeholder_title,
-                        iconRes = R.drawable.ic_nav_home
-                    )
+                    MainTab.HOME -> homeContent()
+
 
                     MainTab.WISHLIST -> TabPlaceholderContent(
                         titleRes = R.string.wishlist_placeholder_title,

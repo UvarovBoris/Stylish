@@ -41,8 +41,12 @@ android {
 dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:data"))
+    implementation(project(":core:model"))
+    implementation(project(":core:network"))
+    implementation(project(":core:ui"))
     implementation(project(":feature:onboarding"))
     implementation(project(":feature:main"))
+    implementation(project(":feature:home"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)

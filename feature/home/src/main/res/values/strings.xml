@@ -1,0 +1,18 @@
+<resources>
+    <string name="search_placeholder">Search any Product..</string>
+    <string name="all_featured">All Featured</string>
+    <string name="sort">Sort</string>
+    <string name="filter">Filter</string>
+    <string name="deal_of_the_day">Deal of the Day</string>
+    <string name="remaining">remaining</string>
+    <string name="view_all">View all</string>
+    <string name="special_offers">Special Offers</string>
+    <string name="flat_and_heels">Flat and Heels</string>
+    <string name="visit_now">Visit now</string>
+    <string name="trending_products">Trending Products</string>
+    <string name="new_arrivals">New Arrivals</string>
+    <string name="sponsored">Sponserd</string>
+    <string name="retry">Retry</string>
+    <string name="error_loading">Something went wrong</string>
+    <string name="app_name_stylish">Stylish</string>
+</resources>

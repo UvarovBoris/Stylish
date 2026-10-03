@@ -51,6 +51,71 @@ data class StylishTypography(
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
     ),
+
+    val productTitle: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp,
+        lineHeight = 16.sp
+    ),
+    val productDescription: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Normal,
+        fontSize = 10.sp,
+        lineHeight = 14.sp
+    ),
+    val productPrice: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 12.sp
+    ),
+    val productOriginalPrice: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Light,
+        fontSize = 10.sp
+    ),
+    val productDiscount: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Normal,
+        fontSize = 10.sp
+    ),
+    val productRatingCount: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Normal,
+        fontSize = 10.sp
+    ),
+
+    val sectionTitle: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 18.sp
+    ),
+    val sectionAction: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 12.sp
+    ),
+    val bannerTitle: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp
+    ),
+    val bannerSubtitle: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp
+    ),
+    val categoryName: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Medium,
+        fontSize = 10.sp
+    ),
+    val searchHint: TextStyle = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp
+    ),
 )
+
 
 val LocalStylishTypography = staticCompositionLocalOf { StylishTypography() }

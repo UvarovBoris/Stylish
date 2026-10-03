@@ -1,0 +1,165 @@
+{
+  "categories": [
+    {
+      "id": "cat_beauty",
+      "name": "Beauty",
+      "image_res_name": "placeholder_cat_beauty"
+    },
+    {
+      "id": "cat_fashion",
+      "name": "Fashion",
+      "image_res_name": "placeholder_cat_fashion"
+    },
+    {
+      "id": "cat_kids",
+      "name": "Kids",
+      "image_res_name": "placeholder_cat_kids"
+    },
+    {
+      "id": "cat_mens",
+      "name": "Mens",
+      "image_res_name": "placeholder_cat_mens"
+    },
+    {
+      "id": "cat_womens",
+      "name": "Womens",
+      "image_res_name": "placeholder_cat_womens"
+    }
+  ],
+  "hero_banners": [
+    {
+      "id": "hero_1",
+      "title": "50-40% OFF",
+      "subtitle": "Now in (product)\nAll colours",
+      "action_text": "Shop Now",
+      "image_res_name": "placeholder_banner_hero"
+    },
+    {
+      "id": "hero_2",
+      "title": "Summer Wave",
+      "subtitle": "Top picks on fresh styles\nLimited time",
+      "action_text": "Shop Now",
+      "image_res_name": "placeholder_banner_hero"
+    },
+    {
+      "id": "hero_3",
+      "title": "Exclusive Deals",
+      "subtitle": "Up to 70% off trending styles\nCheck it out",
+      "action_text": "Shop Now",
+      "image_res_name": "placeholder_banner_hero"
+    }
+  ],
+  "deal_of_the_day": {
+    "title": "Deal of the Day",
+    "remaining_time_seconds": 82520,
+    "products": [
+      {
+        "id": "prod_1",
+        "title": "Women Printed Kurta",
+        "description": "Neque porro quisquam est qui dolorem ipsum quia",
+        "current_price": 1500,
+        "original_price": 2499,
+        "discount_percent": 40,
+        "rating": 4.0,
+        "review_count": 56890,
+        "image_res_name": "placeholder_kurta"
+      },
+      {
+        "id": "prod_2",
+        "title": "HRX by Hrithik Roshan",
+        "description": "Neque porro quisquam est qui dolorem ipsum quia",
+        "current_price": 2499,
+        "original_price": 4999,
+        "discount_percent": 50,
+        "rating": 4.5,
+        "review_count": 344567,
+        "image_res_name": "placeholder_shoes"
+      },
+      {
+        "id": "prod_18",
+        "title": "Nike Sneakers Vision Alta",
+        "description": "Vision Alta Men's Shoes Size (All Colours)",
+        "current_price": 1500,
+        "original_price": 2999,
+        "discount_percent": 50,
+        "rating": 4.0,
+        "review_count": 56890,
+        "image_res_name": "placeholder_shoes"
+      }
+    ]
+  },
+  "special_offer_banner": {
+    "id": "special_offer_1",
+    "title": "Special Offers",
+    "subtitle": "We make sure you get the offer you need at best prices",
+    "action_text": "",
+    "image_res_name": "placeholder_special_offer"
+  },
+  "heels_banner": {
+    "id": "heels_1",
+    "title": "Flat and Heels",
+    "subtitle": "Stand a chance to get rewarded",
+    "action_text": "Visit now",
+    "image_res_name": "placeholder_heels"
+  },
+  "trending_products": [
+    {
+      "id": "prod_3",
+      "title": "IWC Schaffhausen 2021 Pilot's Watch \"SIHH 2019\" 44mm",
+      "description": "Luxury pilot chronograph watch with automatic movement",
+      "current_price": 650,
+      "original_price": 1599,
+      "discount_percent": 60,
+      "rating": 4.0,
+      "review_count": 12450,
+      "image_res_name": "placeholder_watch"
+    },
+    {
+      "id": "prod_4",
+      "title": "Labbin White Sneakers",
+      "description": "For Men and Female",
+      "current_price": 650,
+      "original_price": 1250,
+      "discount_percent": 70,
+      "rating": 4.0,
+      "review_count": 8920,
+      "image_res_name": "placeholder_sneakers"
+    },
+    {
+      "id": "prod_5",
+      "title": "Mammoth Handbag (Set of 3)",
+      "description": "Premium leather handbag combo with stylish shoulder strap",
+      "current_price": 750,
+      "original_price": 1999,
+      "discount_percent": 62,
+      "rating": 4.0,
+      "review_count": 15200,
+      "image_res_name": "placeholder_handbag"
+    },
+    {
+      "id": "prod_7",
+      "title": "Mens Starry",
+      "description": "Mens Starry Sky Printed Shirt 100% Cotton Fabric",
+      "current_price": 399,
+      "original_price": 799,
+      "discount_percent": 50,
+      "rating": 4.0,
+      "review_count": 152344,
+      "image_res_name": "placeholder_shirt"
+    }
+  ],
+  "new_arrivals_banner": {
+    "id": "new_arrivals_1",
+    "title": "New Arrivals",
+    "subtitle": "Summer' 25 Collections",
+    "action_text": "View all",
+    "image_res_name": "placeholder_banner_summer"
+  },
+  "sponsored_banner": {
+    "id": "sponsored_1",
+    "title": "Sponserd",
+    "subtitle": "up to 50% Off",
+    "action_text": "UP TO 50% OFF",
+    "image_res_name": "placeholder_banner_sponsored"
+  }
+}

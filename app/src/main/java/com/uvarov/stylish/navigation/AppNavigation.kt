@@ -8,6 +8,7 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
+import com.uvarov.stylish.feature.home.HomeScreen
 import com.uvarov.stylish.feature.main.MainScreen
 import com.uvarov.stylish.feature.main.navigation.MainRoute
 import com.uvarov.stylish.feature.onboarding.OnboardingScreen
@@ -38,8 +39,16 @@ fun AppNavigation(
                 )
             }
             entry<MainRoute> {
-                MainScreen()
+                MainScreen(
+                    homeContent = {
+                        HomeScreen(
+                            onProductClick = { /* Will navigate to product details */ },
+                            onNavigateToCatalog = { _, _ -> /* Will navigate to catalog */ }
+                        )
+                    }
+                )
             }
         }
     )
 }
+

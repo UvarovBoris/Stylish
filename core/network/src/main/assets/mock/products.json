@@ -1,0 +1,222 @@
+[
+  {
+    "id": "prod_1",
+    "title": "Women Printed Kurta",
+    "description": "Neque porro quisquam est qui dolorem ipsum quia",
+    "current_price": 1500,
+    "original_price": 2499,
+    "discount_percent": 40,
+    "rating": 4.0,
+    "review_count": 56890,
+    "image_res_name": "placeholder_kurta"
+  },
+  {
+    "id": "prod_2",
+    "title": "HRX by Hrithik Roshan",
+    "description": "Neque porro quisquam est qui dolorem ipsum quia",
+    "current_price": 2499,
+    "original_price": 4999,
+    "discount_percent": 50,
+    "rating": 4.5,
+    "review_count": 344567,
+    "image_res_name": "placeholder_shoes"
+  },
+  {
+    "id": "prod_3",
+    "title": "IWC Schaffhausen 2021 Pilot's Watch \"SIHH 2019\" 44mm",
+    "description": "Luxury pilot chronograph watch with automatic movement",
+    "current_price": 650,
+    "original_price": 1599,
+    "discount_percent": 60,
+    "rating": 4.0,
+    "review_count": 12450,
+    "image_res_name": "placeholder_watch"
+  },
+  {
+    "id": "prod_4",
+    "title": "Labbin White Sneakers",
+    "description": "For Men and Female",
+    "current_price": 650,
+    "original_price": 1250,
+    "discount_percent": 70,
+    "rating": 4.0,
+    "review_count": 8920,
+    "image_res_name": "placeholder_sneakers"
+  },
+  {
+    "id": "prod_5",
+    "title": "Mammoth Handbag (Set of 3)",
+    "description": "Premium leather handbag combo with stylish shoulder strap",
+    "current_price": 750,
+    "original_price": 1999,
+    "discount_percent": 62,
+    "rating": 4.0,
+    "review_count": 15200,
+    "image_res_name": "placeholder_handbag"
+  },
+  {
+    "id": "prod_6",
+    "title": "Black Winter Hoodie",
+    "description": "Autumn And Winter Casual cotton-padded jacket...",
+    "current_price": 499,
+    "original_price": 999,
+    "discount_percent": 50,
+    "rating": 4.0,
+    "review_count": 6890,
+    "image_res_name": "placeholder_jacket"
+  },
+  {
+    "id": "prod_7",
+    "title": "Mens Starry",
+    "description": "Mens Starry Sky Printed Shirt 100% Cotton Fabric",
+    "current_price": 399,
+    "original_price": 799,
+    "discount_percent": 50,
+    "rating": 4.0,
+    "review_count": 152344,
+    "image_res_name": "placeholder_shirt"
+  },
+  {
+    "id": "prod_8",
+    "title": "Black Dress",
+    "description": "Solid Black Dress for Women, Sexy Chain Shorts Ladi...",
+    "current_price": 2000,
+    "original_price": 3999,
+    "discount_percent": 50,
+    "rating": 4.0,
+    "review_count": 523456,
+    "image_res_name": "placeholder_dress"
+  },
+  {
+    "id": "prod_9",
+    "title": "Pink Embroidered Dress",
+    "description": "EARTHEN Rose Pink Embroidered Tiered Max...",
+    "current_price": 1900,
+    "original_price": 3800,
+    "discount_percent": 50,
+    "rating": 4.0,
+    "review_count": 45678,
+    "image_res_name": "placeholder_dress"
+  },
+  {
+    "id": "prod_10",
+    "title": "Flare Dress",
+    "description": "Antheaa Black & Rust Orange Floral Print Tiered Midi F...",
+    "current_price": 1990,
+    "original_price": 3980,
+    "discount_percent": 50,
+    "rating": 4.0,
+    "review_count": 335566,
+    "image_res_name": "placeholder_dress"
+  },
+  {
+    "id": "prod_11",
+    "title": "Denim Dress",
+    "description": "Blue cotton denim dress Look 2 Printed cotton dr...",
+    "current_price": 999,
+    "original_price": 1999,
+    "discount_percent": 50,
+    "rating": 4.0,
+    "review_count": 27344,
+    "image_res_name": "placeholder_dress"
+  },
+  {
+    "id": "prod_12",
+    "title": "Jordan Stay",
+    "description": "The classic Air Jordan 12 to create a shoe that's fres...",
+    "current_price": 4999,
+    "original_price": 7999,
+    "discount_percent": 37,
+    "rating": 2.5,
+    "review_count": 1023456,
+    "image_res_name": "placeholder_shoes"
+  },
+  {
+    "id": "prod_13",
+    "title": "Realme 7",
+    "description": "6 GB RAM | 64 GB ROM | Expandable Upto 256...",
+    "current_price": 3499,
+    "original_price": 5999,
+    "discount_percent": 41,
+    "rating": 4.0,
+    "review_count": 344567,
+    "image_res_name": "placeholder_phone"
+  },
+  {
+    "id": "prod_14",
+    "title": "Sony PS4",
+    "description": "Sony PS4 Console, 1TB Slim with 3 Games: Gran Turis...",
+    "current_price": 1999,
+    "original_price": 3999,
+    "discount_percent": 50,
+    "rating": 2.5,
+    "review_count": 835566,
+    "image_res_name": "placeholder_gadget"
+  },
+  {
+    "id": "prod_15",
+    "title": "Black Jacket 12",
+    "description": "This warm and comfortable jacket is great for learni...",
+    "current_price": 2999,
+    "original_price": 4999,
+    "discount_percent": 40,
+    "rating": 4.0,
+    "review_count": 223569,
+    "image_res_name": "placeholder_jacket"
+  },
+  {
+    "id": "prod_16",
+    "title": "D7200 Digital Camera",
+    "description": "D7200 Digital Camera (Nikon) In New Area...",
+    "current_price": 26999,
+    "original_price": 35999,
+    "discount_percent": 25,
+    "rating": 4.0,
+    "review_count": 67456,
+    "image_res_name": "placeholder_camera"
+  },
+  {
+    "id": "prod_17",
+    "title": "George Walker Derby",
+    "description": "George Walker Derby Brown Formal Shoes",
+    "current_price": 999,
+    "original_price": 1999,
+    "discount_percent": 50,
+    "rating": 5.0,
+    "review_count": 1345678,
+    "image_res_name": "placeholder_shoes"
+  },
+  {
+    "id": "prod_18",
+    "title": "Nike Sneakers Vision Alta",
+    "description": "Vision Alta Men's Shoes Size (All Colours) - Chicago iconic colorway",
+    "current_price": 1500,
+    "original_price": 2999,
+    "discount_percent": 50,
+    "rating": 4.0,
+    "review_count": 56890,
+    "image_res_name": "placeholder_shoes"
+  },
+  {
+    "id": "prod_19",
+    "title": "Nike Air Jordan Retro 1 Low",
+    "description": "Mystic Black",
+    "current_price": 1900,
+    "original_price": 2999,
+    "discount_percent": 36,
+    "rating": 4.0,
+    "review_count": 46890,
+    "image_res_name": "placeholder_shoes"
+  },
+  {
+    "id": "prod_20",
+    "title": "Nike Mid Peach Mocha",
+    "description": "Mid Peach Mocha Shoes For Man White Black Pink S...",
+    "current_price": 1900,
+    "original_price": 3199,
+    "discount_percent": 40,
+    "rating": 4.5,
+    "review_count": 256890,
+    "image_res_name": "placeholder_shoes"
+  }
+]
