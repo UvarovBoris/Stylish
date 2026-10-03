@@ -108,8 +108,9 @@ data class StylishTypography(
     ),
     val categoryName: TextStyle = TextStyle(
         fontFamily = Montserrat,
-        fontWeight = FontWeight.Medium,
-        fontSize = 10.sp
+        fontWeight = FontWeight.Normal,
+        fontSize = 10.sp,
+        lineHeight = 16.sp
     ),
     val searchHint: TextStyle = TextStyle(
         fontFamily = Montserrat,
