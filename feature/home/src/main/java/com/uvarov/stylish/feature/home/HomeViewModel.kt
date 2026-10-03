@@ -34,7 +34,9 @@ class HomeViewModel @Inject constructor(
         when (intent) {
             is HomeIntent.LoadHomeFeed -> loadHomeFeed()
             is HomeIntent.SearchBarClicked -> emitSideEffect(HomeSideEffect.NavigateToSearch)
-            is HomeIntent.CategorySelected -> handleCategorySelected(intent.categoryId)
+            is HomeIntent.CategoryClicked -> emitSideEffect(
+                HomeSideEffect.NavigateToCatalog(categoryId = intent.categoryId, title = intent.title)
+            )
             is HomeIntent.ProductClicked -> emitSideEffect(
                 HomeSideEffect.NavigateToProductDetails(intent.product.id)
             )
@@ -79,18 +81,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-
-    private fun handleCategorySelected(categoryId: String) {
-        _uiState.update { current ->
-            if (current is HomeUiState.Success) {
-                val newSelected = if (current.selectedCategoryId == categoryId) null else categoryId
-                current.copy(selectedCategoryId = newSelected)
-            } else {
-                current
-            }
-        }
-        emitSideEffect(HomeSideEffect.NavigateToCatalog(categoryId = categoryId))
-    }
 
     private fun emitSideEffect(effect: HomeSideEffect) {
         viewModelScope.launch {

@@ -109,4 +109,19 @@ class HomeViewModelTest {
             assertTrue(effect is HomeSideEffect.NavigateToSearch)
         }
     }
+
+    @Test
+    fun categoryClicked_emitsNavigateToCatalogSideEffect() = runTest(testDispatcher) {
+        every { homeRepository.getHomeFeed() } returns flowOf(sampleFeed)
+        val viewModel = HomeViewModel(homeRepository)
+        testScheduler.advanceUntilIdle()
+
+        viewModel.sideEffect.test {
+            viewModel.onIntent(HomeIntent.CategoryClicked(categoryId = "cat_1", title = "Beauty"))
+            val effect = awaitItem()
+            assertTrue(effect is HomeSideEffect.NavigateToCatalog)
+            assertEquals("cat_1", (effect as HomeSideEffect.NavigateToCatalog).categoryId)
+            assertEquals("Beauty", effect.title)
+        }
+    }
 }

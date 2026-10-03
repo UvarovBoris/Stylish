@@ -33,8 +33,7 @@ import com.uvarov.stylish.core.ui.util.ProductImageResolver
 @Composable
 fun HomeCategoriesRow(
     categories: List<Category>,
-    selectedCategoryId: String?,
-    onCategoryClick: (String) -> Unit,
+    onCategoryClick: (Category) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -51,11 +50,9 @@ fun HomeCategoriesRow(
         verticalAlignment = Alignment.CenterVertically
     ) {
         categories.forEach { category ->
-            val isSelected = category.id == selectedCategoryId
             CategoryItem(
                 category = category,
-                isSelected = isSelected,
-                onClick = { onCategoryClick(category.id) }
+                onClick = { onCategoryClick(category) }
             )
         }
     }
@@ -64,7 +61,6 @@ fun HomeCategoriesRow(
 @Composable
 private fun CategoryItem(
     category: Category,
-    isSelected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -94,7 +90,7 @@ private fun CategoryItem(
         Text(
             text = category.name,
             style = StylishTheme.typography.categoryName,
-            color = if (isSelected) StylishTheme.colors.brandPrimary else StylishTheme.colors.textPrimary
+            color = StylishTheme.colors.textPrimary
         )
     }
 }

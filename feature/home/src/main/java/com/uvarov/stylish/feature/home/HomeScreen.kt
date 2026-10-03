@@ -159,8 +159,9 @@ fun HomeContent(
                     Spacer(modifier = Modifier.height(16.dp))
                     HomeCategoriesRow(
                         categories = feed.categories,
-                        selectedCategoryId = uiState.selectedCategoryId,
-                        onCategoryClick = { onIntent(HomeIntent.CategorySelected(it)) }
+                        onCategoryClick = { category ->
+                            onIntent(HomeIntent.CategoryClicked(categoryId = category.id, title = category.name))
+                        }
                     )
                 }
 

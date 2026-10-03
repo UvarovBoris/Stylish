@@ -8,7 +8,6 @@ sealed interface HomeUiState {
 
     data class Success(
         val homeFeed: HomeFeed,
-        val selectedCategoryId: String? = null,
     ) : HomeUiState
 
     data class Error(
@@ -19,7 +18,7 @@ sealed interface HomeUiState {
 sealed interface HomeIntent {
     data object LoadHomeFeed : HomeIntent
     data object SearchBarClicked : HomeIntent
-    data class CategorySelected(val categoryId: String) : HomeIntent
+    data class CategoryClicked(val categoryId: String, val title: String? = null) : HomeIntent
     data class ProductClicked(val product: Product) : HomeIntent
     data object DealOfTheDayViewAllClicked : HomeIntent
     data object TrendingViewAllClicked : HomeIntent
