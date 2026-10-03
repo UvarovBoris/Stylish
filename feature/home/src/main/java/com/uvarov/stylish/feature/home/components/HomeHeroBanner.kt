@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -110,76 +110,67 @@ private fun HeroBannerCard(
     onBannerClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Surface(
+    Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(180.dp)
+            .height(189.dp)
             .clip(RoundedCornerShape(12.dp))
-            .clickable(onClick = onBannerClick),
-        shape = RoundedCornerShape(12.dp),
-        color = CoralPink,
+            .clickable(onClick = onBannerClick)
     ) {
-        Row(
+        val drawableRes = ProductImageResolver.resolveDrawable(banner.imageResName)
+        Image(
+            painter = painterResource(id = drawableRes),
+            contentDescription = banner.title,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .padding(16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            verticalArrangement = Arrangement.Center
         ) {
-            Column(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxHeight(),
-                verticalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = banner.title,
-                    fontFamily = Montserrat,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
-                    color = Color.White
-                )
+            Text(
+                text = banner.title,
+                fontFamily = Montserrat,
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                lineHeight = 22.sp,
+                color = Color.White
+            )
 
-                Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
-                    text = banner.subtitle,
-                    fontFamily = Montserrat,
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 12.sp,
-                    color = Color.White
-                )
+            Text(
+                text = banner.subtitle,
+                fontFamily = Montserrat,
+                fontWeight = FontWeight.Normal,
+                fontSize = 12.sp,
+                lineHeight = 16.sp,
+                color = Color.White
+            )
 
-                if (banner.actionText.isNotBlank()) {
-                    Spacer(modifier = Modifier.height(12.dp))
+            if (banner.actionText.isNotBlank()) {
+                Spacer(modifier = Modifier.height(12.dp))
 
-                    Surface(
-                        shape = RoundedCornerShape(6.dp),
-                        color = Color.Transparent,
-                        border = androidx.compose.foundation.BorderStroke(1.dp, Color.White),
-                        modifier = Modifier.clickable(onClick = onBannerClick)
-                    ) {
-                        Text(
-                            text = "${banner.actionText} →",
-                            fontFamily = Montserrat,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 12.sp,
-                            color = Color.White,
-                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
-                        )
-                    }
+                Surface(
+                    shape = RoundedCornerShape(6.dp),
+                    color = Color.Transparent,
+                    border = androidx.compose.foundation.BorderStroke(1.dp, Color.White),
+                    modifier = Modifier.clickable(onClick = onBannerClick)
+                ) {
+                    Text(
+                        text = "${banner.actionText} →",
+                        fontFamily = Montserrat,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 12.sp,
+                        lineHeight = 16.sp,
+                        color = Color.White,
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                    )
                 }
             }
-
-            val drawableRes = ProductImageResolver.resolveDrawable(banner.imageResName)
-            Image(
-                painter = painterResource(id = drawableRes),
-                contentDescription = banner.title,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .size(130.dp)
-                    .clip(RoundedCornerShape(8.dp))
-            )
         }
     }
 }
