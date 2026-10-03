@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -31,7 +30,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.uvarov.stylish.core.designsystem.R
 import com.uvarov.stylish.core.designsystem.theme.BlueAccent
 import com.uvarov.stylish.core.designsystem.theme.CoralPink
-import com.uvarov.stylish.core.designsystem.theme.CoralRed
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 import com.uvarov.stylish.core.model.BannerItem
 import com.uvarov.stylish.core.model.Category
@@ -143,6 +141,7 @@ fun HomeContent(
 
                 // Search Bar
                 item {
+                    Spacer(modifier = Modifier.height(16.dp))
                     HomeSearchBar(
                         onSearchClick = { onIntent(HomeIntent.SearchBarClicked) },
                         onVoiceClick = { onIntent(HomeIntent.VoiceSearchClicked) }
@@ -151,11 +150,13 @@ fun HomeContent(
 
                 // "All Featured" Header
                 item {
+                    Spacer(modifier = Modifier.height(16.dp))
                     HomeFeaturedHeader()
                 }
 
                 // Categories Row
                 item {
+                    Spacer(modifier = Modifier.height(16.dp))
                     HomeCategoriesRow(
                         categories = feed.categories,
                         selectedCategoryId = uiState.selectedCategoryId,

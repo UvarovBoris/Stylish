@@ -27,8 +27,13 @@ val OffWhite = Color(0xFFFDFDFD)
 val NavyDark = Color(0xFF17223B)
 val NavyDarkAlpha = Color(0x3317223B)
 
+val Background = Color(0xFFF9F9F9)
+
 // Status
 val SuccessGreen = Color(0xFF34A853)
 val ErrorRed = Color(0xFFEB3030)
 
 val BottomNavigationTabSelected = Color(0xFFEB3030)
+
+// Shadow (Black with 4% alpha from Figma)
+val ShadowDefault = Color(0x0A000000)

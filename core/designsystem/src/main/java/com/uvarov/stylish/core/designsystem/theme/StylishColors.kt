@@ -13,7 +13,7 @@ data class StylishColors(
     val brandContainer: Color = SoftPink,
 
     // Background & Surfaces
-    val background: Color = OffWhite,
+    val background: Color = Background,
     val surface: Color = White,
     val surfaceCard: Color = GraySurface,
 
@@ -33,6 +33,7 @@ data class StylishColors(
     val indicatorInactive: Color = NavyDarkAlpha,
 
     val bottomNavigationTabSelected: Color = BottomNavigationTabSelected,
+    val dropShadow: Color = ShadowDefault,
 )
 
 val LocalStylishColors = staticCompositionLocalOf { StylishColors() }
