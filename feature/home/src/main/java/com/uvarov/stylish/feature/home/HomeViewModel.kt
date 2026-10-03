@@ -33,7 +33,7 @@ class HomeViewModel @Inject constructor(
     fun onIntent(intent: HomeIntent) {
         when (intent) {
             is HomeIntent.LoadHomeFeed -> loadHomeFeed()
-            is HomeIntent.SearchQueryChanged -> handleSearchQueryChanged(intent.query)
+            is HomeIntent.SearchBarClicked -> emitSideEffect(HomeSideEffect.NavigateToSearch)
             is HomeIntent.CategorySelected -> handleCategorySelected(intent.categoryId)
             is HomeIntent.ProductClicked -> emitSideEffect(
                 HomeSideEffect.NavigateToProductDetails(intent.product.id)
@@ -56,8 +56,6 @@ class HomeViewModel @Inject constructor(
             is HomeIntent.SponsoredBannerClicked -> emitSideEffect(
                 HomeSideEffect.NavigateToCatalog(title = "Sponsored")
             )
-            is HomeIntent.SortClicked -> emitSideEffect(HomeSideEffect.OpenSortSheet)
-            is HomeIntent.FilterClicked -> emitSideEffect(HomeSideEffect.OpenFilterSheet)
             is HomeIntent.VoiceSearchClicked -> emitSideEffect(
                 HomeSideEffect.ShowToast("Voice search activated")
             )
@@ -81,15 +79,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun handleSearchQueryChanged(query: String) {
-        _uiState.update { current ->
-            if (current is HomeUiState.Success) {
-                current.copy(searchQuery = query)
-            } else {
-                current
-            }
-        }
-    }
 
     private fun handleCategorySelected(categoryId: String) {
         _uiState.update { current ->

@@ -41,7 +41,7 @@ import com.uvarov.stylish.core.model.Product
 import com.uvarov.stylish.core.ui.component.ProductCard
 import com.uvarov.stylish.feature.home.components.HeelsBanner
 import com.uvarov.stylish.feature.home.components.HomeCategoriesRow
-import com.uvarov.stylish.feature.home.components.HomeFilterSortRow
+import com.uvarov.stylish.feature.home.components.HomeFeaturedHeader
 import com.uvarov.stylish.feature.home.components.HomeHeroBanner
 import com.uvarov.stylish.feature.home.components.HomeSearchBar
 import com.uvarov.stylish.feature.home.components.HomeSectionHeader
@@ -57,6 +57,7 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
     onProductClick: (String) -> Unit = {},
     onNavigateToCatalog: (categoryId: String?, title: String?) -> Unit = { _, _ -> },
+    onNavigateToSearch: () -> Unit = {},
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
@@ -66,16 +67,12 @@ fun HomeScreen(
             when (effect) {
                 is HomeSideEffect.NavigateToProductDetails -> onProductClick(effect.productId)
                 is HomeSideEffect.NavigateToCatalog -> onNavigateToCatalog(effect.categoryId, effect.title)
-                is HomeSideEffect.OpenFilterSheet -> {
-                    Toast.makeText(context, "Filter clicked", Toast.LENGTH_SHORT).show()
-                }
-                is HomeSideEffect.OpenSortSheet -> {
-                    Toast.makeText(context, "Sort clicked", Toast.LENGTH_SHORT).show()
-                }
+                is HomeSideEffect.NavigateToSearch -> onNavigateToSearch()
                 is HomeSideEffect.ShowToast -> {
                     Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
                 }
             }
+
         }
     }
 
@@ -144,22 +141,17 @@ fun HomeContent(
                     )
                 }
 
-
                 // Search Bar
                 item {
                     HomeSearchBar(
-                        query = uiState.searchQuery,
-                        onQueryChange = { onIntent(HomeIntent.SearchQueryChanged(it)) },
+                        onSearchClick = { onIntent(HomeIntent.SearchBarClicked) },
                         onVoiceClick = { onIntent(HomeIntent.VoiceSearchClicked) }
                     )
                 }
 
-                // "All Featured" + Sort/Filter row
+                // "All Featured" Header
                 item {
-                    HomeFilterSortRow(
-                        onSortClick = { onIntent(HomeIntent.SortClicked) },
-                        onFilterClick = { onIntent(HomeIntent.FilterClicked) }
-                    )
+                    HomeFeaturedHeader()
                 }
 
                 // Categories Row

@@ -40,10 +40,11 @@ fun AppNavigation(
             }
             entry<MainRoute> {
                 MainScreen(
-                    homeContent = {
+                    homeContent = { onNavigateToSearch ->
                         HomeScreen(
                             onProductClick = { /* Will navigate to product details */ },
-                            onNavigateToCatalog = { _, _ -> /* Will navigate to catalog */ }
+                            onNavigateToCatalog = { _, _ -> /* Will navigate to catalog */ },
+                            onNavigateToSearch = onNavigateToSearch,
                         )
                     }
                 )

@@ -88,7 +88,8 @@ data class StylishTypography(
     val sectionTitle: TextStyle = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 18.sp
+        fontSize = 18.sp,
+        lineHeight = 22.sp
     ),
     val sectionAction: TextStyle = TextStyle(
         fontFamily = Montserrat,
@@ -113,7 +114,8 @@ data class StylishTypography(
     val searchHint: TextStyle = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
+        fontSize = 14.sp,
+        lineHeight = 20.sp
     ),
 )
 

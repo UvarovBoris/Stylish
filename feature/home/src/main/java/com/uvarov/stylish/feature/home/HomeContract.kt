@@ -8,7 +8,6 @@ sealed interface HomeUiState {
 
     data class Success(
         val homeFeed: HomeFeed,
-        val searchQuery: String = "",
         val selectedCategoryId: String? = null,
     ) : HomeUiState
 
@@ -19,7 +18,7 @@ sealed interface HomeUiState {
 
 sealed interface HomeIntent {
     data object LoadHomeFeed : HomeIntent
-    data class SearchQueryChanged(val query: String) : HomeIntent
+    data object SearchBarClicked : HomeIntent
     data class CategorySelected(val categoryId: String) : HomeIntent
     data class ProductClicked(val product: Product) : HomeIntent
     data object DealOfTheDayViewAllClicked : HomeIntent
@@ -28,15 +27,12 @@ sealed interface HomeIntent {
     data object HeelsBannerClicked : HomeIntent
     data object NewArrivalsClicked : HomeIntent
     data object SponsoredBannerClicked : HomeIntent
-    data object SortClicked : HomeIntent
-    data object FilterClicked : HomeIntent
     data object VoiceSearchClicked : HomeIntent
 }
 
 sealed interface HomeSideEffect {
     data class NavigateToProductDetails(val productId: String) : HomeSideEffect
     data class NavigateToCatalog(val categoryId: String? = null, val title: String? = null) : HomeSideEffect
-    data object OpenFilterSheet : HomeSideEffect
-    data object OpenSortSheet : HomeSideEffect
+    data object NavigateToSearch : HomeSideEffect
     data class ShowToast(val message: String) : HomeSideEffect
 }

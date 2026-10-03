@@ -46,7 +46,7 @@ import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 fun MainScreen(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = hiltViewModel(),
-    homeContent: @Composable () -> Unit = {
+    homeContent: @Composable (onNavigateToSearch: () -> Unit) -> Unit = {
         TabPlaceholderContent(
             titleRes = R.string.home_placeholder_title,
             iconRes = R.drawable.ic_nav_home
@@ -68,7 +68,7 @@ fun MainContent(
     uiState: MainUiState,
     modifier: Modifier = Modifier,
     onIntent: (MainIntent) -> Unit,
-    homeContent: @Composable () -> Unit = {
+    homeContent: @Composable (onNavigateToSearch: () -> Unit) -> Unit = {
         TabPlaceholderContent(
             titleRes = R.string.home_placeholder_title,
             iconRes = R.drawable.ic_nav_home
@@ -99,7 +99,9 @@ fun MainContent(
         ) {
             saveableStateHolder.SaveableStateProvider(key = uiState.currentTab) {
                 when (uiState.currentTab) {
-                    MainTab.HOME -> homeContent()
+                    MainTab.HOME -> homeContent {
+                        onIntent(MainIntent.TabSelected(MainTab.SEARCH))
+                    }
 
 
                     MainTab.WISHLIST -> TabPlaceholderContent(

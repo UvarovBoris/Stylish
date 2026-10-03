@@ -98,19 +98,15 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun searchQueryChanged_updatesSearchQueryInUiState() = runTest(testDispatcher) {
+    fun searchBarClicked_emitsNavigateToSearchSideEffect() = runTest(testDispatcher) {
         every { homeRepository.getHomeFeed() } returns flowOf(sampleFeed)
         val viewModel = HomeViewModel(homeRepository)
         testScheduler.advanceUntilIdle()
 
-        viewModel.uiState.test {
-            val initialState = awaitItem()
-            assertTrue(initialState is HomeUiState.Success)
-
-            viewModel.onIntent(HomeIntent.SearchQueryChanged("Sneakers"))
-            val updatedState = awaitItem()
-            assertTrue(updatedState is HomeUiState.Success)
-            assertEquals("Sneakers", (updatedState as HomeUiState.Success).searchQuery)
+        viewModel.sideEffect.test {
+            viewModel.onIntent(HomeIntent.SearchBarClicked)
+            val effect = awaitItem()
+            assertTrue(effect is HomeSideEffect.NavigateToSearch)
         }
     }
 }
