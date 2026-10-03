@@ -28,7 +28,8 @@ class DefaultHomeRepositoryTest {
     fun getHomeFeed_emitsMappedDomainHomeFeed() = runTest {
         val mockResponse = HomeFeedResponseDto(
             categories = listOf(
-                CategoryDto("cat_1", "Beauty", "placeholder_cat_beauty")
+                CategoryDto("cat_1", "Beauty", "placeholder_cat_beauty"),
+                CategoryDto("cat_gifts", "Gifts", "placeholder_cat_gifts")
             ),
             heroBanners = listOf(
                 BannerItemDto("banner_1", "50% OFF", "All colors", "Shop Now", "placeholder_banner")
@@ -61,8 +62,10 @@ class DefaultHomeRepositoryTest {
 
         repository.getHomeFeed().test {
             val feed = awaitItem()
-            assertEquals(1, feed.categories.size)
+            assertEquals(2, feed.categories.size)
             assertEquals("Beauty", feed.categories[0].name)
+            assertEquals("Gifts", feed.categories[1].name)
+            assertEquals("placeholder_cat_gifts", feed.categories[1].imageResName)
             assertEquals("Deal of the Day", feed.dealOfTheDay.title)
             assertEquals(1, feed.dealOfTheDay.products.size)
             assertEquals("Women Printed Kurta", feed.dealOfTheDay.products[0].title)

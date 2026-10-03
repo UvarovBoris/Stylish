@@ -15,4 +15,10 @@
     <string name="retry">Retry</string>
     <string name="error_loading">Something went wrong</string>
     <string name="app_name_stylish">Stylish</string>
+    <string name="category_beauty">Beauty</string>
+    <string name="category_fashion">Fashion</string>
+    <string name="category_kids">Kids</string>
+    <string name="category_mens">Mens</string>
+    <string name="category_womens">Womens</string>
+    <string name="category_gifts">Gifts</string>
 </resources>

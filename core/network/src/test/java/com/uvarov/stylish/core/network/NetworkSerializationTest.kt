@@ -29,7 +29,8 @@ class NetworkSerializationTest {
 
         val dto = json.decodeFromString<HomeFeedResponseDto>(content)
         assertNotNull(dto)
-        assertEquals(5, dto.categories.size)
+        assertEquals(6, dto.categories.size)
+        assertTrue(dto.categories.any { it.id == "cat_gifts" && it.name == "Gifts" })
         assertTrue(dto.dealOfTheDay.products.isNotEmpty())
         assertEquals("Women Printed Kurta", dto.dealOfTheDay.products[0].title)
         assertEquals(1500, dto.dealOfTheDay.products[0].currentPrice)

@@ -309,7 +309,8 @@ private fun HomeContentPreview() {
         Category("2", "Fashion", "placeholder_cat_fashion"),
         Category("3", "Kids", "placeholder_cat_kids"),
         Category("4", "Mens", "placeholder_cat_mens"),
-        Category("5", "Womens", "placeholder_cat_womens")
+        Category("5", "Womens", "placeholder_cat_womens"),
+        Category("6", "Gifts", "placeholder_cat_gifts")
     )
 
     val sampleFeed = HomeFeed(

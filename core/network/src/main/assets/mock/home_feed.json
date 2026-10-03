@@ -24,6 +24,11 @@
       "id": "cat_womens",
       "name": "Womens",
       "image_res_name": "placeholder_cat_womens"
+    },
+    {
+      "id": "cat_gifts",
+      "name": "Gifts",
+      "image_res_name": "placeholder_cat_gifts"
     }
   ],
   "hero_banners": [

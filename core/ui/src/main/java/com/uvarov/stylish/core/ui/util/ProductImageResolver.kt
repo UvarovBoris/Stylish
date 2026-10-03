@@ -24,6 +24,7 @@ object ProductImageResolver {
             "placeholder_cat_kids" -> R.drawable.placeholder_cat_kids
             "placeholder_cat_mens" -> R.drawable.placeholder_cat_mens
             "placeholder_cat_womens" -> R.drawable.placeholder_cat_womens
+            "placeholder_cat_gifts" -> R.drawable.placeholder_cat_gifts
             "placeholder_banner_hero" -> R.drawable.placeholder_banner_hero
             "placeholder_special_offer" -> R.drawable.placeholder_special_offer
             "placeholder_heels" -> R.drawable.placeholder_heels
