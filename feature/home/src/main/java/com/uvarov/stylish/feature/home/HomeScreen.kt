@@ -170,7 +170,7 @@ fun HomeContent(
                     item {
                         Spacer(modifier = Modifier.height(16.dp))
                         HomeHeroBanner(
-                            banner = feed.heroBanners.first(),
+                            banners = feed.heroBanners,
                             onBannerClick = { onIntent(HomeIntent.SpecialOffersClicked) }
                         )
                     }
@@ -317,7 +317,9 @@ private fun HomeContentPreview() {
     val sampleFeed = HomeFeed(
         categories = sampleCategories,
         heroBanners = listOf(
-            BannerItem("1", "50-40% OFF", "Now in (product)\nAll colours", "Shop Now", "placeholder_banner_hero")
+            BannerItem("1", "50-40% OFF", "Now in (product)\nAll colours", "Shop Now", "placeholder_banner_hero"),
+            BannerItem("2", "Summer Wave", "Top picks on fresh styles\nLimited time", "Shop Now", "placeholder_banner_hero"),
+            BannerItem("3", "Exclusive Deals", "Up to 70% off trending styles\nCheck it out", "Shop Now", "placeholder_banner_hero")
         ),
         dealOfTheDay = DealOfTheDay("Deal of the Day", 82000, sampleProducts),
         specialOfferBanner = BannerItem("2", "Special Offers", "We make sure you get the offer you need at best prices", "", "placeholder_special_offer"),
