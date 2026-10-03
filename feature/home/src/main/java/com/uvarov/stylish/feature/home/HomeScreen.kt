@@ -140,10 +140,10 @@ fun HomeContent(
                 // Top App Bar
                 item {
                     HomeTopBar(
-                        onMenuClick = { /* Drawer / menu action */ },
                         onAvatarClick = { /* Profile action */ }
                     )
                 }
+
 
                 // Search Bar
                 item {
