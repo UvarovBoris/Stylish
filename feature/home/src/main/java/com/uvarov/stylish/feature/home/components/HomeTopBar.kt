@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -43,12 +44,10 @@ fun HomeTopBar(
                 .align(Alignment.CenterEnd)
                 .size(40.dp)
         ) {
-            StylishAsyncImage(
-                model = avatarUrl ?: R.drawable.ic_avatar_placeholder,
-                contentDescription = "Profile",
-                modifier = Modifier
-                    .size(40.dp)
-                    .clip(CircleShape)
+            Icon(
+                painter = painterResource(id = R.drawable.ic_user),
+                contentDescription = "User",
+                tint = StylishTheme.colors.textSecondary
             )
         }
     }

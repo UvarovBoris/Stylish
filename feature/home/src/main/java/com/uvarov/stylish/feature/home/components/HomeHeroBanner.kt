@@ -77,11 +77,11 @@ fun HomeHeroBanner(
         }
 
         if (banners.size > 1) {
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             // Indicator dots
             Row(
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 repeat(banners.size) { index ->
