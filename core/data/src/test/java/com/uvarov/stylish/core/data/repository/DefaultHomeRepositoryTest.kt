@@ -1,6 +1,7 @@
 package com.uvarov.stylish.core.data.repository
 
 import app.cash.turbine.test
+import com.uvarov.stylish.core.model.ProductImportance
 import com.uvarov.stylish.core.network.api.StylishApiService
 import com.uvarov.stylish.core.network.model.BannerItemDto
 import com.uvarov.stylish.core.network.model.CategoryDto
@@ -43,7 +44,8 @@ class DefaultHomeRepositoryTest {
                     discountPercent = 40,
                     rating = 4.0f,
                     reviewCount = 56890,
-                    imageUrl = "https://api.stylish.app/images/kurta.jpg"
+                    imageUrl = "https://api.stylish.app/images/kurta.jpg",
+                    importance = "high",
                 )
             )
         )
@@ -62,6 +64,7 @@ class DefaultHomeRepositoryTest {
             assertEquals("Women Printed Kurta", feed.products[0].title)
             assertEquals(1500, feed.products[0].currentPrice)
             assertEquals("https://api.stylish.app/images/kurta.jpg", feed.products[0].imageUrl)
+            assertEquals(ProductImportance.HIGH, feed.products[0].importance)
             awaitComplete()
         }
     }

@@ -105,6 +105,8 @@ fun HomeHeroBanner(
                     )
                 }
             }
+
+            Spacer(modifier = Modifier.height(6.dp))
         }
     }
 }

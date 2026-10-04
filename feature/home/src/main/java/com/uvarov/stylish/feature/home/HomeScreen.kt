@@ -10,10 +10,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
+import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -23,9 +23,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -34,6 +36,7 @@ import com.uvarov.stylish.core.model.BannerItem
 import com.uvarov.stylish.core.model.Category
 import com.uvarov.stylish.core.model.HomeFeed
 import com.uvarov.stylish.core.model.Product
+import com.uvarov.stylish.core.model.ProductImportance
 import com.uvarov.stylish.core.ui.component.ProductCard
 import com.uvarov.stylish.feature.home.components.HomeCategoriesRow
 import com.uvarov.stylish.feature.home.components.HomeFeaturedHeader
@@ -121,31 +124,44 @@ fun HomeContent(
         is HomeUiState.Success -> {
             val feed = uiState.homeFeed
 
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
+            LazyVerticalStaggeredGrid(
+                columns = StaggeredGridCells.Fixed(2),
                 modifier = modifier.fillMaxSize(),
-                contentPadding = PaddingValues(bottom = 24.dp)
+                contentPadding = PaddingValues(
+                    start = 16.dp,
+                    end = 16.dp,
+                    bottom = 24.dp
+                ),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalItemSpacing = 12.dp,
             ) {
-                item(span = { GridItemSpan(maxLineSpan) }) {
+                item(span = StaggeredGridItemSpan.FullLine) {
                     HomeTopBar(
+                        modifier = Modifier.fullScreenWidth(),
                         onAvatarClick = { /* Profile action */ }
                     )
                 }
-                item(span = { GridItemSpan(maxLineSpan) }) {
+                item(span = StaggeredGridItemSpan.FullLine) {
                     HomeSearchBar(
-                        modifier = Modifier.padding(top = 16.dp),
+                        modifier = Modifier
+                            .fullScreenWidth()
+                            .padding(top = 4.dp),
                         onSearchClick = { onIntent(HomeIntent.SearchBarClicked) },
                         onVoiceClick = { onIntent(HomeIntent.VoiceSearchClicked) }
                     )
                 }
-                item(span = { GridItemSpan(maxLineSpan) }) {
+                item(span = StaggeredGridItemSpan.FullLine) {
                     HomeFeaturedHeader(
-                        modifier = Modifier.padding(top = 16.dp),
+                        modifier = Modifier
+                            .fullScreenWidth()
+                            .padding(top = 4.dp),
                     )
                 }
-                item(span = { GridItemSpan(maxLineSpan) }) {
+                item(span = StaggeredGridItemSpan.FullLine) {
                     HomeCategoriesRow(
-                        modifier = Modifier.padding(top = 16.dp),
+                        modifier = Modifier
+                            .fullScreenWidth()
+                            .padding(top = 4.dp),
                         categories = feed.categories,
                         onCategoryClick = { category ->
                             onIntent(HomeIntent.CategoryClicked(categoryId = category.id, title = category.name))
@@ -153,41 +169,43 @@ fun HomeContent(
                     )
                 }
                 if (feed.heroBanners.isNotEmpty()) {
-                    item(span = { GridItemSpan(maxLineSpan) }) {
+                    item(span = StaggeredGridItemSpan.FullLine) {
                         HomeHeroBanner(
                             banners = feed.heroBanners,
-                            modifier = Modifier.padding(top = 16.dp),
+                            modifier = Modifier
+                                .fullScreenWidth()
+                                .padding(top = 4.dp),
                             onBannerClick = { banner ->
                                 onIntent(HomeIntent.HeroBannerClicked(banner))
                             }
                         )
                     }
                 }
-                if (feed.products.isNotEmpty()) {
-                    item(span = { GridItemSpan(maxLineSpan) }) {
-                        Spacer(modifier = Modifier.height(16.dp))
-                    }
-                    itemsIndexed(
-                        items = feed.products,
-                        key = { _, product -> product.id },
-                        span = { _, _ -> GridItemSpan(1) }
-                    ) { index, product ->
-                        val isLeft = index % 2 == 0
-                        ProductCard(
-                            product = product,
-                            onClick = { onIntent(HomeIntent.ProductClicked(product)) },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(
-                                    start = if (isLeft) 16.dp else 6.dp,
-                                    end = if (isLeft) 6.dp else 16.dp,
-                                    bottom = 12.dp
-                                )
-                        )
-                    }
+                items(
+                    items = feed.products,
+                    key = { it.id },
+                ) { product ->
+                    ProductCard(
+                        product = product,
+                        onClick = { onIntent(HomeIntent.ProductClicked(product)) },
+                        modifier = Modifier.fillMaxWidth()
+                    )
                 }
             }
         }
+    }
+}
+
+private fun Modifier.fullScreenWidth(horizontalPadding: Dp = 16.dp): Modifier = layout { measurable, constraints ->
+    val paddingPx = horizontalPadding.roundToPx()
+    val placeable = measurable.measure(
+        constraints.copy(
+            minWidth = constraints.maxWidth + paddingPx * 2,
+            maxWidth = constraints.maxWidth + paddingPx * 2
+        )
+    )
+    layout(constraints.maxWidth, placeable.height) {
+        placeable.placeRelative(-paddingPx, 0)
     }
 }
 
@@ -204,7 +222,8 @@ private fun HomeContentPreview() {
             discountPercent = 40,
             rating = 4.0f,
             reviewCount = 56890,
-            imageUrl = "https://api.stylish.app/images/kurta.jpg"
+            imageUrl = "https://api.stylish.app/images/kurta.jpg",
+            importance = ProductImportance.HIGH,
         ),
         Product(
             id = "prod_2",
@@ -215,7 +234,8 @@ private fun HomeContentPreview() {
             discountPercent = 50,
             rating = 4.5f,
             reviewCount = 344567,
-            imageUrl = "https://api.stylish.app/images/shoes.jpg"
+            imageUrl = "https://api.stylish.app/images/shoes.jpg",
+            importance = ProductImportance.NORMAL,
         )
     )
 

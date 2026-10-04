@@ -21,16 +21,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 import com.uvarov.stylish.core.model.Product
+import com.uvarov.stylish.core.model.ProductImportance
 
 @Composable
 fun ProductCard(
     product: Product,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    imageHeight: Dp = if (product.importance == ProductImportance.HIGH) 196.dp else 136.dp,
 ) {
     Surface(
         modifier = modifier
@@ -58,7 +61,7 @@ fun ProductCard(
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(124.dp)
+                    .height(imageHeight)
                     .clip(RoundedCornerShape(8.dp))
             )
 
@@ -138,9 +141,9 @@ fun ProductCard(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, name = "Product Card - Normal (136dp)")
 @Composable
-private fun ProductCardPreview() {
+private fun ProductCardNormalPreview() {
     StylishTheme {
         ProductCard(
             product = Product(
@@ -153,6 +156,7 @@ private fun ProductCardPreview() {
                 rating = 4.5f,
                 reviewCount = 56890,
                 imageUrl = "https://api.stylish.app/images/kurta.jpg",
+                importance = ProductImportance.NORMAL,
             ),
             onClick = {},
             modifier = Modifier
@@ -161,3 +165,29 @@ private fun ProductCardPreview() {
         )
     }
 }
+
+@Preview(showBackground = true, name = "Product Card - High Importance (196dp)")
+@Composable
+private fun ProductCardHighImportancePreview() {
+    StylishTheme {
+        ProductCard(
+            product = Product(
+                id = "prod_2",
+                title = "HRX by Hrithik Roshan",
+                description = "Neque porro quisquam est qui dolorem ipsum quia",
+                currentPrice = 2499,
+                originalPrice = 4999,
+                discountPercent = 50,
+                rating = 4.5f,
+                reviewCount = 344567,
+                imageUrl = "https://api.stylish.app/images/shoes.jpg",
+                importance = ProductImportance.HIGH,
+            ),
+            onClick = {},
+            modifier = Modifier
+                .padding(16.dp)
+                .width(170.dp),
+        )
+    }
+}
+

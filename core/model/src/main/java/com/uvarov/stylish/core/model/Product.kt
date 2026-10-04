@@ -10,4 +10,5 @@ data class Product(
     val rating: Float,
     val reviewCount: Int,
     val imageUrl: String,
+    val importance: ProductImportance = ProductImportance.NORMAL,
 )

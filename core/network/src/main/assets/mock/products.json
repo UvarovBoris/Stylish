@@ -8,7 +8,8 @@
     "discount_percent": 40,
     "rating": 4.0,
     "review_count": 56890,
-    "image_url": "https://api.stylish.app/images/kurta.jpg"
+    "image_url": "https://api.stylish.app/images/kurta.jpg",
+    "importance": "high"
   },
   {
     "id": "prod_2",
@@ -19,7 +20,8 @@
     "discount_percent": 50,
     "rating": 4.5,
     "review_count": 344567,
-    "image_url": "https://api.stylish.app/images/shoes.jpg"
+    "image_url": "https://api.stylish.app/images/shoes.jpg",
+    "importance": "normal"
   },
   {
     "id": "prod_3",
@@ -30,7 +32,8 @@
     "discount_percent": 60,
     "rating": 4.0,
     "review_count": 12450,
-    "image_url": "https://api.stylish.app/images/watch.jpg"
+    "image_url": "https://api.stylish.app/images/watch.jpg",
+    "importance": "normal"
   },
   {
     "id": "prod_4",
@@ -41,7 +44,8 @@
     "discount_percent": 70,
     "rating": 4.0,
     "review_count": 8920,
-    "image_url": "https://api.stylish.app/images/sneakers.jpg"
+    "image_url": "https://api.stylish.app/images/sneakers.jpg",
+    "importance": "normal"
   },
   {
     "id": "prod_5",
@@ -52,7 +56,8 @@
     "discount_percent": 62,
     "rating": 4.0,
     "review_count": 15200,
-    "image_url": "https://api.stylish.app/images/handbag.jpg"
+    "image_url": "https://api.stylish.app/images/handbag.jpg",
+    "importance": "high"
   },
   {
     "id": "prod_6",
@@ -63,7 +68,8 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 6890,
-    "image_url": "https://api.stylish.app/images/jacket.jpg"
+    "image_url": "https://api.stylish.app/images/jacket.jpg",
+    "importance": "normal"
   },
   {
     "id": "prod_7",
@@ -74,7 +80,8 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 152344,
-    "image_url": "https://api.stylish.app/images/shirt.jpg"
+    "image_url": "https://api.stylish.app/images/shirt.jpg",
+    "importance": "normal"
   },
   {
     "id": "prod_8",
@@ -85,7 +92,8 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 523456,
-    "image_url": "https://api.stylish.app/images/dress.jpg"
+    "image_url": "https://api.stylish.app/images/dress.jpg",
+    "importance": "high"
   },
   {
     "id": "prod_9",
@@ -96,7 +104,8 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 45678,
-    "image_url": "https://api.stylish.app/images/dress.jpg"
+    "image_url": "https://api.stylish.app/images/dress.jpg",
+    "importance": "normal"
   },
   {
     "id": "prod_10",
@@ -107,7 +116,8 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 335566,
-    "image_url": "https://api.stylish.app/images/dress.jpg"
+    "image_url": "https://api.stylish.app/images/dress.jpg",
+    "importance": "high"
   },
   {
     "id": "prod_11",
@@ -118,7 +128,8 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 27344,
-    "image_url": "https://api.stylish.app/images/dress.jpg"
+    "image_url": "https://api.stylish.app/images/dress.jpg",
+    "importance": "normal"
   },
   {
     "id": "prod_12",
@@ -129,7 +140,8 @@
     "discount_percent": 37,
     "rating": 2.5,
     "review_count": 1023456,
-    "image_url": "https://api.stylish.app/images/shoes.jpg"
+    "image_url": "https://api.stylish.app/images/shoes.jpg",
+    "importance": "high"
   },
   {
     "id": "prod_13",
@@ -140,7 +152,8 @@
     "discount_percent": 41,
     "rating": 4.0,
     "review_count": 344567,
-    "image_url": "https://api.stylish.app/images/phone.jpg"
+    "image_url": "https://api.stylish.app/images/phone.jpg",
+    "importance": "normal"
   },
   {
     "id": "prod_14",
@@ -151,7 +164,8 @@
     "discount_percent": 50,
     "rating": 2.5,
     "review_count": 835566,
-    "image_url": "https://api.stylish.app/images/gadget.jpg"
+    "image_url": "https://api.stylish.app/images/gadget.jpg",
+    "importance": "normal"
   },
   {
     "id": "prod_15",
@@ -162,7 +176,8 @@
     "discount_percent": 40,
     "rating": 4.0,
     "review_count": 223569,
-    "image_url": "https://api.stylish.app/images/jacket.jpg"
+    "image_url": "https://api.stylish.app/images/jacket.jpg",
+    "importance": "high"
   },
   {
     "id": "prod_16",
@@ -173,7 +188,8 @@
     "discount_percent": 25,
     "rating": 4.0,
     "review_count": 67456,
-    "image_url": "https://api.stylish.app/images/camera.jpg"
+    "image_url": "https://api.stylish.app/images/camera.jpg",
+    "importance": "normal"
   },
   {
     "id": "prod_17",
@@ -184,18 +200,20 @@
     "discount_percent": 50,
     "rating": 5.0,
     "review_count": 1345678,
-    "image_url": "https://api.stylish.app/images/shoes.jpg"
+    "image_url": "https://api.stylish.app/images/shoes.jpg",
+    "importance": "normal"
   },
   {
     "id": "prod_18",
     "title": "Nike Sneakers Vision Alta",
-    "description": "Vision Alta Men's Shoes Size (All Colours) - Chicago iconic colorway",
+    "description": "Vision Alta Men's Shoes Size (All Colours)",
     "current_price": 1500,
     "original_price": 2999,
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 56890,
-    "image_url": "https://api.stylish.app/images/shoes.jpg"
+    "image_url": "https://api.stylish.app/images/shoes.jpg",
+    "importance": "high"
   },
   {
     "id": "prod_19",
@@ -206,7 +224,8 @@
     "discount_percent": 36,
     "rating": 4.0,
     "review_count": 46890,
-    "image_url": "https://api.stylish.app/images/shoes.jpg"
+    "image_url": "https://api.stylish.app/images/shoes.jpg",
+    "importance": "normal"
   },
   {
     "id": "prod_20",
@@ -217,6 +236,7 @@
     "discount_percent": 40,
     "rating": 4.5,
     "review_count": 256890,
-    "image_url": "https://api.stylish.app/images/shoes.jpg"
+    "image_url": "https://api.stylish.app/images/shoes.jpg",
+    "importance": "high"
   }
 ]

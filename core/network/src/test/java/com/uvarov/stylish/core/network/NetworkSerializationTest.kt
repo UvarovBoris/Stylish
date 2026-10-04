@@ -39,6 +39,8 @@ class NetworkSerializationTest {
         assertEquals(1500, dto.products[0].currentPrice)
         assertEquals(40, dto.products[0].discountPercent)
         assertEquals("https://api.stylish.app/images/kurta.jpg", dto.products[0].imageUrl)
+        assertEquals("high", dto.products[0].importance)
+        assertEquals("normal", dto.products[1].importance)
     }
 
     @Test
@@ -54,6 +56,8 @@ class NetworkSerializationTest {
         assertNotNull(products)
         assertEquals(20, products.size)
         assertEquals("https://api.stylish.app/images/kurta.jpg", products[0].imageUrl)
+        assertEquals("high", products[0].importance)
         assertEquals("https://api.stylish.app/images/shoes.jpg", products[1].imageUrl)
+        assertEquals("normal", products[1].importance)
     }
 }

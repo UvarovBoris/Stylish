@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.res.painterResource
@@ -45,6 +46,7 @@ fun HomeSearchBar(
                     color = StylishTheme.colors.searchShadow,
                 ),
             )
+            .clip(shape = RoundedCornerShape(6.dp))
             .clickable(
                 role = Role.Button,
                 onClick = onSearchClick

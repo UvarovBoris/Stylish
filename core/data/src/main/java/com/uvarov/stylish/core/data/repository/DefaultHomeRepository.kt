@@ -4,6 +4,7 @@ import com.uvarov.stylish.core.model.BannerItem
 import com.uvarov.stylish.core.model.Category
 import com.uvarov.stylish.core.model.HomeFeed
 import com.uvarov.stylish.core.model.Product
+import com.uvarov.stylish.core.model.ProductImportance
 import com.uvarov.stylish.core.network.api.StylishApiService
 import com.uvarov.stylish.core.network.model.BannerItemDto
 import com.uvarov.stylish.core.network.model.CategoryDto
@@ -33,6 +34,7 @@ fun ProductDto.asExternalModel(): Product = Product(
     rating = rating,
     reviewCount = reviewCount,
     imageUrl = imageUrl,
+    importance = ProductImportance.fromString(importance),
 )
 
 fun CategoryDto.asExternalModel(): Category = Category(

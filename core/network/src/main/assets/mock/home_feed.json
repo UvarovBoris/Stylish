@@ -64,7 +64,8 @@
       "discount_percent": 40,
       "rating": 4.0,
       "review_count": 56890,
-      "image_url": "https://api.stylish.app/images/kurta.jpg"
+      "image_url": "https://api.stylish.app/images/kurta.jpg",
+      "importance": "high"
     },
     {
       "id": "prod_2",
@@ -75,7 +76,8 @@
       "discount_percent": 50,
       "rating": 4.5,
       "review_count": 344567,
-      "image_url": "https://api.stylish.app/images/shoes.jpg"
+      "image_url": "https://api.stylish.app/images/shoes.jpg",
+      "importance": "normal"
     },
     {
       "id": "prod_18",
@@ -86,7 +88,8 @@
       "discount_percent": 50,
       "rating": 4.0,
       "review_count": 56890,
-      "image_url": "https://api.stylish.app/images/shoes.jpg"
+      "image_url": "https://api.stylish.app/images/shoes.jpg",
+      "importance": "high"
     },
     {
       "id": "prod_3",
@@ -97,7 +100,8 @@
       "discount_percent": 60,
       "rating": 4.0,
       "review_count": 12450,
-      "image_url": "https://api.stylish.app/images/watch.jpg"
+      "image_url": "https://api.stylish.app/images/watch.jpg",
+      "importance": "normal"
     },
     {
       "id": "prod_4",
@@ -108,7 +112,8 @@
       "discount_percent": 70,
       "rating": 4.0,
       "review_count": 8920,
-      "image_url": "https://api.stylish.app/images/sneakers.jpg"
+      "image_url": "https://api.stylish.app/images/sneakers.jpg",
+      "importance": "normal"
     },
     {
       "id": "prod_5",
@@ -119,7 +124,8 @@
       "discount_percent": 62,
       "rating": 4.0,
       "review_count": 15200,
-      "image_url": "https://api.stylish.app/images/handbag.jpg"
+      "image_url": "https://api.stylish.app/images/handbag.jpg",
+      "importance": "high"
     },
     {
       "id": "prod_7",
@@ -130,7 +136,8 @@
       "discount_percent": 50,
       "rating": 4.0,
       "review_count": 152344,
-      "image_url": "https://api.stylish.app/images/shirt.jpg"
+      "image_url": "https://api.stylish.app/images/shirt.jpg",
+      "importance": "normal"
     }
   ]
 }
