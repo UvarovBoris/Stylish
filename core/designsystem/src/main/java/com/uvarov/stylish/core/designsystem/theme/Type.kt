@@ -10,11 +10,12 @@ import androidx.compose.ui.unit.sp
 import com.uvarov.stylish.core.designsystem.R
 
 val Montserrat = FontFamily(
+    Font(R.font.montserrat_light, FontWeight.Light),
     Font(R.font.montserrat_regular, FontWeight.Normal),
     Font(R.font.montserrat_medium, FontWeight.Medium),
     Font(R.font.montserrat_semibold, FontWeight.SemiBold),
     Font(R.font.montserrat_bold, FontWeight.Bold),
-    Font(R.font.montserrat_extrabold, FontWeight.ExtraBold)
+    Font(R.font.montserrat_extrabold, FontWeight.ExtraBold),
 )
 
 @Immutable
@@ -55,34 +56,38 @@ data class StylishTypography(
     val productTitle: TextStyle = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Medium,
-        fontSize = 12.sp,
-        lineHeight = 16.sp
+        fontSize = 16.sp,
+        lineHeight = 20.sp
     ),
     val productDescription: TextStyle = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
         fontSize = 10.sp,
-        lineHeight = 14.sp
+        lineHeight = 16.sp
     ),
     val productPrice: TextStyle = TextStyle(
         fontFamily = Montserrat,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 12.sp
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp,
+        lineHeight = 16.sp
     ),
     val productOriginalPrice: TextStyle = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Light,
-        fontSize = 10.sp
+        fontSize = 12.sp,
+        lineHeight = 16.sp
     ),
     val productDiscount: TextStyle = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
-        fontSize = 10.sp
+        fontSize = 10.sp,
+        lineHeight = 16.sp
     ),
     val productRatingCount: TextStyle = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
-        fontSize = 10.sp
+        fontSize = 10.sp,
+        lineHeight = 16.sp
     ),
 
     val sectionTitle: TextStyle = TextStyle(
@@ -90,21 +95,6 @@ data class StylishTypography(
         fontWeight = FontWeight.SemiBold,
         fontSize = 18.sp,
         lineHeight = 22.sp
-    ),
-    val sectionAction: TextStyle = TextStyle(
-        fontFamily = Montserrat,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 12.sp
-    ),
-    val bannerTitle: TextStyle = TextStyle(
-        fontFamily = Montserrat,
-        fontWeight = FontWeight.Bold,
-        fontSize = 20.sp
-    ),
-    val bannerSubtitle: TextStyle = TextStyle(
-        fontFamily = Montserrat,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
     ),
     val categoryName: TextStyle = TextStyle(
         fontFamily = Montserrat,

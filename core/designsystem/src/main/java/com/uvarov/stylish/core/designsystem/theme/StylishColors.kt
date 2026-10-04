@@ -24,7 +24,6 @@ data class StylishColors(
     val onBrand: Color = White,
 
     // Status & Highlights
-    val ratingStar: Color = AmberRating,
     val saleBadge: Color = CoralRed,
     val success: Color = SuccessGreen,
     val error: Color = ErrorRed,
@@ -33,7 +32,15 @@ data class StylishColors(
     val indicatorInactive: Color = NavyDarkAlpha,
 
     val bottomNavigationTabSelected: Color = BottomNavigationTabSelected,
-    val dropShadow: Color = ShadowDefault,
+    val searchShadow: Color = Color(0x0A000000),
+
+    val productCardShadow: Color = Color(0x26000000),
+    val productOriginalPrice: Color = Color(0xFF808488),
+    val productDiscount: Color = Color(0xFFFE735C),
+    val productRatingCount: Color = Color(0xFFA4A9B3),
+
+    val productRatingStar: Color = Color(0xFFBBBBBB),
+    val productRatingStarFilled: Color = Color(0xFFEDB310),
 )
 
 val LocalStylishColors = staticCompositionLocalOf { StylishColors() }

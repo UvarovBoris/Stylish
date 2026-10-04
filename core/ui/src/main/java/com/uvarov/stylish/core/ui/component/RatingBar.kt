@@ -33,9 +33,9 @@ fun RatingBar(
             }
 
             val tint = if (rating >= i - 0.5f) {
-                StylishTheme.colors.ratingStar
+                StylishTheme.colors.productRatingStarFilled
             } else {
-                StylishTheme.colors.textMuted
+                StylishTheme.colors.productRatingStar
             }
 
             Icon(
@@ -44,10 +44,6 @@ fun RatingBar(
                 tint = tint,
                 modifier = Modifier.size(starSize)
             )
-
-            if (i < maxStars) {
-                Spacer(modifier = Modifier.width(2.dp))
-            }
         }
     }
 }

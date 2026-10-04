@@ -42,7 +42,7 @@ fun HomeSearchBar(
                 shadow = Shadow(
                     radius = 9.dp,
                     offset = DpOffset(0.dp, 2.dp),
-                    color = StylishTheme.colors.dropShadow,
+                    color = StylishTheme.colors.searchShadow,
                 ),
             )
             .clickable(

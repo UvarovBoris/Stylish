@@ -15,11 +15,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.dropShadow
+import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
-import com.uvarov.stylish.core.designsystem.theme.CoralRed
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 import com.uvarov.stylish.core.model.Product
 
@@ -31,11 +34,18 @@ fun ProductCard(
 ) {
     Surface(
         modifier = modifier
-            .clip(RoundedCornerShape(6.dp))
+            .dropShadow(
+                shape = RoundedCornerShape(8.dp),
+                shadow = Shadow(
+                    radius = 2.dp,
+                    offset = DpOffset(0.dp, 2.dp),
+                    color = StylishTheme.colors.productCardShadow,
+                ),
+            )
+            .clip(shape = RoundedCornerShape(8.dp))
             .clickable(onClick = onClick),
-        shape = RoundedCornerShape(6.dp),
+        shape = RoundedCornerShape(8.dp),
         color = StylishTheme.colors.surface,
-        shadowElevation = 2.dp,
     ) {
         Column(
             modifier = Modifier
@@ -49,13 +59,13 @@ fun ProductCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(124.dp)
-                    .clip(RoundedCornerShape(topStart = 6.dp, topEnd = 6.dp))
+                    .clip(RoundedCornerShape(8.dp))
             )
 
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 8.dp, vertical = 6.dp)
+                    .padding(start = 8.dp, top = 8.dp, end = 8.dp)
             ) {
                 Text(
                     text = product.title,
@@ -66,11 +76,11 @@ fun ProductCard(
                 )
 
                 if (product.description.isNotBlank()) {
-                    Spacer(modifier = Modifier.height(2.dp))
+                    Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = product.description,
                         style = StylishTheme.typography.productDescription,
-                        color = StylishTheme.colors.textSecondary,
+                        color = StylishTheme.colors.textPrimary,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -78,46 +88,41 @@ fun ProductCard(
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                // Price Row
+                Text(
+                    text = "₹${product.currentPrice}",
+                    style = StylishTheme.typography.productPrice,
+                    color = StylishTheme.colors.textPrimary
+                )
+
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(
-                        text = "₹${product.currentPrice}",
-                        style = StylishTheme.typography.productPrice,
-                        color = StylishTheme.colors.textPrimary
-                    )
-
                     if (product.originalPrice > product.currentPrice) {
-                        Spacer(modifier = Modifier.width(6.dp))
                         Text(
                             text = "₹${product.originalPrice}",
                             style = StylishTheme.typography.productOriginalPrice.copy(
                                 textDecoration = TextDecoration.LineThrough
                             ),
-                            color = StylishTheme.colors.textMuted
+                            color = StylishTheme.colors.productOriginalPrice
                         )
                     }
-
                     if (product.discountPercent > 0) {
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
                             text = "${product.discountPercent}%Off",
                             style = StylishTheme.typography.productDiscount,
-                            color = CoralRed
+                            color = StylishTheme.colors.productDiscount
                         )
                     }
                 }
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                // Rating Row
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     RatingBar(
                         rating = product.rating,
-                        starSize = 12.dp
                     )
 
                     Spacer(modifier = Modifier.width(4.dp))
@@ -125,10 +130,34 @@ fun ProductCard(
                     Text(
                         text = product.reviewCount.toString(),
                         style = StylishTheme.typography.productRatingCount,
-                        color = StylishTheme.colors.textMuted
+                        color = StylishTheme.colors.productRatingCount
                     )
                 }
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ProductCardPreview() {
+    StylishTheme {
+        ProductCard(
+            product = Product(
+                id = "prod_1",
+                title = "Women Printed Kurta",
+                description = "Neque porro quisquam est qui dolorem ipsum quia",
+                currentPrice = 1500,
+                originalPrice = 2499,
+                discountPercent = 40,
+                rating = 4.5f,
+                reviewCount = 56890,
+                imageUrl = "https://api.stylish.app/images/kurta.jpg",
+            ),
+            onClick = {},
+            modifier = Modifier
+                .padding(16.dp)
+                .width(170.dp),
+        )
     }
 }

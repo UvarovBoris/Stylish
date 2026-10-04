@@ -7,7 +7,6 @@ val CoralRed = Color(0xFFF83758)
 val CoralPink = Color(0xFFFA7189)
 val SoftPink = Color(0xFFFCF3F6)
 val BlueAccent = Color(0xFF4392F9)
-val AmberRating = Color(0xFFEDB310)
 
 // Neutrals
 val White = Color(0xFFFFFFFF)
@@ -34,6 +33,3 @@ val SuccessGreen = Color(0xFF34A853)
 val ErrorRed = Color(0xFFEB3030)
 
 val BottomNavigationTabSelected = Color(0xFFEB3030)
-
-// Shadow (Black with 4% alpha from Figma)
-val ShadowDefault = Color(0x0A000000)
