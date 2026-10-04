@@ -4,7 +4,6 @@ import app.cash.turbine.test
 import com.uvarov.stylish.core.data.repository.HomeRepository
 import com.uvarov.stylish.core.model.BannerItem
 import com.uvarov.stylish.core.model.Category
-import com.uvarov.stylish.core.model.DealOfTheDay
 import com.uvarov.stylish.core.model.HomeFeed
 import com.uvarov.stylish.core.model.Product
 import io.mockk.every
@@ -33,12 +32,7 @@ class HomeViewModelTest {
     private val sampleFeed = HomeFeed(
         categories = listOf(Category("cat_1", "Beauty", "placeholder_cat_beauty")),
         heroBanners = listOf(BannerItem("hero_1", "50% OFF", "All colors")),
-        dealOfTheDay = DealOfTheDay("Deal of the Day", 3600, emptyList()),
-        specialOfferBanner = BannerItem("sp_1", "Special", "Desc"),
-        heelsBanner = BannerItem("h_1", "Heels", "Desc"),
-        trendingProducts = emptyList(),
-        newArrivalsBanner = BannerItem("na_1", "New Arrivals", "Desc"),
-        sponsoredBanner = BannerItem("spon_1", "Sponsored", "Desc")
+        products = emptyList()
     )
 
     @Before
@@ -94,6 +88,22 @@ class HomeViewModelTest {
             val effect = awaitItem()
             assertTrue(effect is HomeSideEffect.NavigateToProductDetails)
             assertEquals("prod_1", (effect as HomeSideEffect.NavigateToProductDetails).productId)
+        }
+    }
+
+    @Test
+    fun heroBannerClicked_emitsNavigateToCatalogSideEffect() = runTest(testDispatcher) {
+        every { homeRepository.getHomeFeed() } returns flowOf(sampleFeed)
+        val viewModel = HomeViewModel(homeRepository)
+        testScheduler.advanceUntilIdle()
+
+        val banner = BannerItem("hero_1", "50% OFF", "All colors")
+
+        viewModel.sideEffect.test {
+            viewModel.onIntent(HomeIntent.HeroBannerClicked(banner))
+            val effect = awaitItem()
+            assertTrue(effect is HomeSideEffect.NavigateToCatalog)
+            assertEquals("50% OFF", (effect as HomeSideEffect.NavigateToCatalog).title)
         }
     }
 

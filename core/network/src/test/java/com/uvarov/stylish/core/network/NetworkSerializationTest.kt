@@ -31,11 +31,11 @@ class NetworkSerializationTest {
         assertNotNull(dto)
         assertEquals(6, dto.categories.size)
         assertTrue(dto.categories.any { it.id == "cat_gifts" && it.name == "Gifts" })
-        assertTrue(dto.dealOfTheDay.products.isNotEmpty())
-        assertEquals("Women Printed Kurta", dto.dealOfTheDay.products[0].title)
-        assertEquals(1500, dto.dealOfTheDay.products[0].currentPrice)
-        assertEquals(40, dto.dealOfTheDay.products[0].discountPercent)
-        assertTrue(dto.trendingProducts.isNotEmpty())
+        assertEquals(3, dto.heroBanners.size)
+        assertTrue(dto.products.isNotEmpty())
+        assertEquals("Women Printed Kurta", dto.products[0].title)
+        assertEquals(1500, dto.products[0].currentPrice)
+        assertEquals(40, dto.products[0].discountPercent)
     }
 
     @Test

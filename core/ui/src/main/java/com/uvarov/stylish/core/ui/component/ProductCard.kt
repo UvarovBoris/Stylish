@@ -34,7 +34,6 @@ fun ProductCard(
 ) {
     Surface(
         modifier = modifier
-            .width(170.dp)
             .clip(RoundedCornerShape(6.dp))
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(6.dp),

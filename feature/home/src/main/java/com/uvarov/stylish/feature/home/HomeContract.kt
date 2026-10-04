@@ -1,5 +1,6 @@
 package com.uvarov.stylish.feature.home
 
+import com.uvarov.stylish.core.model.BannerItem
 import com.uvarov.stylish.core.model.HomeFeed
 import com.uvarov.stylish.core.model.Product
 
@@ -20,12 +21,7 @@ sealed interface HomeIntent {
     data object SearchBarClicked : HomeIntent
     data class CategoryClicked(val categoryId: String, val title: String? = null) : HomeIntent
     data class ProductClicked(val product: Product) : HomeIntent
-    data object DealOfTheDayViewAllClicked : HomeIntent
-    data object TrendingViewAllClicked : HomeIntent
-    data object SpecialOffersClicked : HomeIntent
-    data object HeelsBannerClicked : HomeIntent
-    data object NewArrivalsClicked : HomeIntent
-    data object SponsoredBannerClicked : HomeIntent
+    data class HeroBannerClicked(val banner: BannerItem) : HomeIntent
     data object VoiceSearchClicked : HomeIntent
 }
 

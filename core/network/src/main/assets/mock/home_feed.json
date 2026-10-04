@@ -54,60 +54,40 @@
       "image_res_name": "placeholder_banner_hero"
     }
   ],
-  "deal_of_the_day": {
-    "title": "Deal of the Day",
-    "remaining_time_seconds": 82520,
-    "products": [
-      {
-        "id": "prod_1",
-        "title": "Women Printed Kurta",
-        "description": "Neque porro quisquam est qui dolorem ipsum quia",
-        "current_price": 1500,
-        "original_price": 2499,
-        "discount_percent": 40,
-        "rating": 4.0,
-        "review_count": 56890,
-        "image_res_name": "placeholder_kurta"
-      },
-      {
-        "id": "prod_2",
-        "title": "HRX by Hrithik Roshan",
-        "description": "Neque porro quisquam est qui dolorem ipsum quia",
-        "current_price": 2499,
-        "original_price": 4999,
-        "discount_percent": 50,
-        "rating": 4.5,
-        "review_count": 344567,
-        "image_res_name": "placeholder_shoes"
-      },
-      {
-        "id": "prod_18",
-        "title": "Nike Sneakers Vision Alta",
-        "description": "Vision Alta Men's Shoes Size (All Colours)",
-        "current_price": 1500,
-        "original_price": 2999,
-        "discount_percent": 50,
-        "rating": 4.0,
-        "review_count": 56890,
-        "image_res_name": "placeholder_shoes"
-      }
-    ]
-  },
-  "special_offer_banner": {
-    "id": "special_offer_1",
-    "title": "Special Offers",
-    "subtitle": "We make sure you get the offer you need at best prices",
-    "action_text": "",
-    "image_res_name": "placeholder_special_offer"
-  },
-  "heels_banner": {
-    "id": "heels_1",
-    "title": "Flat and Heels",
-    "subtitle": "Stand a chance to get rewarded",
-    "action_text": "Visit now",
-    "image_res_name": "placeholder_heels"
-  },
-  "trending_products": [
+  "products": [
+    {
+      "id": "prod_1",
+      "title": "Women Printed Kurta",
+      "description": "Neque porro quisquam est qui dolorem ipsum quia",
+      "current_price": 1500,
+      "original_price": 2499,
+      "discount_percent": 40,
+      "rating": 4.0,
+      "review_count": 56890,
+      "image_res_name": "placeholder_kurta"
+    },
+    {
+      "id": "prod_2",
+      "title": "HRX by Hrithik Roshan",
+      "description": "Neque porro quisquam est qui dolorem ipsum quia",
+      "current_price": 2499,
+      "original_price": 4999,
+      "discount_percent": 50,
+      "rating": 4.5,
+      "review_count": 344567,
+      "image_res_name": "placeholder_shoes"
+    },
+    {
+      "id": "prod_18",
+      "title": "Nike Sneakers Vision Alta",
+      "description": "Vision Alta Men's Shoes Size (All Colours)",
+      "current_price": 1500,
+      "original_price": 2999,
+      "discount_percent": 50,
+      "rating": 4.0,
+      "review_count": 56890,
+      "image_res_name": "placeholder_shoes"
+    },
     {
       "id": "prod_3",
       "title": "IWC Schaffhausen 2021 Pilot's Watch \"SIHH 2019\" 44mm",
@@ -152,19 +132,5 @@
       "review_count": 152344,
       "image_res_name": "placeholder_shirt"
     }
-  ],
-  "new_arrivals_banner": {
-    "id": "new_arrivals_1",
-    "title": "New Arrivals",
-    "subtitle": "Summer' 25 Collections",
-    "action_text": "View all",
-    "image_res_name": "placeholder_banner_summer"
-  },
-  "sponsored_banner": {
-    "id": "sponsored_1",
-    "title": "Sponserd",
-    "subtitle": "up to 50% Off",
-    "action_text": "UP TO 50% OFF",
-    "image_res_name": "placeholder_banner_sponsored"
-  }
+  ]
 }

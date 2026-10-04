@@ -40,23 +40,8 @@ class HomeViewModel @Inject constructor(
             is HomeIntent.ProductClicked -> emitSideEffect(
                 HomeSideEffect.NavigateToProductDetails(intent.product.id)
             )
-            is HomeIntent.DealOfTheDayViewAllClicked -> emitSideEffect(
-                HomeSideEffect.NavigateToCatalog(title = "Deal of the Day")
-            )
-            is HomeIntent.TrendingViewAllClicked -> emitSideEffect(
-                HomeSideEffect.NavigateToCatalog(title = "Trending Products")
-            )
-            is HomeIntent.SpecialOffersClicked -> emitSideEffect(
-                HomeSideEffect.NavigateToCatalog(title = "Special Offers")
-            )
-            is HomeIntent.HeelsBannerClicked -> emitSideEffect(
-                HomeSideEffect.NavigateToCatalog(title = "Flat and Heels")
-            )
-            is HomeIntent.NewArrivalsClicked -> emitSideEffect(
-                HomeSideEffect.NavigateToCatalog(title = "New Arrivals")
-            )
-            is HomeIntent.SponsoredBannerClicked -> emitSideEffect(
-                HomeSideEffect.NavigateToCatalog(title = "Sponsored")
+            is HomeIntent.HeroBannerClicked -> emitSideEffect(
+                HomeSideEffect.NavigateToCatalog(title = intent.banner.title)
             )
             is HomeIntent.VoiceSearchClicked -> emitSideEffect(
                 HomeSideEffect.ShowToast("Voice search activated")
@@ -80,7 +65,6 @@ class HomeViewModel @Inject constructor(
                 }
         }
     }
-
 
     private fun emitSideEffect(effect: HomeSideEffect) {
         viewModelScope.launch {
