@@ -1,6 +1,5 @@
 package com.uvarov.stylish.core.ui.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -45,9 +43,8 @@ fun ProductCard(
                 .fillMaxWidth()
                 .padding(bottom = 8.dp)
         ) {
-            val drawableRes = ProductImageResolver.resolveDrawable(product.imageResName)
-            Image(
-                painter = painterResource(id = drawableRes),
+            StylishAsyncImage(
+                model = ProductImageResolver.resolveImageModel(product.imageResName),
                 contentDescription = product.title,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

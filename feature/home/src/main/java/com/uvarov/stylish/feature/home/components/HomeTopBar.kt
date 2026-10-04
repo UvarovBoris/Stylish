@@ -3,7 +3,6 @@ package com.uvarov.stylish.feature.home.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -18,11 +17,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.uvarov.stylish.core.designsystem.R
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
+import com.uvarov.stylish.core.ui.component.StylishAsyncImage
 import com.uvarov.stylish.feature.home.R as HomeR
 
 @Composable
 fun HomeTopBar(
     modifier: Modifier = Modifier,
+    avatarUrl: String? = null,
     onAvatarClick: () -> Unit = {},
 ) {
     Box(
@@ -33,8 +34,7 @@ fun HomeTopBar(
     ) {
         Image(
             painter = painterResource(id = R.drawable.ic_stylish_logo),
-            contentDescription = stringResource(id = HomeR.string.app_name_stylish),
-
+            contentDescription = stringResource(id = HomeR.string.app_name_stylish)
         )
 
         IconButton(
@@ -43,8 +43,8 @@ fun HomeTopBar(
                 .align(Alignment.CenterEnd)
                 .size(40.dp)
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_avatar_placeholder),
+            StylishAsyncImage(
+                model = avatarUrl ?: R.drawable.ic_avatar_placeholder,
                 contentDescription = "Profile",
                 modifier = Modifier
                     .size(40.dp)

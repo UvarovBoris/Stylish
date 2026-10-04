@@ -5,6 +5,13 @@ import com.uvarov.stylish.core.designsystem.R
 
 object ProductImageResolver {
 
+    fun resolveImageModel(imageRef: String): Any {
+        if (imageRef.startsWith("http://") || imageRef.startsWith("https://")) {
+            return imageRef
+        }
+        return resolveDrawable(imageRef)
+    }
+
     @DrawableRes
     fun resolveDrawable(imageResName: String): Int {
         return when (imageResName) {

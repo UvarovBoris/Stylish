@@ -1,6 +1,5 @@
 package com.uvarov.stylish.feature.home.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -24,10 +23,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.uvarov.stylish.core.designsystem.R
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 import com.uvarov.stylish.core.model.Category
+import com.uvarov.stylish.core.ui.component.StylishAsyncImage
 import com.uvarov.stylish.core.ui.util.ProductImageResolver
 
 @Composable
@@ -65,7 +65,6 @@ private fun CategoryItem(
     modifier: Modifier = Modifier,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
-    val drawableRes = ProductImageResolver.resolveDrawable(category.imageResName)
 
     Column(
         modifier = modifier
@@ -76,8 +75,8 @@ private fun CategoryItem(
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(
-            painter = painterResource(id = drawableRes),
+        StylishAsyncImage(
+            model = ProductImageResolver.resolveImageModel(category.imageResName),
             contentDescription = category.name,
             contentScale = ContentScale.Crop,
             modifier = Modifier

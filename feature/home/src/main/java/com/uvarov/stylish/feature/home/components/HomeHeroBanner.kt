@@ -44,6 +44,7 @@ import com.uvarov.stylish.core.designsystem.theme.CoralPink
 import com.uvarov.stylish.core.designsystem.theme.Montserrat
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 import com.uvarov.stylish.core.model.BannerItem
+import com.uvarov.stylish.core.ui.component.StylishAsyncImage
 import com.uvarov.stylish.core.ui.util.ProductImageResolver
 import kotlinx.coroutines.launch
 
@@ -122,9 +123,8 @@ private fun HeroBannerCard(
             .clip(RoundedCornerShape(12.dp))
             .clickable(onClick = onBannerClick)
     ) {
-        val drawableRes = ProductImageResolver.resolveDrawable(banner.imageResName)
-        Image(
-            painter = painterResource(id = drawableRes),
+        StylishAsyncImage(
+            model = ProductImageResolver.resolveImageModel(banner.imageResName),
             contentDescription = banner.title,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()

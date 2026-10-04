@@ -45,6 +45,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
 
+    api(libs.coil.compose)
+
     testImplementation(libs.junit)
     debugImplementation(libs.androidx.compose.ui.tooling)
 }
