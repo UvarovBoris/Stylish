@@ -32,13 +32,13 @@ fun ProductDto.asExternalModel(): Product = Product(
     discountPercent = discountPercent,
     rating = rating,
     reviewCount = reviewCount,
-    imageResName = imageResName,
+    imageUrl = imageUrl,
 )
 
 fun CategoryDto.asExternalModel(): Category = Category(
     id = id,
     name = name,
-    imageResName = imageResName,
+    imageUrl = imageUrl,
 )
 
 fun BannerItemDto.asExternalModel(): BannerItem = BannerItem(
@@ -46,7 +46,7 @@ fun BannerItemDto.asExternalModel(): BannerItem = BannerItem(
     title = title,
     subtitle = subtitle,
     actionText = actionText,
-    imageResName = imageResName,
+    imageUrl = imageUrl,
 )
 
 fun HomeFeedResponseDto.asExternalModel(): HomeFeed = HomeFeed(

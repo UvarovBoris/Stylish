@@ -27,11 +27,11 @@ class DefaultHomeRepositoryTest {
     fun getHomeFeed_emitsMappedDomainHomeFeed() = runTest {
         val mockResponse = HomeFeedResponseDto(
             categories = listOf(
-                CategoryDto("cat_1", "Beauty", "placeholder_cat_beauty"),
-                CategoryDto("cat_gifts", "Gifts", "placeholder_cat_gifts")
+                CategoryDto("cat_1", "Beauty", "https://api.stylish.app/images/cat_beauty.png"),
+                CategoryDto("cat_gifts", "Gifts", "https://api.stylish.app/images/cat_gifts.png")
             ),
             heroBanners = listOf(
-                BannerItemDto("banner_1", "50% OFF", "All colors", "Shop Now", "placeholder_banner")
+                BannerItemDto("banner_1", "50% OFF", "All colors", "Shop Now", "https://api.stylish.app/images/banner_hero.png")
             ),
             products = listOf(
                 ProductDto(
@@ -43,7 +43,7 @@ class DefaultHomeRepositoryTest {
                     discountPercent = 40,
                     rating = 4.0f,
                     reviewCount = 56890,
-                    imageResName = "placeholder_kurta"
+                    imageUrl = "https://api.stylish.app/images/kurta.jpg"
                 )
             )
         )
@@ -55,12 +55,13 @@ class DefaultHomeRepositoryTest {
             assertEquals(2, feed.categories.size)
             assertEquals("Beauty", feed.categories[0].name)
             assertEquals("Gifts", feed.categories[1].name)
-            assertEquals("placeholder_cat_gifts", feed.categories[1].imageResName)
+            assertEquals("https://api.stylish.app/images/cat_gifts.png", feed.categories[1].imageUrl)
             assertEquals(1, feed.heroBanners.size)
             assertEquals("50% OFF", feed.heroBanners[0].title)
             assertEquals(1, feed.products.size)
             assertEquals("Women Printed Kurta", feed.products[0].title)
             assertEquals(1500, feed.products[0].currentPrice)
+            assertEquals("https://api.stylish.app/images/kurta.jpg", feed.products[0].imageUrl)
             awaitComplete()
         }
     }

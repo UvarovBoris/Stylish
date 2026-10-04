@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.dp
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 import com.uvarov.stylish.core.model.Category
 import com.uvarov.stylish.core.ui.component.StylishAsyncImage
-import com.uvarov.stylish.core.ui.util.ProductImageResolver
 
 @Composable
 fun HomeCategoriesRow(
@@ -75,7 +74,7 @@ private fun CategoryItem(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         StylishAsyncImage(
-            model = ProductImageResolver.resolveImageModel(category.imageResName),
+            model = category.imageUrl,
             contentDescription = category.name,
             contentScale = ContentScale.Crop,
             modifier = Modifier

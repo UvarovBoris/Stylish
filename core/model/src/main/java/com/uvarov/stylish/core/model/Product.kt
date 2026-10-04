@@ -9,5 +9,5 @@ data class Product(
     val discountPercent: Int,
     val rating: Float,
     val reviewCount: Int,
-    val imageResName: String,
+    val imageUrl: String,
 )

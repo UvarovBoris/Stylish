@@ -8,7 +8,7 @@
     "discount_percent": 40,
     "rating": 4.0,
     "review_count": 56890,
-    "image_res_name": "placeholder_kurta"
+    "image_url": "https://api.stylish.app/images/kurta.jpg"
   },
   {
     "id": "prod_2",
@@ -19,7 +19,7 @@
     "discount_percent": 50,
     "rating": 4.5,
     "review_count": 344567,
-    "image_res_name": "placeholder_shoes"
+    "image_url": "https://api.stylish.app/images/shoes.jpg"
   },
   {
     "id": "prod_3",
@@ -30,7 +30,7 @@
     "discount_percent": 60,
     "rating": 4.0,
     "review_count": 12450,
-    "image_res_name": "placeholder_watch"
+    "image_url": "https://api.stylish.app/images/watch.jpg"
   },
   {
     "id": "prod_4",
@@ -41,7 +41,7 @@
     "discount_percent": 70,
     "rating": 4.0,
     "review_count": 8920,
-    "image_res_name": "placeholder_sneakers"
+    "image_url": "https://api.stylish.app/images/sneakers.jpg"
   },
   {
     "id": "prod_5",
@@ -52,7 +52,7 @@
     "discount_percent": 62,
     "rating": 4.0,
     "review_count": 15200,
-    "image_res_name": "placeholder_handbag"
+    "image_url": "https://api.stylish.app/images/handbag.jpg"
   },
   {
     "id": "prod_6",
@@ -63,7 +63,7 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 6890,
-    "image_res_name": "placeholder_jacket"
+    "image_url": "https://api.stylish.app/images/jacket.jpg"
   },
   {
     "id": "prod_7",
@@ -74,7 +74,7 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 152344,
-    "image_res_name": "placeholder_shirt"
+    "image_url": "https://api.stylish.app/images/shirt.jpg"
   },
   {
     "id": "prod_8",
@@ -85,7 +85,7 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 523456,
-    "image_res_name": "placeholder_dress"
+    "image_url": "https://api.stylish.app/images/dress.jpg"
   },
   {
     "id": "prod_9",
@@ -96,7 +96,7 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 45678,
-    "image_res_name": "placeholder_dress"
+    "image_url": "https://api.stylish.app/images/dress.jpg"
   },
   {
     "id": "prod_10",
@@ -107,7 +107,7 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 335566,
-    "image_res_name": "placeholder_dress"
+    "image_url": "https://api.stylish.app/images/dress.jpg"
   },
   {
     "id": "prod_11",
@@ -118,7 +118,7 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 27344,
-    "image_res_name": "placeholder_dress"
+    "image_url": "https://api.stylish.app/images/dress.jpg"
   },
   {
     "id": "prod_12",
@@ -129,7 +129,7 @@
     "discount_percent": 37,
     "rating": 2.5,
     "review_count": 1023456,
-    "image_res_name": "placeholder_shoes"
+    "image_url": "https://api.stylish.app/images/shoes.jpg"
   },
   {
     "id": "prod_13",
@@ -140,7 +140,7 @@
     "discount_percent": 41,
     "rating": 4.0,
     "review_count": 344567,
-    "image_res_name": "placeholder_phone"
+    "image_url": "https://api.stylish.app/images/phone.jpg"
   },
   {
     "id": "prod_14",
@@ -151,7 +151,7 @@
     "discount_percent": 50,
     "rating": 2.5,
     "review_count": 835566,
-    "image_res_name": "placeholder_gadget"
+    "image_url": "https://api.stylish.app/images/gadget.jpg"
   },
   {
     "id": "prod_15",
@@ -162,7 +162,7 @@
     "discount_percent": 40,
     "rating": 4.0,
     "review_count": 223569,
-    "image_res_name": "placeholder_jacket"
+    "image_url": "https://api.stylish.app/images/jacket.jpg"
   },
   {
     "id": "prod_16",
@@ -173,7 +173,7 @@
     "discount_percent": 25,
     "rating": 4.0,
     "review_count": 67456,
-    "image_res_name": "placeholder_camera"
+    "image_url": "https://api.stylish.app/images/camera.jpg"
   },
   {
     "id": "prod_17",
@@ -184,7 +184,7 @@
     "discount_percent": 50,
     "rating": 5.0,
     "review_count": 1345678,
-    "image_res_name": "placeholder_shoes"
+    "image_url": "https://api.stylish.app/images/shoes.jpg"
   },
   {
     "id": "prod_18",
@@ -195,7 +195,7 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 56890,
-    "image_res_name": "placeholder_shoes"
+    "image_url": "https://api.stylish.app/images/shoes.jpg"
   },
   {
     "id": "prod_19",
@@ -206,7 +206,7 @@
     "discount_percent": 36,
     "rating": 4.0,
     "review_count": 46890,
-    "image_res_name": "placeholder_shoes"
+    "image_url": "https://api.stylish.app/images/shoes.jpg"
   },
   {
     "id": "prod_20",
@@ -217,6 +217,6 @@
     "discount_percent": 40,
     "rating": 4.5,
     "review_count": 256890,
-    "image_res_name": "placeholder_shoes"
+    "image_url": "https://api.stylish.app/images/shoes.jpg"
   }
 ]

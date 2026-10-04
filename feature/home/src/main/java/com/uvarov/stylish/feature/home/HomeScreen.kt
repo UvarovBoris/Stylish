@@ -204,7 +204,7 @@ private fun HomeContentPreview() {
             discountPercent = 40,
             rating = 4.0f,
             reviewCount = 56890,
-            imageResName = "placeholder_kurta"
+            imageUrl = "https://api.stylish.app/images/kurta.jpg"
         ),
         Product(
             id = "prod_2",
@@ -215,17 +215,17 @@ private fun HomeContentPreview() {
             discountPercent = 50,
             rating = 4.5f,
             reviewCount = 344567,
-            imageResName = "placeholder_shoes"
+            imageUrl = "https://api.stylish.app/images/shoes.jpg"
         )
     )
 
     val sampleCategories = listOf(
-        Category("1", "Beauty", "placeholder_cat_beauty"),
-        Category("2", "Fashion", "placeholder_cat_fashion"),
-        Category("3", "Kids", "placeholder_cat_kids"),
-        Category("4", "Mens", "placeholder_cat_mens"),
-        Category("5", "Womens", "placeholder_cat_womens"),
-        Category("6", "Gifts", "placeholder_cat_gifts")
+        Category("1", "Beauty", "https://api.stylish.app/images/cat_beauty.png"),
+        Category("2", "Fashion", "https://api.stylish.app/images/cat_fashion.png"),
+        Category("3", "Kids", "https://api.stylish.app/images/cat_kids.png"),
+        Category("4", "Mens", "https://api.stylish.app/images/cat_mens.png"),
+        Category("5", "Womens", "https://api.stylish.app/images/cat_womens.png"),
+        Category("6", "Gifts", "https://api.stylish.app/images/cat_gifts.png")
     )
 
     val sampleFeed = HomeFeed(

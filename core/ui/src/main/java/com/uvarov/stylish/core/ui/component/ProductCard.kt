@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import com.uvarov.stylish.core.designsystem.theme.CoralRed
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 import com.uvarov.stylish.core.model.Product
-import com.uvarov.stylish.core.ui.util.ProductImageResolver
 
 @Composable
 fun ProductCard(
@@ -44,7 +43,7 @@ fun ProductCard(
                 .padding(bottom = 8.dp)
         ) {
             StylishAsyncImage(
-                model = ProductImageResolver.resolveImageModel(product.imageResName),
+                model = product.imageUrl,
                 contentDescription = product.title,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

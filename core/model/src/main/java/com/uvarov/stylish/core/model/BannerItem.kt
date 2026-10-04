@@ -5,5 +5,5 @@ data class BannerItem(
     val title: String,
     val subtitle: String,
     val actionText: String = "",
-    val imageResName: String = "",
+    val imageUrl: String = "",
 )

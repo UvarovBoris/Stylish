@@ -13,14 +13,14 @@ data class ProductDto(
     @SerialName("discount_percent") val discountPercent: Int,
     @SerialName("rating") val rating: Float,
     @SerialName("review_count") val reviewCount: Int,
-    @SerialName("image_res_name") val imageResName: String,
+    @SerialName("image_url") val imageUrl: String,
 )
 
 @Serializable
 data class CategoryDto(
     @SerialName("id") val id: String,
     @SerialName("name") val name: String,
-    @SerialName("image_res_name") val imageResName: String,
+    @SerialName("image_url") val imageUrl: String,
 )
 
 @Serializable
@@ -29,7 +29,7 @@ data class BannerItemDto(
     @SerialName("title") val title: String,
     @SerialName("subtitle") val subtitle: String,
     @SerialName("action_text") val actionText: String = "",
-    @SerialName("image_res_name") val imageResName: String = "",
+    @SerialName("image_url") val imageUrl: String = "",
 )
 
 @Serializable

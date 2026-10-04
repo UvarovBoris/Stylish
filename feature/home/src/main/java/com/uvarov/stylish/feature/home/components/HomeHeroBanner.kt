@@ -45,7 +45,6 @@ import com.uvarov.stylish.core.designsystem.theme.Montserrat
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 import com.uvarov.stylish.core.model.BannerItem
 import com.uvarov.stylish.core.ui.component.StylishAsyncImage
-import com.uvarov.stylish.core.ui.util.ProductImageResolver
 import kotlinx.coroutines.launch
 
 @Composable
@@ -124,7 +123,7 @@ private fun HeroBannerCard(
             .clickable(onClick = onBannerClick)
     ) {
         StylishAsyncImage(
-            model = ProductImageResolver.resolveImageModel(banner.imageResName),
+            model = banner.imageUrl,
             contentDescription = banner.title,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
@@ -198,21 +197,21 @@ private fun HomeHeroBannerCarouselPreview() {
                     title = "50-40% OFF",
                     subtitle = "Now in (product)\nAll colours",
                     actionText = "Shop Now",
-                    imageResName = "placeholder_banner_hero"
+                    imageUrl = "https://api.stylish.app/images/banner_hero.png"
                 ),
                 BannerItem(
                     id = "2",
                     title = "Summer Wave",
                     subtitle = "Top picks on fresh styles\nLimited time",
                     actionText = "Shop Now",
-                    imageResName = "placeholder_banner_hero"
+                    imageUrl = "https://api.stylish.app/images/banner_hero.png"
                 ),
                 BannerItem(
                     id = "3",
                     title = "Exclusive Deals",
                     subtitle = "Up to 70% off trending styles\nCheck it out",
                     actionText = "Shop Now",
-                    imageResName = "placeholder_banner_hero"
+                    imageUrl = "https://api.stylish.app/images/banner_hero.png"
                 )
             ),
             onBannerClick = {}
@@ -231,7 +230,7 @@ private fun HomeHeroBannerSinglePreview() {
                     title = "50-40% OFF",
                     subtitle = "Now in (product)\nAll colours",
                     actionText = "Shop Now",
-                    imageResName = "placeholder_banner_hero"
+                    imageUrl = "https://api.stylish.app/images/banner_hero.png"
                 )
             ),
             onBannerClick = {}
