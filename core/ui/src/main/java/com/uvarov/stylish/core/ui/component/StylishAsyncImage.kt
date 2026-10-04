@@ -1,18 +1,30 @@
 package com.uvarov.stylish.core.ui.component
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.painter.ColorPainter
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.painterResource
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.uvarov.stylish.core.designsystem.R
+import com.uvarov.stylish.core.designsystem.theme.GraySurface
+
+val DefaultLightPlaceholderColor: Color = GraySurface
+
+@Composable
+fun rememberLightPlaceholderPainter(
+    color: Color = DefaultLightPlaceholderColor,
+): Painter = remember(color) {
+    ColorPainter(color)
+}
 
 @Composable
 fun StylishAsyncImage(
@@ -22,16 +34,17 @@ fun StylishAsyncImage(
     contentScale: ContentScale = ContentScale.Crop,
     alignment: Alignment = Alignment.Center,
     colorFilter: ColorFilter? = null,
-    @DrawableRes placeholderRes: Int = R.drawable.placeholder_product,
-    @DrawableRes errorRes: Int = R.drawable.placeholder_product,
+    placeholder: Painter? = rememberLightPlaceholderPainter(),
+    error: Painter? = placeholder,
 ) {
     if (LocalInspectionMode.current) {
-        val previewRes = when (model) {
-            is Int -> model
-            else -> placeholderRes
+        val previewPainter = if (model is Int) {
+            painterResource(id = model)
+        } else {
+            placeholder ?: rememberLightPlaceholderPainter()
         }
         Image(
-            painter = painterResource(id = previewRes),
+            painter = previewPainter,
             contentDescription = contentDescription,
             modifier = modifier,
             alignment = alignment,
@@ -53,8 +66,8 @@ fun StylishAsyncImage(
             model = request,
             contentDescription = contentDescription,
             modifier = modifier,
-            placeholder = painterResource(id = placeholderRes),
-            error = painterResource(id = errorRes),
+            placeholder = placeholder,
+            error = error,
             alignment = alignment,
             contentScale = contentScale,
             colorFilter = colorFilter,
