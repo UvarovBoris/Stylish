@@ -23,6 +23,7 @@ sealed interface HomeIntent {
     data class ProductClicked(val product: Product) : HomeIntent
     data class HeroBannerClicked(val banner: BannerItem) : HomeIntent
     data object VoiceSearchClicked : HomeIntent
+    data class ToggleFavorite(val productId: String) : HomeIntent
 }
 
 sealed interface HomeSideEffect {

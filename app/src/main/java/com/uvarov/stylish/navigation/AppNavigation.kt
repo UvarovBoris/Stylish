@@ -26,6 +26,7 @@ import com.uvarov.stylish.feature.onboarding.OnboardingScreen
 import com.uvarov.stylish.feature.onboarding.navigation.OnboardingRoute
 import com.uvarov.stylish.feature.productdetail.ProductDetailScreen
 import com.uvarov.stylish.feature.productdetail.navigation.ProductDetailRoute
+import com.uvarov.stylish.feature.wishlist.WishlistScreen
 import com.uvarov.stylish.feature.main.R as MainR
 
 @Composable
@@ -138,9 +139,8 @@ private fun MainNavigation(
                     )
                 }
 
-                MainTab.WISHLIST -> TabPlaceholderContent(
-                    titleRes = MainR.string.wishlist_placeholder_title,
-                    iconRes = MainR.drawable.ic_nav_wishlist,
+                MainTab.WISHLIST -> WishlistScreen(
+                    onProductClick = onNavigateToProductDetail,
                 )
 
                 MainTab.CART -> TabPlaceholderContent(

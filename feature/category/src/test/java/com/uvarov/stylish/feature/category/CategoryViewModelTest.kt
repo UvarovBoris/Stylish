@@ -2,7 +2,9 @@ package com.uvarov.stylish.feature.category
 
 import app.cash.turbine.test
 import com.uvarov.stylish.core.data.repository.ProductRepository
+import com.uvarov.stylish.core.data.repository.WishlistRepository
 import com.uvarov.stylish.core.model.Product
+import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -25,12 +27,17 @@ class CategoryViewModelTest {
 
     private val testDispatcher = StandardTestDispatcher()
     private val productRepository: ProductRepository = mockk()
+    private val wishlistRepository: WishlistRepository = mockk(relaxed = true)
     private lateinit var viewModel: CategoryViewModel
 
     @Before
     fun setUp() {
         Dispatchers.setMain(testDispatcher)
-        viewModel = CategoryViewModel(productRepository = productRepository)
+        every { wishlistRepository.getFavoriteProductIds() } returns flowOf(emptySet())
+        viewModel = CategoryViewModel(
+            productRepository = productRepository,
+            wishlistRepository = wishlistRepository,
+        )
     }
 
     @After
@@ -127,5 +134,13 @@ class CategoryViewModelTest {
             val effect = awaitItem() as CategorySideEffect.NavigateToProductDetails
             assertEquals("p1", effect.productId)
         }
+    }
+
+    @Test
+    fun toggleFavorite_callsWishlistRepository() = runTest(testDispatcher) {
+        viewModel.onIntent(CategoryIntent.ToggleFavorite("p1"))
+        testScheduler.advanceUntilIdle()
+
+        coVerify { wishlistRepository.toggleFavorite("p1") }
     }
 }

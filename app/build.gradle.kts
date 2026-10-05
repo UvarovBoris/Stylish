@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":feature:home"))
     implementation(project(":feature:category"))
     implementation(project(":feature:productdetail"))
+    implementation(project(":feature:wishlist"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)

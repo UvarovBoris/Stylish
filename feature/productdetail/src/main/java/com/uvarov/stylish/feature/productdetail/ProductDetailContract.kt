@@ -28,6 +28,7 @@ sealed interface ProductDetailIntent {
     data object BackClicked : ProductDetailIntent
     data object CartClicked : ProductDetailIntent
     data object RetryClicked : ProductDetailIntent
+    data object ToggleFavorite : ProductDetailIntent
 }
 
 sealed interface ProductDetailSideEffect {

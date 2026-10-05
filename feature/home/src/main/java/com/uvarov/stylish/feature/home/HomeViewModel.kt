@@ -3,6 +3,7 @@ package com.uvarov.stylish.feature.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uvarov.stylish.core.data.repository.HomeRepository
+import com.uvarov.stylish.core.data.repository.WishlistRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -10,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -18,6 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository,
+    private val wishlistRepository: WishlistRepository,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
@@ -46,13 +49,27 @@ class HomeViewModel @Inject constructor(
             is HomeIntent.VoiceSearchClicked -> emitSideEffect(
                 HomeSideEffect.ShowToast("Voice search activated")
             )
+            is HomeIntent.ToggleFavorite -> {
+                viewModelScope.launch {
+                    wishlistRepository.toggleFavorite(intent.productId)
+                }
+            }
         }
     }
 
     private fun loadHomeFeed() {
         viewModelScope.launch {
             _uiState.update { HomeUiState.Loading }
-            homeRepository.getHomeFeed()
+            combine(
+                homeRepository.getHomeFeed(),
+                wishlistRepository.getFavoriteProductIds(),
+            ) { feed, favoriteIds ->
+                feed.copy(
+                    products = feed.products.map { product ->
+                        product.copy(isFavorite = favoriteIds.contains(product.id))
+                    }
+                )
+            }
                 .catch { throwable ->
                     _uiState.update {
                         HomeUiState.Error(throwable.message ?: "Failed to load home feed")

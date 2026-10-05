@@ -101,6 +101,8 @@ fun ProductDetailContent(
             ProductDetailTopBar(
                 onBackClick = { onIntent(ProductDetailIntent.BackClicked) },
                 onCartClick = { onIntent(ProductDetailIntent.CartClicked) },
+                isFavorite = (uiState as? ProductDetailUiState.Success)?.product?.isFavorite ?: false,
+                onFavoriteClick = { onIntent(ProductDetailIntent.ToggleFavorite) },
             )
         },
     ) { innerPadding ->
@@ -162,6 +164,8 @@ fun ProductDetailContent(
 private fun ProductDetailTopBar(
     onBackClick: () -> Unit,
     onCartClick: () -> Unit,
+    isFavorite: Boolean,
+    onFavoriteClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -179,13 +183,32 @@ private fun ProductDetailTopBar(
                 modifier = Modifier.size(24.dp),
             )
         }
-        IconButton(onClick = onCartClick) {
-            Icon(
-                painter = painterResource(DesignR.drawable.ic_cart),
-                contentDescription = stringResource(R.string.product_detail_cd_cart),
-                tint = StylishTheme.colors.textPrimary,
-                modifier = Modifier.size(24.dp),
-            )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            IconButton(onClick = onFavoriteClick) {
+                Icon(
+                    painter = painterResource(
+                        if (isFavorite) DesignR.drawable.ic_heart_filled
+                        else DesignR.drawable.ic_heart_outline
+                    ),
+                    contentDescription = stringResource(
+                        if (isFavorite) R.string.product_detail_cd_remove_from_wishlist
+                        else R.string.product_detail_cd_add_to_wishlist
+                    ),
+                    tint = if (isFavorite) StylishTheme.colors.brandPrimary else StylishTheme.colors.textPrimary,
+                    modifier = Modifier.size(24.dp),
+                )
+            }
+            IconButton(onClick = onCartClick) {
+                Icon(
+                    painter = painterResource(DesignR.drawable.ic_cart),
+                    contentDescription = stringResource(R.string.product_detail_cd_cart),
+                    tint = StylishTheme.colors.textPrimary,
+                    modifier = Modifier.size(24.dp),
+                )
+            }
         }
     }
 }

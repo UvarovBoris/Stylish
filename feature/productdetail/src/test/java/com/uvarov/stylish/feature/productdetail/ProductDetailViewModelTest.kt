@@ -2,7 +2,9 @@ package com.uvarov.stylish.feature.productdetail
 
 import app.cash.turbine.test
 import com.uvarov.stylish.core.data.repository.ProductRepository
+import com.uvarov.stylish.core.data.repository.WishlistRepository
 import com.uvarov.stylish.core.model.Product
+import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -26,6 +28,7 @@ class ProductDetailViewModelTest {
 
     private val testDispatcher = StandardTestDispatcher()
     private val productRepository: ProductRepository = mockk()
+    private val wishlistRepository: WishlistRepository = mockk(relaxed = true)
     private lateinit var viewModel: ProductDetailViewModel
 
     private val sampleProduct = Product(
@@ -43,7 +46,11 @@ class ProductDetailViewModelTest {
     @Before
     fun setUp() {
         Dispatchers.setMain(testDispatcher)
-        viewModel = ProductDetailViewModel(productRepository = productRepository)
+        every { wishlistRepository.isFavorite(any()) } returns flowOf(false)
+        viewModel = ProductDetailViewModel(
+            productRepository = productRepository,
+            wishlistRepository = wishlistRepository,
+        )
     }
 
     @After
@@ -205,5 +212,17 @@ class ProductDetailViewModelTest {
             val success = awaitItem() as ProductDetailUiState.Success
             assertEquals(sampleProduct, success.product)
         }
+    }
+
+    @Test
+    fun toggleFavorite_callsWishlistRepository() = runTest(testDispatcher) {
+        every { productRepository.getProductById("prod_1") } returns flowOf(sampleProduct)
+        viewModel.onIntent(ProductDetailIntent.LoadProduct("prod_1"))
+        testScheduler.advanceUntilIdle()
+
+        viewModel.onIntent(ProductDetailIntent.ToggleFavorite)
+        testScheduler.advanceUntilIdle()
+
+        coVerify { wishlistRepository.toggleFavorite("prod_1") }
     }
 }

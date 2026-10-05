@@ -3,6 +3,7 @@ package com.uvarov.stylish.feature.productdetail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uvarov.stylish.core.data.repository.ProductRepository
+import com.uvarov.stylish.core.data.repository.WishlistRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -10,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -18,6 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductDetailViewModel @Inject constructor(
     private val productRepository: ProductRepository,
+    private val wishlistRepository: WishlistRepository,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<ProductDetailUiState>(ProductDetailUiState.Loading)
@@ -73,13 +76,25 @@ class ProductDetailViewModel @Inject constructor(
                     loadProduct(currentProductId)
                 }
             }
+            is ProductDetailIntent.ToggleFavorite -> {
+                if (currentProductId.isNotBlank()) {
+                    viewModelScope.launch {
+                        wishlistRepository.toggleFavorite(currentProductId)
+                    }
+                }
+            }
         }
     }
 
     private fun loadProduct(productId: String) {
         viewModelScope.launch {
             _uiState.update { ProductDetailUiState.Loading }
-            productRepository.getProductById(productId)
+            combine(
+                productRepository.getProductById(productId),
+                wishlistRepository.isFavorite(productId),
+            ) { product, isFavorite ->
+                product.copy(isFavorite = isFavorite)
+            }
                 .catch { throwable ->
                     _uiState.update {
                         ProductDetailUiState.Error(

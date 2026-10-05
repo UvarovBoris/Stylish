@@ -1,23 +1,35 @@
 package com.uvarov.stylish.core.ui.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,12 +39,16 @@ import androidx.compose.ui.unit.dp
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 import com.uvarov.stylish.core.model.Product
 import com.uvarov.stylish.core.model.ProductImportance
+import com.uvarov.stylish.core.ui.R
+import com.uvarov.stylish.core.designsystem.R as DesignR
 
 @Composable
 fun ProductCard(
     product: Product,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    isFavorite: Boolean = product.isFavorite,
+    onFavoriteClick: (() -> Unit)? = null,
     imageHeight: Dp = if (product.importance == ProductImportance.HIGH) 196.dp else 136.dp,
 ) {
     Surface(
@@ -55,15 +71,53 @@ fun ProductCard(
                 .fillMaxWidth()
                 .padding(bottom = 8.dp)
         ) {
-            StylishAsyncImage(
-                model = product.imageUrl,
-                contentDescription = product.title,
-                contentScale = ContentScale.Crop,
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(imageHeight)
-                    .clip(RoundedCornerShape(8.dp))
-            )
+            ) {
+                StylishAsyncImage(
+                    model = product.imageUrl,
+                    contentDescription = product.title,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(8.dp))
+                )
+
+                if (onFavoriteClick != null) {
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.TopEnd)
+                            .padding(8.dp)
+                            .size(28.dp)
+                            .background(
+                                color = StylishTheme.colors.surface.copy(alpha = 0.85f),
+                                shape = CircleShape
+                            )
+                            .clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = ripple(bounded = false, radius = 14.dp),
+                                role = Role.Button,
+                                onClick = onFavoriteClick
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            painter = painterResource(
+                                if (isFavorite) DesignR.drawable.ic_heart_filled
+                                else DesignR.drawable.ic_heart_outline
+                            ),
+                            contentDescription = stringResource(
+                                if (isFavorite) R.string.cd_remove_from_favorites
+                                else R.string.cd_add_to_favorites
+                            ),
+                            tint = if (isFavorite) StylishTheme.colors.brandPrimary else StylishTheme.colors.textSecondary,
+                            modifier = Modifier.size(16.dp)
+                        )
+                    }
+                }
+            }
 
             Column(
                 modifier = Modifier

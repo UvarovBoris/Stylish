@@ -16,4 +16,6 @@
     <string name="product_detail_retry">Retry</string>
     <string name="product_detail_added_to_cart">Added to cart</string>
     <string name="product_detail_proceeding_to_checkout">Proceeding to checkout</string>
+    <string name="product_detail_cd_add_to_wishlist">Add to wishlist</string>
+    <string name="product_detail_cd_remove_from_wishlist">Remove from wishlist</string>
 </resources>

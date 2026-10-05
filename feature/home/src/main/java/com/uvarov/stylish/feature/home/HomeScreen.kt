@@ -188,6 +188,7 @@ fun HomeContent(
                     ProductCard(
                         product = product,
                         onClick = { onIntent(HomeIntent.ProductClicked(product)) },
+                        onFavoriteClick = { onIntent(HomeIntent.ToggleFavorite(product.id)) },
                         modifier = Modifier.fillMaxWidth()
                     )
                 }

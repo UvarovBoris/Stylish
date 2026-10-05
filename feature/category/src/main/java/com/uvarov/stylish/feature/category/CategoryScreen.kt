@@ -158,6 +158,7 @@ fun CategoryContent(
                                 ProductCard(
                                     product = product,
                                     onClick = { onIntent(CategoryIntent.ProductClicked(product)) },
+                                    onFavoriteClick = { onIntent(CategoryIntent.ToggleFavorite(product.id)) },
                                     modifier = Modifier.fillMaxWidth()
                                 )
                             }

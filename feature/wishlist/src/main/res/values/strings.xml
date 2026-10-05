@@ -1,0 +1,8 @@
+<resources>
+    <string name="wishlist_title">Wishlist</string>
+    <string name="wishlist_item_count">%1$d Items</string>
+    <string name="wishlist_empty_title">Your wishlist is empty</string>
+    <string name="wishlist_empty_subtitle">Explore our collection and tap the heart icon on any product to save it here.</string>
+    <string name="wishlist_retry">Retry</string>
+    <string name="wishlist_error">Failed to load wishlist</string>
+</resources>

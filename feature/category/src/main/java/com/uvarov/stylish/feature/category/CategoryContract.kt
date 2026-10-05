@@ -23,6 +23,7 @@ sealed interface CategoryIntent {
     data class ProductClicked(val product: Product) : CategoryIntent
     data object BackClicked : CategoryIntent
     data object RetryClicked : CategoryIntent
+    data class ToggleFavorite(val productId: String) : CategoryIntent
 }
 
 sealed interface CategorySideEffect {

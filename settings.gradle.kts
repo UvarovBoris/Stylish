@@ -25,6 +25,7 @@ dependencyResolutionManagement {
 rootProject.name = "Stylish"
 include(":app")
 include(":core:designsystem")
+include(":core:database")
 include(":core:datastore")
 include(":core:data")
 include(":core:model")
@@ -35,3 +36,4 @@ include(":feature:main")
 include(":feature:home")
 include(":feature:category")
 include(":feature:productdetail")
+include(":feature:wishlist")

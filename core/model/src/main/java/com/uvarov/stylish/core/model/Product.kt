@@ -12,4 +12,5 @@ data class Product(
     val imageUrl: String,
     val importance: ProductImportance = ProductImportance.NORMAL,
     val categoryId: String? = null,
+    val isFavorite: Boolean = false,
 )
