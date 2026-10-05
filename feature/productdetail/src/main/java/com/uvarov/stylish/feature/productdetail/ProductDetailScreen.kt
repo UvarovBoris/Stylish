@@ -7,6 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -227,214 +228,221 @@ private fun ProductDetailLoadedContent(
         modifier = modifier
             .fillMaxSize()
             .verticalScroll(scrollState)
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         ProductImageCarousel(imageUrl = state.product.imageUrl)
 
-        SizeSelector(
-            selectedSize = state.selectedSize,
-            availableSizes = state.availableSizes,
-            onSelectSize = { onIntent(ProductDetailIntent.SelectSize(it)) },
-        )
-
-        Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            Text(
-                text = state.product.title,
-                fontFamily = Montserrat,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-                lineHeight = 22.sp,
-                color = StylishTheme.colors.textPrimary,
-            )
-            Text(
-                text = state.product.description,
-                fontFamily = Montserrat,
-                fontWeight = FontWeight.Normal,
-                fontSize = 14.sp,
-                lineHeight = 16.sp,
-                color = StylishTheme.colors.textPrimary,
-            )
-        }
-
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            RatingBar(
-                rating = state.product.rating,
-                starSize = 18.dp,
+            SizeSelector(
+                selectedSize = state.selectedSize,
+                availableSizes = state.availableSizes,
+                onSelectSize = { onIntent(ProductDetailIntent.SelectSize(it)) },
             )
-            Text(
-                text = String.format(Locale.US, "%,d", state.product.reviewCount),
-                fontFamily = Montserrat,
-                fontWeight = FontWeight.Normal,
-                fontSize = 14.sp,
-                lineHeight = 16.sp,
-                color = Color(0xFF828282),
-            )
-        }
 
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            if (state.product.originalPrice > state.product.currentPrice) {
+            Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Text(
-                    text = "₹${state.product.originalPrice}",
+                    text = state.product.title,
+                    fontFamily = Montserrat,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 20.sp,
+                    lineHeight = 22.sp,
+                    color = StylishTheme.colors.textPrimary,
+                )
+                Text(
+                    text = state.product.description,
                     fontFamily = Montserrat,
                     fontWeight = FontWeight.Normal,
                     fontSize = 14.sp,
                     lineHeight = 16.sp,
-                    color = Color(0xFF808488),
-                    textDecoration = TextDecoration.LineThrough,
+                    color = StylishTheme.colors.textPrimary,
                 )
             }
-            Text(
-                text = "₹${state.product.currentPrice}",
-                fontFamily = Montserrat,
-                fontWeight = FontWeight.Medium,
-                fontSize = 14.sp,
-                lineHeight = 16.sp,
-                color = StylishTheme.colors.textPrimary,
-            )
-            if (state.product.discountPercent > 0) {
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                RatingBar(
+                    rating = state.product.rating,
+                    starSize = 18.dp,
+                )
                 Text(
-                    text = stringResource(R.string.product_detail_discount_format, state.product.discountPercent),
+                    text = String.format(Locale.US, "%,d", state.product.reviewCount),
                     fontFamily = Montserrat,
-                    fontWeight = FontWeight.SemiBold,
+                    fontWeight = FontWeight.Normal,
                     fontSize = 14.sp,
+                    lineHeight = 16.sp,
+                    color = Color(0xFF828282),
+                )
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                if (state.product.originalPrice > state.product.currentPrice) {
+                    Text(
+                        text = "₹${state.product.originalPrice}",
+                        fontFamily = Montserrat,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 14.sp,
+                        lineHeight = 16.sp,
+                        color = Color(0xFF808488),
+                        textDecoration = TextDecoration.LineThrough,
+                    )
+                }
+                Text(
+                    text = "₹${state.product.currentPrice}",
+                    fontFamily = Montserrat,
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 14.sp,
+                    lineHeight = 16.sp,
+                    color = StylishTheme.colors.textPrimary,
+                )
+                if (state.product.discountPercent > 0) {
+                    Text(
+                        text = stringResource(R.string.product_detail_discount_format, state.product.discountPercent),
+                        fontFamily = Montserrat,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 14.sp,
+                        lineHeight = 16.sp,
+                        color = StylishTheme.colors.brandSecondary,
+                    )
+                }
+            }
+
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(
+                    text = stringResource(R.string.product_detail_header),
+                    fontFamily = Montserrat,
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 14.sp,
+                    lineHeight = 16.sp,
+                    color = StylishTheme.colors.textPrimary,
+                )
+                Text(
+                    text = buildProductDetailDescription(state.product.description),
+                    fontFamily = Montserrat,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 12.sp,
+                    lineHeight = 16.sp,
+                    color = StylishTheme.colors.textPrimary,
+                    maxLines = if (state.isDescriptionExpanded) Int.MAX_VALUE else 3,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Text(
+                    text = stringResource(
+                        if (state.isDescriptionExpanded) R.string.product_detail_see_less else R.string.product_detail_see_more
+                    ),
+                    fontFamily = Montserrat,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 12.sp,
                     lineHeight = 16.sp,
                     color = StylishTheme.colors.brandSecondary,
+                    modifier = Modifier.clickable { onIntent(ProductDetailIntent.ToggleDescription) },
                 )
             }
-        }
 
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(
-                text = stringResource(R.string.product_detail_header),
-                fontFamily = Montserrat,
-                fontWeight = FontWeight.Medium,
-                fontSize = 14.sp,
-                lineHeight = 16.sp,
-                color = StylishTheme.colors.textPrimary,
-            )
-            Text(
-                text = buildProductDetailDescription(state.product.description),
-                fontFamily = Montserrat,
-                fontWeight = FontWeight.Normal,
-                fontSize = 12.sp,
-                lineHeight = 16.sp,
-                color = StylishTheme.colors.textPrimary,
-                maxLines = if (state.isDescriptionExpanded) Int.MAX_VALUE else 3,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Text(
-                text = stringResource(
-                    if (state.isDescriptionExpanded) R.string.product_detail_see_less else R.string.product_detail_see_more
-                ),
-                fontFamily = Montserrat,
-                fontWeight = FontWeight.Normal,
-                fontSize = 12.sp,
-                lineHeight = 16.sp,
-                color = StylishTheme.colors.brandSecondary,
-                modifier = Modifier.clickable { onIntent(ProductDetailIntent.ToggleDescription) },
-            )
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            FeatureChip(
-                iconRes = R.drawable.ic_nearest_store,
-                label = stringResource(R.string.product_detail_feature_nearest_store),
-                modifier = Modifier.weight(1f),
-            )
-            FeatureChip(
-                iconRes = R.drawable.ic_return_policy,
-                label = stringResource(R.string.product_detail_feature_return_policy),
-                modifier = Modifier.weight(1f),
-            )
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            Button(
-                onClick = { onIntent(ProductDetailIntent.AddToCartClicked) },
-                modifier = Modifier
-                    .weight(1f)
-                    .height(48.dp),
-                shape = RoundedCornerShape(8.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = StylishTheme.colors.brandAccent,
-                ),
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                Icon(
-                    painter = painterResource(DesignR.drawable.ic_cart),
-                    contentDescription = null,
-                    tint = StylishTheme.colors.onBrand,
-                    modifier = Modifier.size(18.dp),
+                FeatureChip(
+                    iconRes = R.drawable.ic_nearest_store,
+                    label = stringResource(R.string.product_detail_feature_nearest_store),
+                    modifier = Modifier.weight(1f),
                 )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = stringResource(R.string.product_detail_go_to_cart),
-                    fontFamily = Montserrat,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 14.sp,
-                    color = StylishTheme.colors.onBrand,
+                FeatureChip(
+                    iconRes = R.drawable.ic_return_policy,
+                    label = stringResource(R.string.product_detail_feature_return_policy),
+                    modifier = Modifier.weight(1f),
                 )
             }
 
-            Button(
-                onClick = { onIntent(ProductDetailIntent.BuyNowClicked) },
-                modifier = Modifier
-                    .weight(1f)
-                    .height(48.dp),
-                shape = RoundedCornerShape(8.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = StylishTheme.colors.success,
-                ),
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
-                Text(
-                    text = stringResource(R.string.product_detail_buy_now),
-                    fontFamily = Montserrat,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 14.sp,
-                    color = StylishTheme.colors.onBrand,
-                )
-            }
-        }
+                Button(
+                    onClick = { onIntent(ProductDetailIntent.AddToCartClicked) },
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(48.dp),
+                    shape = RoundedCornerShape(8.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = StylishTheme.colors.brandAccent,
+                    ),
+                ) {
+                    Icon(
+                        painter = painterResource(DesignR.drawable.ic_cart),
+                        contentDescription = null,
+                        tint = StylishTheme.colors.onBrand,
+                        modifier = Modifier.size(18.dp),
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = stringResource(R.string.product_detail_go_to_cart),
+                        fontFamily = Montserrat,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 14.sp,
+                        color = StylishTheme.colors.onBrand,
+                    )
+                }
 
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(5.dp))
-                .background(Color(0xFFFFCCD5))
-                .padding(horizontal = 16.dp, vertical = 12.dp),
-        ) {
-            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                Text(
-                    text = "Delivery in",
-                    fontFamily = Montserrat,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 14.sp,
-                    lineHeight = 16.sp,
-                    color = StylishTheme.colors.textPrimary,
-                )
-                Text(
-                    text = stringResource(R.string.product_detail_delivery_banner),
-                    fontFamily = Montserrat,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 21.sp,
-                    color = StylishTheme.colors.textPrimary,
-                )
+                Button(
+                    onClick = { onIntent(ProductDetailIntent.BuyNowClicked) },
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(48.dp),
+                    shape = RoundedCornerShape(8.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = StylishTheme.colors.success,
+                    ),
+                ) {
+                    Text(
+                        text = stringResource(R.string.product_detail_buy_now),
+                        fontFamily = Montserrat,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 14.sp,
+                        color = StylishTheme.colors.onBrand,
+                    )
+                }
             }
-        }
 
-        Spacer(modifier = Modifier.height(16.dp))
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(5.dp))
+                    .background(Color(0xFFFFCCD5))
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+            ) {
+                Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                    Text(
+                        text = "Delivery in",
+                        fontFamily = Montserrat,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 14.sp,
+                        lineHeight = 16.sp,
+                        color = StylishTheme.colors.textPrimary,
+                    )
+                    Text(
+                        text = stringResource(R.string.product_detail_delivery_banner),
+                        fontFamily = Montserrat,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 21.sp,
+                        color = StylishTheme.colors.textPrimary,
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+        }
     }
 }
 
@@ -453,17 +461,24 @@ private fun ProductImageCarousel(
     ) {
         HorizontalPager(
             state = pagerState,
+            contentPadding = PaddingValues(horizontal = 16.dp),
+            pageSpacing = 16.dp,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(240.dp)
-                .clip(RoundedCornerShape(16.dp)),
+                .height(240.dp),
         ) {
-            StylishAsyncImage(
-                model = imageUrl,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize(),
-            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(RoundedCornerShape(16.dp)),
+            ) {
+                StylishAsyncImage(
+                    model = imageUrl,
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize(),
+                )
+            }
         }
 
         Row(
