@@ -28,7 +28,7 @@ Stylish/
 └── feature/
     ├── auth/                         # Splash, Onboarding, Login, Register, Forgot Password
     ├── home/                         # Featured deals, carousels, home categories
-    ├── catalog/                      # Product listing, search, filtering & sorting bottom sheets
+    ├── category/                     # Product listing by category, filtering & sorting
     ├── product-details/              # Product details, image gallery, size/color selectors, reviews
     ├── cart/                         # Cart items, promo vouchers, checkout breakdown
     ├── checkout/                     # Delivery address, payment selection, order placement

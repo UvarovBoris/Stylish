@@ -65,7 +65,8 @@
       "rating": 4.0,
       "review_count": 56890,
       "image_url": "https://api.stylish.app/images/kurta.jpg",
-      "importance": "high"
+      "importance": "high",
+      "category_id": "cat_womens"
     },
     {
       "id": "prod_2",
@@ -77,7 +78,8 @@
       "rating": 4.5,
       "review_count": 344567,
       "image_url": "https://api.stylish.app/images/shoes.jpg",
-      "importance": "normal"
+      "importance": "normal",
+      "category_id": "cat_mens"
     },
     {
       "id": "prod_18",
@@ -89,7 +91,8 @@
       "rating": 4.0,
       "review_count": 56890,
       "image_url": "https://api.stylish.app/images/shoes.jpg",
-      "importance": "high"
+      "importance": "high",
+      "category_id": "cat_fashion"
     },
     {
       "id": "prod_3",
@@ -101,7 +104,8 @@
       "rating": 4.0,
       "review_count": 12450,
       "image_url": "https://api.stylish.app/images/watch.jpg",
-      "importance": "normal"
+      "importance": "normal",
+      "category_id": "cat_mens"
     },
     {
       "id": "prod_4",
@@ -113,7 +117,8 @@
       "rating": 4.0,
       "review_count": 8920,
       "image_url": "https://api.stylish.app/images/sneakers.jpg",
-      "importance": "normal"
+      "importance": "normal",
+      "category_id": "cat_fashion"
     },
     {
       "id": "prod_5",
@@ -125,7 +130,8 @@
       "rating": 4.0,
       "review_count": 15200,
       "image_url": "https://api.stylish.app/images/handbag.jpg",
-      "importance": "high"
+      "importance": "high",
+      "category_id": "cat_womens"
     },
     {
       "id": "prod_7",
@@ -137,7 +143,8 @@
       "rating": 4.0,
       "review_count": 152344,
       "image_url": "https://api.stylish.app/images/shirt.jpg",
-      "importance": "normal"
+      "importance": "normal",
+      "category_id": "cat_mens"
     }
   ]
 }

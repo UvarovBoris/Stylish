@@ -15,6 +15,11 @@ class DefaultProductRepository @Inject constructor(
         emit(dtos.map { it.asExternalModel() })
     }
 
+    override fun getProductsByCategory(categoryId: String): Flow<List<Product>> = flow {
+        val dtos = apiService.getProductsByCategory(categoryId)
+        emit(dtos.map { it.asExternalModel() })
+    }
+
     override fun getProductById(id: String): Flow<Product> = flow {
         val dto = apiService.getProductById(id)
         emit(dto.asExternalModel())

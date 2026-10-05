@@ -9,7 +9,8 @@
     "rating": 4.0,
     "review_count": 56890,
     "image_url": "https://api.stylish.app/images/kurta.jpg",
-    "importance": "high"
+    "importance": "high",
+    "category_id": "cat_womens"
   },
   {
     "id": "prod_2",
@@ -21,7 +22,8 @@
     "rating": 4.5,
     "review_count": 344567,
     "image_url": "https://api.stylish.app/images/shoes.jpg",
-    "importance": "normal"
+    "importance": "normal",
+    "category_id": "cat_mens"
   },
   {
     "id": "prod_3",
@@ -33,7 +35,8 @@
     "rating": 4.0,
     "review_count": 12450,
     "image_url": "https://api.stylish.app/images/watch.jpg",
-    "importance": "normal"
+    "importance": "normal",
+    "category_id": "cat_mens"
   },
   {
     "id": "prod_4",
@@ -45,7 +48,8 @@
     "rating": 4.0,
     "review_count": 8920,
     "image_url": "https://api.stylish.app/images/sneakers.jpg",
-    "importance": "normal"
+    "importance": "normal",
+    "category_id": "cat_fashion"
   },
   {
     "id": "prod_5",
@@ -57,7 +61,8 @@
     "rating": 4.0,
     "review_count": 15200,
     "image_url": "https://api.stylish.app/images/handbag.jpg",
-    "importance": "high"
+    "importance": "high",
+    "category_id": "cat_womens"
   },
   {
     "id": "prod_6",
@@ -69,7 +74,8 @@
     "rating": 4.0,
     "review_count": 6890,
     "image_url": "https://api.stylish.app/images/jacket.jpg",
-    "importance": "normal"
+    "importance": "normal",
+    "category_id": "cat_fashion"
   },
   {
     "id": "prod_7",
@@ -81,7 +87,8 @@
     "rating": 4.0,
     "review_count": 152344,
     "image_url": "https://api.stylish.app/images/shirt.jpg",
-    "importance": "normal"
+    "importance": "normal",
+    "category_id": "cat_mens"
   },
   {
     "id": "prod_8",
@@ -93,7 +100,8 @@
     "rating": 4.0,
     "review_count": 523456,
     "image_url": "https://api.stylish.app/images/dress.jpg",
-    "importance": "high"
+    "importance": "high",
+    "category_id": "cat_womens"
   },
   {
     "id": "prod_9",
@@ -105,7 +113,8 @@
     "rating": 4.0,
     "review_count": 45678,
     "image_url": "https://api.stylish.app/images/dress.jpg",
-    "importance": "normal"
+    "importance": "normal",
+    "category_id": "cat_womens"
   },
   {
     "id": "prod_10",
@@ -117,7 +126,8 @@
     "rating": 4.0,
     "review_count": 335566,
     "image_url": "https://api.stylish.app/images/dress.jpg",
-    "importance": "high"
+    "importance": "high",
+    "category_id": "cat_womens"
   },
   {
     "id": "prod_11",
@@ -129,7 +139,8 @@
     "rating": 4.0,
     "review_count": 27344,
     "image_url": "https://api.stylish.app/images/dress.jpg",
-    "importance": "normal"
+    "importance": "normal",
+    "category_id": "cat_womens"
   },
   {
     "id": "prod_12",
@@ -141,7 +152,8 @@
     "rating": 2.5,
     "review_count": 1023456,
     "image_url": "https://api.stylish.app/images/shoes.jpg",
-    "importance": "high"
+    "importance": "high",
+    "category_id": "cat_kids"
   },
   {
     "id": "prod_13",
@@ -153,7 +165,8 @@
     "rating": 4.0,
     "review_count": 344567,
     "image_url": "https://api.stylish.app/images/phone.jpg",
-    "importance": "normal"
+    "importance": "normal",
+    "category_id": "cat_gifts"
   },
   {
     "id": "prod_14",
@@ -165,7 +178,8 @@
     "rating": 2.5,
     "review_count": 835566,
     "image_url": "https://api.stylish.app/images/gadget.jpg",
-    "importance": "normal"
+    "importance": "normal",
+    "category_id": "cat_gifts"
   },
   {
     "id": "prod_15",
@@ -177,7 +191,8 @@
     "rating": 4.0,
     "review_count": 223569,
     "image_url": "https://api.stylish.app/images/jacket.jpg",
-    "importance": "high"
+    "importance": "high",
+    "category_id": "cat_mens"
   },
   {
     "id": "prod_16",
@@ -189,7 +204,8 @@
     "rating": 4.0,
     "review_count": 67456,
     "image_url": "https://api.stylish.app/images/camera.jpg",
-    "importance": "normal"
+    "importance": "normal",
+    "category_id": "cat_gifts"
   },
   {
     "id": "prod_17",
@@ -201,7 +217,8 @@
     "rating": 5.0,
     "review_count": 1345678,
     "image_url": "https://api.stylish.app/images/shoes.jpg",
-    "importance": "normal"
+    "importance": "normal",
+    "category_id": "cat_mens"
   },
   {
     "id": "prod_18",
@@ -213,7 +230,8 @@
     "rating": 4.0,
     "review_count": 56890,
     "image_url": "https://api.stylish.app/images/shoes.jpg",
-    "importance": "high"
+    "importance": "high",
+    "category_id": "cat_fashion"
   },
   {
     "id": "prod_19",
@@ -225,7 +243,8 @@
     "rating": 4.0,
     "review_count": 46890,
     "image_url": "https://api.stylish.app/images/shoes.jpg",
-    "importance": "normal"
+    "importance": "normal",
+    "category_id": "cat_kids"
   },
   {
     "id": "prod_20",
@@ -237,6 +256,33 @@
     "rating": 4.5,
     "review_count": 256890,
     "image_url": "https://api.stylish.app/images/shoes.jpg",
-    "importance": "high"
+    "importance": "high",
+    "category_id": "cat_fashion"
+  },
+  {
+    "id": "prod_21",
+    "title": "L'Oreal Paris Revitalift Serum",
+    "description": "Advanced Anti-Aging Day Cream with Pro-Xylane",
+    "current_price": 899,
+    "original_price": 1499,
+    "discount_percent": 40,
+    "rating": 4.5,
+    "review_count": 42100,
+    "image_url": "https://api.stylish.app/images/cat_beauty.png",
+    "importance": "high",
+    "category_id": "cat_beauty"
+  },
+  {
+    "id": "prod_22",
+    "title": "Matte Velvet Lipstick",
+    "description": "Long lasting waterproof matte lipstick shade",
+    "current_price": 499,
+    "original_price": 999,
+    "discount_percent": 50,
+    "rating": 4.2,
+    "review_count": 18900,
+    "image_url": "https://api.stylish.app/images/cat_beauty.png",
+    "importance": "normal",
+    "category_id": "cat_beauty"
   }
 ]

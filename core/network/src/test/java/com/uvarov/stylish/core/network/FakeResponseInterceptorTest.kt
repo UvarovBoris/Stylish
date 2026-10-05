@@ -13,17 +13,20 @@ import org.junit.Before
 import org.junit.Test
 import java.io.ByteArrayInputStream
 
+import kotlinx.serialization.json.Json
+
 class FakeResponseInterceptorTest {
 
     private val context: Context = mockk()
     private val assetManager: AssetManager = mockk()
     private val chain: Interceptor.Chain = mockk()
+    private val json = Json { ignoreUnknownKeys = true }
     private lateinit var interceptor: FakeResponseInterceptor
 
     @Before
     fun setUp() {
         every { context.assets } returns assetManager
-        interceptor = FakeResponseInterceptor(context)
+        interceptor = FakeResponseInterceptor(context, json)
     }
 
     @Test

@@ -15,6 +15,7 @@ data class ProductDto(
     @SerialName("review_count") val reviewCount: Int,
     @SerialName("image_url") val imageUrl: String,
     @SerialName("importance") val importance: String? = null,
+    @SerialName("category_id") val categoryId: String? = null,
 )
 
 @Serializable

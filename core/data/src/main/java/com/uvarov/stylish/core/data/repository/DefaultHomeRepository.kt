@@ -35,6 +35,7 @@ fun ProductDto.asExternalModel(): Product = Product(
     reviewCount = reviewCount,
     imageUrl = imageUrl,
     importance = ProductImportance.fromString(importance),
+    categoryId = categoryId,
 )
 
 fun CategoryDto.asExternalModel(): Category = Category(

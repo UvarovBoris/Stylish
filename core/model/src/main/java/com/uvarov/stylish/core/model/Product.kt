@@ -11,4 +11,5 @@ data class Product(
     val reviewCount: Int,
     val imageUrl: String,
     val importance: ProductImportance = ProductImportance.NORMAL,
+    val categoryId: String? = null,
 )

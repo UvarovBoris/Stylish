@@ -54,10 +54,12 @@ class NetworkSerializationTest {
 
         val products = json.decodeFromString<List<ProductDto>>(content)
         assertNotNull(products)
-        assertEquals(20, products.size)
+        assertEquals(22, products.size)
         assertEquals("https://api.stylish.app/images/kurta.jpg", products[0].imageUrl)
         assertEquals("high", products[0].importance)
+        assertEquals("cat_womens", products[0].categoryId)
         assertEquals("https://api.stylish.app/images/shoes.jpg", products[1].imageUrl)
         assertEquals("normal", products[1].importance)
+        assertEquals("cat_mens", products[1].categoryId)
     }
 }

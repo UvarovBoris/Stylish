@@ -46,12 +46,8 @@ import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 fun MainScreen(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = hiltViewModel(),
-    homeContent: @Composable (onNavigateToSearch: () -> Unit) -> Unit = {
-        TabPlaceholderContent(
-            titleRes = R.string.home_placeholder_title,
-            iconRes = R.drawable.ic_nav_home
-        )
-    },
+    onTabReselected: ((MainTab) -> Unit)? = null,
+    tabContent: @Composable (tab: MainTab) -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -59,7 +55,8 @@ fun MainScreen(
         uiState = uiState,
         modifier = modifier,
         onIntent = viewModel::onIntent,
-        homeContent = homeContent,
+        onTabReselected = onTabReselected,
+        tabContent = tabContent,
     )
 }
 
@@ -68,12 +65,8 @@ fun MainContent(
     uiState: MainUiState,
     modifier: Modifier = Modifier,
     onIntent: (MainIntent) -> Unit,
-    homeContent: @Composable (onNavigateToSearch: () -> Unit) -> Unit = {
-        TabPlaceholderContent(
-            titleRes = R.string.home_placeholder_title,
-            iconRes = R.drawable.ic_nav_home
-        )
-    },
+    onTabReselected: ((MainTab) -> Unit)? = null,
+    tabContent: @Composable (tab: MainTab) -> Unit,
 ) {
     // When not on the Home tab, pressing system back returns to the Home tab
     BackHandler(enabled = uiState.currentTab != MainTab.HOME) {
@@ -88,7 +81,13 @@ fun MainContent(
         bottomBar = {
             StylishBottomBar(
                 selectedTab = uiState.currentTab,
-                onTabSelected = { tab -> onIntent(MainIntent.TabSelected(tab)) }
+                onTabSelected = { tab ->
+                    if (tab == uiState.currentTab) {
+                        onTabReselected?.invoke(tab)
+                    } else {
+                        onIntent(MainIntent.TabSelected(tab))
+                    }
+                }
             )
         }
     ) { innerPadding ->
@@ -98,32 +97,7 @@ fun MainContent(
                 .padding(innerPadding)
         ) {
             saveableStateHolder.SaveableStateProvider(key = uiState.currentTab) {
-                when (uiState.currentTab) {
-                    MainTab.HOME -> homeContent {
-                        onIntent(MainIntent.TabSelected(MainTab.SEARCH))
-                    }
-
-
-                    MainTab.WISHLIST -> TabPlaceholderContent(
-                        titleRes = R.string.wishlist_placeholder_title,
-                        iconRes = R.drawable.ic_nav_wishlist
-                    )
-
-                    MainTab.CART -> TabPlaceholderContent(
-                        titleRes = R.string.cart_placeholder_title,
-                        iconRes = R.drawable.ic_nav_cart
-                    )
-
-                    MainTab.SEARCH -> TabPlaceholderContent(
-                        titleRes = R.string.search_placeholder_title,
-                        iconRes = R.drawable.ic_nav_search
-                    )
-
-                    MainTab.SETTINGS -> TabPlaceholderContent(
-                        titleRes = R.string.settings_placeholder_title,
-                        iconRes = R.drawable.ic_nav_settings
-                    )
-                }
+                tabContent(uiState.currentTab)
             }
         }
     }
@@ -217,7 +191,7 @@ private fun BottomNavigationTabItem(
 }
 
 @Composable
-private fun TabPlaceholderContent(
+fun TabPlaceholderContent(
     titleRes: Int,
     iconRes: Int,
     modifier: Modifier = Modifier,
@@ -262,17 +236,12 @@ private fun MainContentHomePreview() {
     StylishTheme {
         MainContent(
             uiState = MainUiState(currentTab = MainTab.HOME),
-            onIntent = {}
-        )
-    }
-}
-
-@Preview(showBackground = true, name = "Main Screen - Wishlist Tab")
-@Composable
-private fun MainContentWishlistPreview() {
-    StylishTheme {
-        MainContent(
-            uiState = MainUiState(currentTab = MainTab.WISHLIST),
+            tabContent = {
+                TabPlaceholderContent(
+                    titleRes = R.string.home_placeholder_title,
+                    iconRes = R.drawable.ic_nav_home
+                )
+            },
             onIntent = {}
         )
     }

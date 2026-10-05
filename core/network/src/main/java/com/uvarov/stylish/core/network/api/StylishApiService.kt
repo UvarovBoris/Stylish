@@ -16,6 +16,11 @@ interface StylishApiService {
         @Query("query") query: String? = null,
     ): List<ProductDto>
 
+    @GET("api/v1/products")
+    suspend fun getProductsByCategory(
+        @Query("category") category: String,
+    ): List<ProductDto>
+
     @GET("api/v1/products/{id}")
     suspend fun getProductById(
         @Path("id") id: String,

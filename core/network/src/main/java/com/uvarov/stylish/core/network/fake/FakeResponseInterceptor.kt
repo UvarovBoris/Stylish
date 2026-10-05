@@ -1,7 +1,10 @@
 package com.uvarov.stylish.core.network.fake
 
 import android.content.Context
+import com.uvarov.stylish.core.network.model.ProductDto
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.Protocol
@@ -15,6 +18,7 @@ import javax.inject.Singleton
 @Singleton
 class FakeResponseInterceptor @Inject constructor(
     @param:ApplicationContext private val context: Context,
+    private val json: Json,
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -38,7 +42,16 @@ class FakeResponseInterceptor @Inject constructor(
                 loadAsset("mock/home_feed.json")
             }
             path.contains("api/v1/products") -> {
-                loadAsset("mock/products.json")
+                val allProductsJson = loadAsset("mock/products.json")
+                val categoryParam = request.url.queryParameter("category")
+                    ?: request.url.queryParameter("categoryId")
+                if (!categoryParam.isNullOrBlank()) {
+                    val products = json.decodeFromString<List<ProductDto>>(allProductsJson)
+                    val filtered = products.filter { it.categoryId.equals(categoryParam, ignoreCase = true) }
+                    json.encodeToString(filtered)
+                } else {
+                    allProductsJson
+                }
             }
             else -> {
                 return chain.proceed(request)
