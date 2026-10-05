@@ -24,6 +24,8 @@ import com.uvarov.stylish.feature.main.TabPlaceholderContent
 import com.uvarov.stylish.feature.main.navigation.MainRoute
 import com.uvarov.stylish.feature.onboarding.OnboardingScreen
 import com.uvarov.stylish.feature.onboarding.navigation.OnboardingRoute
+import com.uvarov.stylish.feature.productdetail.ProductDetailScreen
+import com.uvarov.stylish.feature.productdetail.navigation.ProductDetailRoute
 import com.uvarov.stylish.feature.main.R as MainR
 
 @Composable
@@ -51,7 +53,20 @@ fun AppNavigation(
                 )
             }
             entry<MainRoute> {
-                MainNavigation()
+                MainNavigation(
+                    onNavigateToProductDetail = { productId ->
+                        backStack.add(ProductDetailRoute(productId = productId))
+                    }
+                )
+            }
+            entry<ProductDetailRoute> { route ->
+                ProductDetailScreen(
+                    productId = route.productId,
+                    onBackClick = { backStack.removeLastOrNull() },
+                    onCartClick = {
+                        backStack.removeLastOrNull()
+                    }
+                )
             }
         }
     )
@@ -61,6 +76,7 @@ fun AppNavigation(
 private fun MainNavigation(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = hiltViewModel(),
+    onNavigateToProductDetail: (String) -> Unit = {},
 ) {
     val homeBackStack = rememberNavBackStack(HomeRoute)
 
@@ -72,7 +88,7 @@ private fun MainNavigation(
     val homeEntryProvider = entryProvider {
         entry<HomeRoute> {
             HomeScreen(
-                onProductClick = { /* Will navigate to product details */ },
+                onProductClick = onNavigateToProductDetail,
                 onNavigateToCatalog = { categoryId, title ->
                     homeBackStack.add(
                         CategoryRoute(
@@ -91,7 +107,7 @@ private fun MainNavigation(
                 categoryId = route.categoryId,
                 categoryTitle = route.categoryTitle,
                 onBackClick = { homeBackStack.removeLastOrNull() },
-                onProductClick = { /* Will navigate to product details */ }
+                onProductClick = onNavigateToProductDetail,
             )
         }
     }

@@ -1,0 +1,19 @@
+<resources>
+    <string name="product_detail_size_label">Size: %s</string>
+    <string name="product_detail_header">Product Details</string>
+    <string name="product_detail_go_to_cart">Go to cart</string>
+    <string name="product_detail_buy_now">Buy Now</string>
+    <string name="product_detail_delivery_banner">Delivery in 1 within Hour</string>
+    <string name="product_detail_feature_nearest_store">Nearest Store</string>
+    <string name="product_detail_feature_vip">VIP</string>
+    <string name="product_detail_feature_return_policy">Return policy</string>
+    <string name="product_detail_see_more">...More</string>
+    <string name="product_detail_see_less"> Less</string>
+    <string name="product_detail_discount_format">%1$d%% Off</string>
+    <string name="product_detail_cd_back">Back</string>
+    <string name="product_detail_cd_cart">Cart</string>
+    <string name="product_detail_not_found">Product not found</string>
+    <string name="product_detail_retry">Retry</string>
+    <string name="product_detail_added_to_cart">Added to cart</string>
+    <string name="product_detail_proceeding_to_checkout">Proceeding to checkout</string>
+</resources>

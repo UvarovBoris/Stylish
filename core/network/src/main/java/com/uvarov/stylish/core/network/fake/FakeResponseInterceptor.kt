@@ -43,14 +43,33 @@ class FakeResponseInterceptor @Inject constructor(
             }
             path.contains("api/v1/products") -> {
                 val allProductsJson = loadAsset("mock/products.json")
-                val categoryParam = request.url.queryParameter("category")
-                    ?: request.url.queryParameter("categoryId")
-                if (!categoryParam.isNullOrBlank()) {
+                val pathAfterProducts = path.substringAfter("api/v1/products", "").trim('/')
+                if (pathAfterProducts.isNotEmpty()) {
+                    val productId = pathAfterProducts.substringBefore("/")
                     val products = json.decodeFromString<List<ProductDto>>(allProductsJson)
-                    val filtered = products.filter { it.categoryId.equals(categoryParam, ignoreCase = true) }
-                    json.encodeToString(filtered)
+                    val product = products.firstOrNull { it.id == productId }
+                    if (product != null) {
+                        json.encodeToString(product)
+                    } else {
+                        return Response.Builder()
+                            .request(request)
+                            .protocol(Protocol.HTTP_1_1)
+                            .code(404)
+                            .message("Product not found")
+                            .body("Product not found".toResponseBody("text/plain".toMediaType()))
+                            .addHeader("content-type", "text/plain")
+                            .build()
+                    }
                 } else {
-                    allProductsJson
+                    val categoryParam = request.url.queryParameter("category")
+                        ?: request.url.queryParameter("categoryId")
+                    if (!categoryParam.isNullOrBlank()) {
+                        val products = json.decodeFromString<List<ProductDto>>(allProductsJson)
+                        val filtered = products.filter { it.categoryId.equals(categoryParam, ignoreCase = true) }
+                        json.encodeToString(filtered)
+                    } else {
+                        allProductsJson
+                    }
                 }
             }
             else -> {
