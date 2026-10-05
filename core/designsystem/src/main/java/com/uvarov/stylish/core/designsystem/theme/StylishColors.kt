@@ -41,6 +41,9 @@ data class StylishColors(
 
     val productRatingStar: Color = Color(0xFFBBBBBB),
     val productRatingStarFilled: Color = Color(0xFFEDB310),
+
+    val carouselIndicatorActive: Color = CoralRed,
+    val carouselIndicatorInactive: Color = Color(0xFFDEDBDB),
 )
 
 val LocalStylishColors = staticCompositionLocalOf { StylishColors() }

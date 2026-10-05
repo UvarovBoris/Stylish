@@ -3,7 +3,6 @@ package com.uvarov.stylish.feature.home.components
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -40,7 +39,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.uvarov.stylish.core.designsystem.R
-import com.uvarov.stylish.core.designsystem.theme.CoralPink
 import com.uvarov.stylish.core.designsystem.theme.Montserrat
 import com.uvarov.stylish.core.designsystem.theme.StylishTheme
 import com.uvarov.stylish.core.model.BannerItem
@@ -87,7 +85,7 @@ fun HomeHeroBanner(
                 repeat(banners.size) { index ->
                     val isSelected = index == pagerState.currentPage
                     val dotColor by animateColorAsState(
-                        targetValue = if (isSelected) CoralPink else StylishTheme.colors.textMuted.copy(alpha = 0.4f),
+                        targetValue = if (isSelected) StylishTheme.colors.carouselIndicatorActive else StylishTheme.colors.carouselIndicatorInactive,
                         animationSpec = tween(durationMillis = 300),
                         label = "hero_dot_color"
                     )

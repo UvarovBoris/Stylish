@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -34,6 +35,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -117,6 +119,7 @@ fun ProductDetailContent(
                     CircularProgressIndicator(color = StylishTheme.colors.brandPrimary)
                 }
             }
+
             is ProductDetailUiState.Error -> {
                 Box(
                     modifier = Modifier
@@ -149,6 +152,7 @@ fun ProductDetailContent(
                     }
                 }
             }
+
             is ProductDetailUiState.Success -> {
                 ProductDetailLoadedContent(
                     state = uiState,
@@ -171,7 +175,8 @@ private fun ProductDetailTopBar(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .statusBarsPadding()
+            .padding(horizontal = 16.dp, vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -185,7 +190,6 @@ private fun ProductDetailTopBar(
         }
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             IconButton(onClick = onFavoriteClick) {
                 Icon(
@@ -198,7 +202,6 @@ private fun ProductDetailTopBar(
                         else R.string.product_detail_cd_add_to_wishlist
                     ),
                     tint = if (isFavorite) StylishTheme.colors.brandPrimary else StylishTheme.colors.textPrimary,
-                    modifier = Modifier.size(24.dp),
                 )
             }
             IconButton(onClick = onCartClick) {
@@ -206,7 +209,6 @@ private fun ProductDetailTopBar(
                     painter = painterResource(DesignR.drawable.ic_cart),
                     contentDescription = stringResource(R.string.product_detail_cd_cart),
                     tint = StylishTheme.colors.textPrimary,
-                    modifier = Modifier.size(24.dp),
                 )
             }
         }
@@ -228,72 +230,72 @@ private fun ProductDetailLoadedContent(
             .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        // Image Carousel
         ProductImageCarousel(imageUrl = state.product.imageUrl)
 
-        // Size Selector
         SizeSelector(
             selectedSize = state.selectedSize,
             availableSizes = state.availableSizes,
             onSelectSize = { onIntent(ProductDetailIntent.SelectSize(it)) },
         )
 
-        // Title and Subtitle
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Text(
                 text = state.product.title,
                 fontFamily = Montserrat,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.SemiBold,
                 fontSize = 20.sp,
+                lineHeight = 22.sp,
                 color = StylishTheme.colors.textPrimary,
             )
             Text(
                 text = state.product.description,
                 fontFamily = Montserrat,
                 fontWeight = FontWeight.Normal,
-                fontSize = 13.sp,
-                color = StylishTheme.colors.textSecondary,
+                fontSize = 14.sp,
+                lineHeight = 16.sp,
+                color = StylishTheme.colors.textPrimary,
             )
         }
 
-        // Rating & Review count
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             RatingBar(
                 rating = state.product.rating,
-                starSize = 16.dp,
+                starSize = 18.dp,
             )
             Text(
                 text = String.format(Locale.US, "%,d", state.product.reviewCount),
                 fontFamily = Montserrat,
                 fontWeight = FontWeight.Normal,
-                fontSize = 13.sp,
-                color = StylishTheme.colors.productRatingCount,
+                fontSize = 14.sp,
+                lineHeight = 16.sp,
+                color = Color(0xFF828282),
             )
         }
 
-        // Price Row
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             if (state.product.originalPrice > state.product.currentPrice) {
                 Text(
                     text = "₹${state.product.originalPrice}",
                     fontFamily = Montserrat,
-                    fontWeight = FontWeight.Light,
+                    fontWeight = FontWeight.Normal,
                     fontSize = 14.sp,
-                    color = StylishTheme.colors.productOriginalPrice,
+                    lineHeight = 16.sp,
+                    color = Color(0xFF808488),
                     textDecoration = TextDecoration.LineThrough,
                 )
             }
             Text(
                 text = "₹${state.product.currentPrice}",
                 fontFamily = Montserrat,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 16.sp,
+                fontWeight = FontWeight.Medium,
+                fontSize = 14.sp,
+                lineHeight = 16.sp,
                 color = StylishTheme.colors.textPrimary,
             )
             if (state.product.discountPercent > 0) {
@@ -302,18 +304,19 @@ private fun ProductDetailLoadedContent(
                     fontFamily = Montserrat,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 14.sp,
-                    color = StylishTheme.colors.brandPrimary,
+                    lineHeight = 16.sp,
+                    color = StylishTheme.colors.brandSecondary,
                 )
             }
         }
 
-        // Product Details Section
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text(
                 text = stringResource(R.string.product_detail_header),
                 fontFamily = Montserrat,
-                fontWeight = FontWeight.SemiBold,
+                fontWeight = FontWeight.Medium,
                 fontSize = 14.sp,
+                lineHeight = 16.sp,
                 color = StylishTheme.colors.textPrimary,
             )
             Text(
@@ -321,8 +324,8 @@ private fun ProductDetailLoadedContent(
                 fontFamily = Montserrat,
                 fontWeight = FontWeight.Normal,
                 fontSize = 12.sp,
-                lineHeight = 18.sp,
-                color = StylishTheme.colors.textSecondary,
+                lineHeight = 16.sp,
+                color = StylishTheme.colors.textPrimary,
                 maxLines = if (state.isDescriptionExpanded) Int.MAX_VALUE else 3,
                 overflow = TextOverflow.Ellipsis,
             )
@@ -331,14 +334,14 @@ private fun ProductDetailLoadedContent(
                     if (state.isDescriptionExpanded) R.string.product_detail_see_less else R.string.product_detail_see_more
                 ),
                 fontFamily = Montserrat,
-                fontWeight = FontWeight.SemiBold,
+                fontWeight = FontWeight.Normal,
                 fontSize = 12.sp,
-                color = StylishTheme.colors.brandPrimary,
+                lineHeight = 16.sp,
+                color = StylishTheme.colors.brandSecondary,
                 modifier = Modifier.clickable { onIntent(ProductDetailIntent.ToggleDescription) },
             )
         }
 
-        // Features row (Store, VIP, Return policy)
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -349,18 +352,12 @@ private fun ProductDetailLoadedContent(
                 modifier = Modifier.weight(1f),
             )
             FeatureChip(
-                iconRes = R.drawable.ic_vip,
-                label = stringResource(R.string.product_detail_feature_vip),
-                modifier = Modifier.weight(1f),
-            )
-            FeatureChip(
                 iconRes = R.drawable.ic_return_policy,
                 label = stringResource(R.string.product_detail_feature_return_policy),
                 modifier = Modifier.weight(1f),
             )
         }
 
-        // Action Buttons Row (Go to cart, Buy Now)
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -411,33 +408,33 @@ private fun ProductDetailLoadedContent(
             }
         }
 
-        // Quick Delivery Banner
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(8.dp))
-                .background(StylishTheme.colors.brandContainer)
+                .clip(RoundedCornerShape(5.dp))
+                .background(Color(0xFFFFCCD5))
                 .padding(horizontal = 16.dp, vertical = 12.dp),
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                 Text(
                     text = "Delivery in",
                     fontFamily = Montserrat,
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 12.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 14.sp,
+                    lineHeight = 16.sp,
                     color = StylishTheme.colors.textPrimary,
                 )
                 Text(
                     text = stringResource(R.string.product_detail_delivery_banner),
                     fontFamily = Montserrat,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 18.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 21.sp,
                     color = StylishTheme.colors.textPrimary,
                 )
             }
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(16.dp))
     }
 }
 
@@ -469,22 +466,21 @@ private fun ProductImageCarousel(
             )
         }
 
-        // Pager Indicators
         Row(
-            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             repeat(pageCount) { index ->
                 val isSelected = pagerState.currentPage == index
                 Box(
                     modifier = Modifier
-                        .size(if (isSelected) 8.dp else 6.dp)
+                        .size(if (isSelected) 10.dp else 8.dp)
                         .clip(CircleShape)
                         .background(
                             if (isSelected) {
-                                StylishTheme.colors.brandPrimary
+                                StylishTheme.colors.carouselIndicatorActive
                             } else {
-                                StylishTheme.colors.indicatorInactive
+                                StylishTheme.colors.carouselIndicatorInactive
                             }
                         ),
                 )
@@ -502,13 +498,14 @@ private fun SizeSelector(
 ) {
     Column(
         modifier = modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Text(
             text = stringResource(R.string.product_detail_size_label, selectedSize),
             fontFamily = Montserrat,
             fontWeight = FontWeight.SemiBold,
             fontSize = 14.sp,
+            lineHeight = 16.sp,
             color = StylishTheme.colors.textPrimary,
         )
 
@@ -520,24 +517,25 @@ private fun SizeSelector(
                 val isSelected = size == selectedSize
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(6.dp))
+                        .clip(RoundedCornerShape(4.dp))
                         .background(
-                            if (isSelected) StylishTheme.colors.brandPrimary else StylishTheme.colors.surface
+                            if (isSelected) StylishTheme.colors.brandPrimary else Color.Transparent
                         )
                         .border(
                             width = 1.dp,
                             color = StylishTheme.colors.brandPrimary,
-                            shape = RoundedCornerShape(6.dp),
+                            shape = RoundedCornerShape(4.dp),
                         )
                         .clickable { onSelectSize(size) }
-                        .padding(horizontal = 12.dp, vertical = 6.dp),
+                        .padding(horizontal = 8.dp, vertical = 8.dp),
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
                         text = size,
                         fontFamily = Montserrat,
                         fontWeight = FontWeight.SemiBold,
-                        fontSize = 12.sp,
+                        fontSize = 14.sp,
+                        lineHeight = 16.sp,
                         color = if (isSelected) StylishTheme.colors.onBrand else StylishTheme.colors.brandPrimary,
                     )
                 }
