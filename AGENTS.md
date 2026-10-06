@@ -15,7 +15,12 @@ Project guidelines and standards for AI coding assistants working on the **Styli
 - **Design Source:** [Figma: eCommerce App UI Kit](https://www.figma.com/design/QLfS37a0puFWZ15N1hpyOK/eCommerce-App-UI-Kit---Case-Study-Ecommerce-Mobile-App-UI-kit--Community-?node-id=1-16990&p=f&t=e81cBV6fUcQgQo1R-0)
   - **File Key:** `QLfS37a0puFWZ15N1hpyOK`
   - **Starting Node ID:** `1:16990`
-- **Figma MCP Integration:** Always use **Framelink MCP for Figma** (`get_figma_data`, `download_figma_images`) to inspect component dimensions, paddings, color codes, and typography, and to download required vector assets/icons before implementing UI.
+- **Offline Design Source of Truth:**
+  - **Comprehensive Spec:** `docs/DESIGN_SYSTEM_AND_SCREENS_SPEC.md` — Contains complete layout dimensions, component sizes, padding/margin scales, full typography tokens (Montserrat/Poppins/Roboto/Alegreya SC), exact color palette (`StylishColors`), and specs for all 16 screens.
+  - **Screen Screenshots:** `docs/screens/` — Visual JPG/PNG reference captures for every screen.
+  - **Raw API Snapshot:** `docs/figma_raw_data.yaml` — Complete offline YAML dump of Figma nodes, element templates, and variables.
+  - *Note:* If the Figma MCP API is rate-limited or access is revoked, always rely on `docs/DESIGN_SYSTEM_AND_SCREENS_SPEC.md` and `docs/screens/` as the primary source of truth.
+- **Figma MCP Integration:** If Figma API is accessible, use **Framelink MCP for Figma** (`get_figma_data`, `download_figma_images`) for live queries or downloading image assets.
 - **Theming:** Translate Figma design tokens into custom app theming in `ui/theme/` (`StylishColors`, `Color`, `Typography`, `Shape`). Use `StylishTheme.colors` for app styling and component colors across all app screens. Use `MaterialTheme` for base setup and scaffolding where it makes sense (e.g., `Scaffold`, basic surface/content color defaults, ripple effects). Never hardcode ad-hoc colors or font styles in composables.
 
 ---
