@@ -63,13 +63,18 @@ class FakeResponseInterceptor @Inject constructor(
                 } else {
                     val categoryParam = request.url.queryParameter("category")
                         ?: request.url.queryParameter("categoryId")
+                    val queryParam = request.url.queryParameter("query")
+                    var products = json.decodeFromString<List<ProductDto>>(allProductsJson)
                     if (!categoryParam.isNullOrBlank()) {
-                        val products = json.decodeFromString<List<ProductDto>>(allProductsJson)
-                        val filtered = products.filter { it.categoryId.equals(categoryParam, ignoreCase = true) }
-                        json.encodeToString(filtered)
-                    } else {
-                        allProductsJson
+                        products = products.filter { it.categoryId.equals(categoryParam, ignoreCase = true) }
                     }
+                    if (!queryParam.isNullOrBlank()) {
+                        products = products.filter {
+                            it.title.contains(queryParam, ignoreCase = true) ||
+                                it.description.contains(queryParam, ignoreCase = true)
+                        }
+                    }
+                    json.encodeToString(products)
                 }
             }
             else -> {

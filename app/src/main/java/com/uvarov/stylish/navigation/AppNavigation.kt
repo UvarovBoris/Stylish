@@ -34,6 +34,7 @@ import com.uvarov.stylish.feature.onboarding.OnboardingScreen
 import com.uvarov.stylish.feature.onboarding.navigation.OnboardingRoute
 import com.uvarov.stylish.feature.productdetail.ProductDetailScreen
 import com.uvarov.stylish.feature.productdetail.navigation.ProductDetailRoute
+import com.uvarov.stylish.feature.search.SearchScreen
 import com.uvarov.stylish.feature.wishlist.WishlistScreen
 import com.uvarov.stylish.feature.main.R as MainR
 
@@ -199,9 +200,8 @@ private fun MainNavigation(
                     iconRes = MainR.drawable.ic_nav_cart,
                 )
 
-                MainTab.SEARCH -> TabPlaceholderContent(
-                    titleRes = MainR.string.search_placeholder_title,
-                    iconRes = MainR.drawable.ic_nav_search,
+                MainTab.SEARCH -> SearchScreen(
+                    onProductClick = onNavigateToProductDetail,
                 )
 
                 MainTab.SETTINGS -> TabPlaceholderContent(

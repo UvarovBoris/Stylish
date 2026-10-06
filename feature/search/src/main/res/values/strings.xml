@@ -1,0 +1,11 @@
+<resources>
+    <string name="search_title">Search</string>
+    <string name="search_items_count">%1$d+ Items</string>
+    <string name="search_sort">Sort</string>
+    <string name="search_filter">Filter</string>
+    <string name="search_no_results">No products found</string>
+    <string name="search_no_results_desc">Try checking your spelling or use different keywords</string>
+    <string name="search_retry">Retry</string>
+    <string name="search_error_generic">Something went wrong while searching</string>
+    <string name="search_voice_search_activated">Voice search activated</string>
+</resources>

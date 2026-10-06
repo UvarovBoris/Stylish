@@ -1,4 +1,7 @@
 <resources>
     <string name="cd_add_to_favorites">Add to favorites</string>
     <string name="cd_remove_from_favorites">Remove from favorites</string>
+    <string name="search_placeholder">Search any Product..</string>
+    <string name="cd_voice_search">Voice Search</string>
+    <string name="cd_clear_search">Clear Search</string>
 </resources>
