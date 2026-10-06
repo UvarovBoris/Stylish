@@ -3,6 +3,7 @@ package com.uvarov.stylish.core.ui.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -49,10 +50,13 @@ fun ProductCard(
     modifier: Modifier = Modifier,
     isFavorite: Boolean = product.isFavorite,
     onFavoriteClick: (() -> Unit)? = null,
-    imageHeight: Dp = if (product.importance == ProductImportance.HIGH) 196.dp else 136.dp,
+    imageHeight: Dp = 196.dp,
+    cardHeight: Dp = 324.dp,
 ) {
     Surface(
         modifier = modifier
+            .fillMaxWidth()
+            .height(cardHeight)
             .dropShadow(
                 shape = RoundedCornerShape(8.dp),
                 shadow = Shadow(
@@ -68,7 +72,7 @@ fun ProductCard(
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .padding(bottom = 8.dp)
         ) {
             Box(
@@ -122,80 +126,86 @@ fun ProductCard(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 8.dp, top = 8.dp, end = 8.dp)
+                    .weight(1f)
+                    .padding(start = 8.dp, top = 8.dp, end = 8.dp),
+                verticalArrangement = Arrangement.SpaceBetween,
             ) {
-                Text(
-                    text = product.title,
-                    style = StylishTheme.typography.productTitle,
-                    color = StylishTheme.colors.textPrimary,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-
-                if (product.description.isNotBlank()) {
-                    Spacer(modifier = Modifier.height(4.dp))
+                Column {
                     Text(
-                        text = product.description,
-                        style = StylishTheme.typography.productDescription,
+                        text = product.title,
+                        style = StylishTheme.typography.productTitle,
                         color = StylishTheme.colors.textPrimary,
-                        maxLines = 2,
+                        maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
-                }
 
-                Spacer(modifier = Modifier.height(4.dp))
-
-                Text(
-                    text = "₹${product.currentPrice}",
-                    style = StylishTheme.typography.productPrice,
-                    color = StylishTheme.colors.textPrimary
-                )
-
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    if (product.originalPrice > product.currentPrice) {
+                    if (product.description.isNotBlank()) {
+                        Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = "₹${product.originalPrice}",
-                            style = StylishTheme.typography.productOriginalPrice.copy(
-                                textDecoration = TextDecoration.LineThrough
-                            ),
-                            color = StylishTheme.colors.productOriginalPrice
-                        )
-                    }
-                    if (product.discountPercent > 0) {
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(
-                            text = "${product.discountPercent}%Off",
-                            style = StylishTheme.typography.productDiscount,
-                            color = StylishTheme.colors.productDiscount
+                            text = product.description,
+                            style = StylishTheme.typography.productDescription,
+                            color = StylishTheme.colors.textPrimary,
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis
                         )
                     }
                 }
 
-                Spacer(modifier = Modifier.height(4.dp))
-
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    RatingBar(
-                        rating = product.rating,
-                    )
-
-                    Spacer(modifier = Modifier.width(4.dp))
-
+                Column {
                     Text(
-                        text = product.reviewCount.toString(),
-                        style = StylishTheme.typography.productRatingCount,
-                        color = StylishTheme.colors.productRatingCount
+                        text = "₹${product.currentPrice}",
+                        style = StylishTheme.typography.productPrice,
+                        color = StylishTheme.colors.textPrimary
                     )
+
+                    Row(
+                        modifier = Modifier.height(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        if (product.originalPrice > product.currentPrice) {
+                            Text(
+                                text = "₹${product.originalPrice}",
+                                style = StylishTheme.typography.productOriginalPrice.copy(
+                                    textDecoration = TextDecoration.LineThrough
+                                ),
+                                color = StylishTheme.colors.productOriginalPrice
+                            )
+                        }
+                        if (product.discountPercent > 0) {
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text(
+                                text = "${product.discountPercent}%Off",
+                                style = StylishTheme.typography.productDiscount,
+                                color = StylishTheme.colors.productDiscount
+                            )
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(4.dp))
+
+                    Row(
+                        modifier = Modifier.height(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        RatingBar(
+                            rating = product.rating,
+                        )
+
+                        Spacer(modifier = Modifier.width(4.dp))
+
+                        Text(
+                            text = product.reviewCount.toString(),
+                            style = StylishTheme.typography.productRatingCount,
+                            color = StylishTheme.colors.productRatingCount
+                        )
+                    }
                 }
             }
         }
     }
 }
 
-@Preview(showBackground = true, name = "Product Card - Normal (136dp)")
+@Preview(showBackground = true, name = "Product Card - Normal")
 @Composable
 private fun ProductCardNormalPreview() {
     StylishTheme {
@@ -220,7 +230,7 @@ private fun ProductCardNormalPreview() {
     }
 }
 
-@Preview(showBackground = true, name = "Product Card - High Importance (196dp)")
+@Preview(showBackground = true, name = "Product Card - High Importance")
 @Composable
 private fun ProductCardHighImportancePreview() {
     StylishTheme {
