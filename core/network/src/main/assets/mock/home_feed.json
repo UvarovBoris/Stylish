@@ -77,7 +77,7 @@
       "discount_percent": 50,
       "rating": 4.5,
       "review_count": 344567,
-      "image_url": "https://api.stylish.app/images/shoes.jpg",
+      "image_url": "https://api.stylish.app/images/shoes_hrx.jpg",
       "importance": "normal",
       "category_id": "cat_mens"
     },
@@ -90,7 +90,7 @@
       "discount_percent": 50,
       "rating": 4.0,
       "review_count": 56890,
-      "image_url": "https://api.stylish.app/images/shoes.jpg",
+      "image_url": "https://api.stylish.app/images/shoes_nike_sneakers.jpg",
       "importance": "high",
       "category_id": "cat_fashion"
     },
@@ -116,7 +116,7 @@
       "discount_percent": 70,
       "rating": 4.0,
       "review_count": 8920,
-      "image_url": "https://api.stylish.app/images/sneakers.jpg",
+      "image_url": "https://api.stylish.app/images/shoes_labbin_white_sneakers.jpg",
       "importance": "normal",
       "category_id": "cat_fashion"
     },
@@ -142,7 +142,7 @@
       "discount_percent": 50,
       "rating": 4.0,
       "review_count": 152344,
-      "image_url": "https://api.stylish.app/images/shirt.jpg",
+      "image_url": "https://api.stylish.app/images/shirt_mens_starry.jpg",
       "importance": "normal",
       "category_id": "cat_mens"
     }

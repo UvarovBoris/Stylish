@@ -21,7 +21,7 @@
     "discount_percent": 50,
     "rating": 4.5,
     "review_count": 344567,
-    "image_url": "https://api.stylish.app/images/shoes.jpg",
+    "image_url": "https://api.stylish.app/images/shoes_hrx.jpg",
     "importance": "normal",
     "category_id": "cat_mens"
   },
@@ -47,7 +47,7 @@
     "discount_percent": 70,
     "rating": 4.0,
     "review_count": 8920,
-    "image_url": "https://api.stylish.app/images/sneakers.jpg",
+    "image_url": "https://api.stylish.app/images/shoes_labbin_white_sneakers.jpg",
     "importance": "normal",
     "category_id": "cat_fashion"
   },
@@ -86,20 +86,20 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 152344,
-    "image_url": "https://api.stylish.app/images/shirt.jpg",
+    "image_url": "https://api.stylish.app/images/shirt_mens_starry.jpg",
     "importance": "normal",
     "category_id": "cat_mens"
   },
   {
     "id": "prod_8",
     "title": "Black Dress",
-    "description": "Solid Black Dress for Women, Sexy Chain Shorts Ladi...",
+    "description": "Solid Black Dress for Women",
     "current_price": 2000,
     "original_price": 3999,
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 523456,
-    "image_url": "https://api.stylish.app/images/dress.jpg",
+    "image_url": "https://api.stylish.app/images/dress_flare.jpg",
     "importance": "high",
     "category_id": "cat_womens"
   },
@@ -112,7 +112,7 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 45678,
-    "image_url": "https://api.stylish.app/images/dress.jpg",
+    "image_url": "https://api.stylish.app/images/dress_pink_embroider.jpg",
     "importance": "normal",
     "category_id": "cat_womens"
   },
@@ -125,7 +125,7 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 335566,
-    "image_url": "https://api.stylish.app/images/dress.jpg",
+    "image_url": "https://api.stylish.app/images/dress_flare.jpg",
     "importance": "high",
     "category_id": "cat_womens"
   },
@@ -138,7 +138,7 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 27344,
-    "image_url": "https://api.stylish.app/images/dress.jpg",
+    "image_url": "https://api.stylish.app/images/dress_pink_embroider.jpg",
     "importance": "normal",
     "category_id": "cat_womens"
   },
@@ -151,7 +151,7 @@
     "discount_percent": 37,
     "rating": 2.5,
     "review_count": 1023456,
-    "image_url": "https://api.stylish.app/images/shoes.jpg",
+    "image_url": "https://api.stylish.app/images/shoes_jordan_stay.jpg",
     "importance": "high",
     "category_id": "cat_kids"
   },
@@ -177,7 +177,7 @@
     "discount_percent": 50,
     "rating": 2.5,
     "review_count": 835566,
-    "image_url": "https://api.stylish.app/images/gadget.jpg",
+    "image_url": "https://api.stylish.app/images/gadget_ps4.jpg",
     "importance": "normal",
     "category_id": "cat_gifts"
   },
@@ -203,7 +203,7 @@
     "discount_percent": 25,
     "rating": 4.0,
     "review_count": 67456,
-    "image_url": "https://api.stylish.app/images/camera.jpg",
+    "image_url": "https://api.stylish.app/images/camera_D7200.jpg",
     "importance": "normal",
     "category_id": "cat_gifts"
   },
@@ -216,7 +216,7 @@
     "discount_percent": 50,
     "rating": 5.0,
     "review_count": 1345678,
-    "image_url": "https://api.stylish.app/images/shoes.jpg",
+    "image_url": "https://api.stylish.app/images/shoes_derby_brown_formal.jpg",
     "importance": "normal",
     "category_id": "cat_mens"
   },
@@ -229,7 +229,7 @@
     "discount_percent": 50,
     "rating": 4.0,
     "review_count": 56890,
-    "image_url": "https://api.stylish.app/images/shoes.jpg",
+    "image_url": "https://api.stylish.app/images/shoes_nike_sneakers.jpg",
     "importance": "high",
     "category_id": "cat_fashion"
   },
@@ -242,7 +242,7 @@
     "discount_percent": 36,
     "rating": 4.0,
     "review_count": 46890,
-    "image_url": "https://api.stylish.app/images/shoes.jpg",
+    "image_url": "https://api.stylish.app/images/shoes_hrx.jpg",
     "importance": "normal",
     "category_id": "cat_kids"
   },
@@ -255,7 +255,7 @@
     "discount_percent": 40,
     "rating": 4.5,
     "review_count": 256890,
-    "image_url": "https://api.stylish.app/images/shoes.jpg",
+    "image_url": "https://api.stylish.app/images/shoes_derby_brown_formal.jpg",
     "importance": "high",
     "category_id": "cat_fashion"
   },
