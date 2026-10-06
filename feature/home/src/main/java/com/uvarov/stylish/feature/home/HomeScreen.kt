@@ -154,8 +154,7 @@ fun HomeContent(
                 ) {
                     HomeSearchBar(
                         modifier = Modifier
-                            .fullScreenWidth()
-                            .padding(top = 4.dp),
+                            .fullScreenWidth(),
                         onSearchClick = { onIntent(HomeIntent.SearchBarClicked) },
                         onVoiceClick = { onIntent(HomeIntent.VoiceSearchClicked) }
                     )

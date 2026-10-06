@@ -1,6 +1,8 @@
 package com.uvarov.stylish.feature.main
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -98,8 +100,15 @@ fun MainContent(
                 .padding(innerPadding)
                 .consumeWindowInsets(innerPadding)
         ) {
-            saveableStateHolder.SaveableStateProvider(key = uiState.currentTab) {
-                tabContent(uiState.currentTab)
+            Crossfade(
+                targetState = uiState.currentTab,
+                animationSpec = tween(durationMillis = 200),
+                label = "MainTabCrossfade",
+                modifier = Modifier.fillMaxSize(),
+            ) { targetTab ->
+                saveableStateHolder.SaveableStateProvider(key = targetTab) {
+                    tabContent(targetTab)
+                }
             }
         }
     }
