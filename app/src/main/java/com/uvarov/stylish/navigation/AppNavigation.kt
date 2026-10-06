@@ -1,8 +1,12 @@
 package com.uvarov.stylish.navigation
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -48,6 +52,20 @@ fun AppNavigation(
             rememberSaveableStateHolderNavEntryDecorator(),
             rememberViewModelStoreNavEntryDecorator()
         ),
+        transitionSpec = {
+            fadeIn(animationSpec = tween(durationMillis = 200)) togetherWith
+                    fadeOut(animationSpec = tween(durationMillis = 200))
+        },
+        popTransitionSpec = {
+            fadeIn(animationSpec = tween(durationMillis = 200)) togetherWith
+                    fadeOut(animationSpec = tween(durationMillis = 200))
+
+        },
+        predictivePopTransitionSpec = {
+            fadeIn(animationSpec = tween(durationMillis = 200)) togetherWith
+                    fadeOut(animationSpec = tween(durationMillis = 200))
+
+        },
         entryProvider = entryProvider {
             entry<OnboardingRoute> {
                 OnboardingScreen(
@@ -64,7 +82,24 @@ fun AppNavigation(
                     }
                 )
             }
-            entry<ProductDetailRoute> { route ->
+            entry<ProductDetailRoute>(
+                metadata = NavDisplay.transitionSpec {
+                    slideInHorizontally(
+                        animationSpec = tween(durationMillis = 300),
+                        initialOffsetX = { fullWidth -> fullWidth }
+                    ) togetherWith ExitTransition.None
+                } + NavDisplay.popTransitionSpec {
+                    EnterTransition.None togetherWith slideOutHorizontally(
+                        animationSpec = tween(durationMillis = 300),
+                        targetOffsetX = { fullWidth -> fullWidth }
+                    )
+                } + NavDisplay.predictivePopTransitionSpec {
+                    EnterTransition.None togetherWith slideOutHorizontally(
+                        animationSpec = tween(durationMillis = 300),
+                        targetOffsetX = { fullWidth -> fullWidth }
+                    )
+                }
+            ) { route ->
                 ProductDetailScreen(
                     productId = route.productId,
                     onBackClick = { backStack.removeLastOrNull() },
@@ -142,15 +177,15 @@ private fun MainNavigation(
                         onBack = { homeBackStack.removeLastOrNull() },
                         transitionSpec = {
                             fadeIn(animationSpec = tween(200)) togetherWith
-                                fadeOut(animationSpec = tween(200))
+                                    fadeOut(animationSpec = tween(200))
                         },
                         popTransitionSpec = {
                             fadeIn(animationSpec = tween(200)) togetherWith
-                                fadeOut(animationSpec = tween(200))
+                                    fadeOut(animationSpec = tween(200))
                         },
                         predictivePopTransitionSpec = {
                             fadeIn(animationSpec = tween(200)) togetherWith
-                                fadeOut(animationSpec = tween(200))
+                                    fadeOut(animationSpec = tween(200))
                         },
                     )
                 }
