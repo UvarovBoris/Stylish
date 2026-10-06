@@ -84,14 +84,6 @@ class SearchViewModel @Inject constructor(
             is SearchIntent.VoiceSearchClicked -> {
                 emitSideEffect(SearchSideEffect.ShowToast("Voice search activated"))
             }
-
-            is SearchIntent.SortClicked -> {
-                emitSideEffect(SearchSideEffect.ShowToast("Sort clicked"))
-            }
-
-            is SearchIntent.FilterClicked -> {
-                emitSideEffect(SearchSideEffect.ShowToast("Filter clicked"))
-            }
         }
     }
 

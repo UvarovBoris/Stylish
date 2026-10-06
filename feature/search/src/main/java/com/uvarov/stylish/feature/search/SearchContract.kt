@@ -35,8 +35,6 @@ sealed interface SearchIntent {
     data class ToggleFavorite(val productId: String) : SearchIntent
     data object RetryClicked : SearchIntent
     data object VoiceSearchClicked : SearchIntent
-    data object SortClicked : SearchIntent
-    data object FilterClicked : SearchIntent
 }
 
 sealed interface SearchSideEffect {
