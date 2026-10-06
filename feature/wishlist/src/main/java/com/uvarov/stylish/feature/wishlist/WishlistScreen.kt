@@ -20,7 +20,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -72,19 +71,19 @@ fun WishlistContent(
     modifier: Modifier = Modifier,
     onIntent: (WishlistIntent) -> Unit = {},
 ) {
-    Scaffold(
-        modifier = modifier.fillMaxSize(),
-        containerColor = StylishTheme.colors.background,
-        topBar = {
-            WishlistTopBar(
-                itemCount = (uiState as? WishlistUiState.Success)?.products?.size ?: 0,
-            )
-        },
-    ) { innerPadding ->
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(StylishTheme.colors.background),
+    ) {
+        WishlistTopBar(
+            itemCount = (uiState as? WishlistUiState.Success)?.products?.size ?: 0,
+        )
+
         Box(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding),
+                .fillMaxWidth()
+                .weight(1f),
         ) {
             when (uiState) {
                 is WishlistUiState.Loading -> {
