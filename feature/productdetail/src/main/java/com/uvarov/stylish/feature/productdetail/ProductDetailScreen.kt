@@ -177,41 +177,39 @@ private fun ProductDetailTopBar(
         modifier = modifier
             .fillMaxWidth()
             .statusBarsPadding()
-            .padding(horizontal = 16.dp, vertical = 4.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
+            .height(56.dp)
+            .padding(horizontal = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        IconButton(onClick = onBackClick) {
+        IconButton(
+            onClick = onBackClick
+        ) {
             Icon(
-                painter = painterResource(DesignR.drawable.ic_arrow_back),
-                contentDescription = stringResource(R.string.product_detail_cd_back),
-                tint = StylishTheme.colors.textPrimary,
-                modifier = Modifier.size(24.dp),
+                painter = painterResource(id = DesignR.drawable.ic_arrow_back),
+                contentDescription = stringResource(id = R.string.product_detail_cd_back),
+                tint = StylishTheme.colors.textPrimary
             )
         }
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = onFavoriteClick) {
-                Icon(
-                    painter = painterResource(
-                        if (isFavorite) DesignR.drawable.ic_heart_filled
-                        else DesignR.drawable.ic_heart_outline
-                    ),
-                    contentDescription = stringResource(
-                        if (isFavorite) R.string.product_detail_cd_remove_from_wishlist
-                        else R.string.product_detail_cd_add_to_wishlist
-                    ),
-                    tint = if (isFavorite) StylishTheme.colors.brandPrimary else StylishTheme.colors.textPrimary,
-                )
-            }
-            IconButton(onClick = onCartClick) {
-                Icon(
-                    painter = painterResource(DesignR.drawable.ic_cart),
-                    contentDescription = stringResource(R.string.product_detail_cd_cart),
-                    tint = StylishTheme.colors.textPrimary,
-                )
-            }
+        Spacer(modifier = Modifier.weight(1f))
+        IconButton(onClick = onFavoriteClick) {
+            Icon(
+                painter = painterResource(
+                    if (isFavorite) DesignR.drawable.ic_heart_filled
+                    else DesignR.drawable.ic_heart_outline
+                ),
+                contentDescription = stringResource(
+                    if (isFavorite) R.string.product_detail_cd_remove_from_wishlist
+                    else R.string.product_detail_cd_add_to_wishlist
+                ),
+                tint = if (isFavorite) StylishTheme.colors.brandPrimary else StylishTheme.colors.textPrimary,
+            )
+        }
+        IconButton(onClick = onCartClick) {
+            Icon(
+                painter = painterResource(DesignR.drawable.ic_cart),
+                contentDescription = stringResource(R.string.product_detail_cd_cart),
+                tint = StylishTheme.colors.textPrimary,
+            )
         }
     }
 }

@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
@@ -58,7 +57,8 @@ fun CategoryScreen(
             when (effect) {
                 is CategorySideEffect.NavigateBack -> onBackClick()
                 is CategorySideEffect.NavigateToProductDetails -> onProductClick(effect.productId)
-                is CategorySideEffect.ShowToast -> { /* toast */ }
+                is CategorySideEffect.ShowToast -> { /* toast */
+                }
             }
         }
     }
@@ -179,12 +179,12 @@ private fun CategoryTopBar(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp, vertical = 8.dp),
+            .height(56.dp)
+            .padding(horizontal = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(
-            onClick = onBackClick,
-            modifier = Modifier.size(40.dp)
+            onClick = onBackClick
         ) {
             Icon(
                 painter = painterResource(id = DesignR.drawable.ic_arrow_back),
