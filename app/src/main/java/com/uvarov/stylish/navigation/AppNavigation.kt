@@ -1,5 +1,9 @@
 package com.uvarov.stylish.navigation
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -136,6 +140,18 @@ private fun MainNavigation(
                         entries = homeEntries,
                         modifier = Modifier.fillMaxSize(),
                         onBack = { homeBackStack.removeLastOrNull() },
+                        transitionSpec = {
+                            fadeIn(animationSpec = tween(200)) togetherWith
+                                fadeOut(animationSpec = tween(200))
+                        },
+                        popTransitionSpec = {
+                            fadeIn(animationSpec = tween(200)) togetherWith
+                                fadeOut(animationSpec = tween(200))
+                        },
+                        predictivePopTransitionSpec = {
+                            fadeIn(animationSpec = tween(200)) togetherWith
+                                fadeOut(animationSpec = tween(200))
+                        },
                     )
                 }
 
