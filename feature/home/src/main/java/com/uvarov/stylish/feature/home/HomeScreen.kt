@@ -14,6 +14,8 @@ import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
 import androidx.compose.foundation.lazy.staggeredgrid.items
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -123,6 +125,8 @@ fun HomeContent(
 
         is HomeUiState.Success -> {
             val feed = uiState.homeFeed
+            val categoriesScrollState = rememberScrollState()
+            val heroPagerState = rememberPagerState(pageCount = { feed.heroBanners.size })
 
             LazyVerticalStaggeredGrid(
                 columns = StaggeredGridCells.Fixed(2),
@@ -135,13 +139,19 @@ fun HomeContent(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 verticalItemSpacing = 12.dp,
             ) {
-                item(span = StaggeredGridItemSpan.FullLine) {
+                item(
+                    key = "home_top_bar",
+                    span = StaggeredGridItemSpan.FullLine,
+                ) {
                     HomeTopBar(
                         modifier = Modifier.fullScreenWidth(),
                         onAvatarClick = { /* Profile action */ }
                     )
                 }
-                item(span = StaggeredGridItemSpan.FullLine) {
+                item(
+                    key = "home_search_bar",
+                    span = StaggeredGridItemSpan.FullLine,
+                ) {
                     HomeSearchBar(
                         modifier = Modifier
                             .fullScreenWidth()
@@ -150,28 +160,39 @@ fun HomeContent(
                         onVoiceClick = { onIntent(HomeIntent.VoiceSearchClicked) }
                     )
                 }
-                item(span = StaggeredGridItemSpan.FullLine) {
+                item(
+                    key = "home_featured_header",
+                    span = StaggeredGridItemSpan.FullLine,
+                ) {
                     HomeFeaturedHeader(
                         modifier = Modifier
                             .fullScreenWidth()
                             .padding(top = 4.dp),
                     )
                 }
-                item(span = StaggeredGridItemSpan.FullLine) {
+                item(
+                    key = "home_categories_row",
+                    span = StaggeredGridItemSpan.FullLine,
+                ) {
                     HomeCategoriesRow(
                         modifier = Modifier
                             .fullScreenWidth()
                             .padding(top = 4.dp),
                         categories = feed.categories,
+                        scrollState = categoriesScrollState,
                         onCategoryClick = { category ->
                             onIntent(HomeIntent.CategoryClicked(categoryId = category.id, title = category.name))
                         }
                     )
                 }
                 if (feed.heroBanners.isNotEmpty()) {
-                    item(span = StaggeredGridItemSpan.FullLine) {
+                    item(
+                        key = "home_hero_banner",
+                        span = StaggeredGridItemSpan.FullLine,
+                    ) {
                         HomeHeroBanner(
                             banners = feed.heroBanners,
+                            pagerState = heroPagerState,
                             modifier = Modifier
                                 .fullScreenWidth()
                                 .padding(top = 4.dp),

@@ -1,5 +1,6 @@
 package com.uvarov.stylish.feature.home.components
 
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -33,11 +34,12 @@ fun HomeCategoriesRow(
     categories: List<Category>,
     onCategoryClick: (Category) -> Unit,
     modifier: Modifier = Modifier,
+    scrollState: ScrollState = rememberScrollState(),
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .horizontalScroll(rememberScrollState())
+            .horizontalScroll(scrollState)
             .padding(horizontal = 16.dp)
             .background(
                 color = StylishTheme.colors.surface,

@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -50,10 +51,10 @@ fun HomeHeroBanner(
     banners: List<BannerItem>,
     onBannerClick: (BannerItem) -> Unit,
     modifier: Modifier = Modifier,
+    pagerState: PagerState = rememberPagerState(pageCount = { banners.size }),
 ) {
     if (banners.isEmpty()) return
 
-    val pagerState = rememberPagerState(pageCount = { banners.size })
     val coroutineScope = rememberCoroutineScope()
 
     Column(
